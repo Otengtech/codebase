@@ -37,8 +37,8 @@ app.use("/api", tRoutes);
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Redirect all requests to index.html (for React Router)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 // ✅ Start server after connecting to MongoDB
