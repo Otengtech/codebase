@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "question": "What is the primary design principle behind Tailwind CSS?",
+    "options": ["Component-based architecture", "Utility-first CSS framework", "CSS-in-JS styling", "Global style inheritance"],
+    "answer": "Utility-first CSS framework"
+  },
+  {
+    "id": 2,
+    "question": "Which of the following applies a margin of 4 units in Tailwind CSS?",
+    "options": ["m-2", "margin-4", "m-4", "p-4"],
+    "answer": "m-4"
+  },
+  {
+    "id": 3,
+    "question": "How do you make text bold in Tailwind?",
+    "options": ["font-bold", "text-bold", "bold", "fw-bold"],
+    "answer": "font-bold"
+  },
+  {
+    "id": 4,
+    "question": "What class sets a background color to blue in Tailwind?",
+    "options": ["bg-blue", "background-blue", "bg-blue-500", "blue-bg"],
+    "answer": "bg-blue-500"
+  },
+  {
+    "id": 5,
+    "question": "Which Tailwind class sets the display to flex?",
+    "options": ["d-flex", "flexbox", "display-flex", "flex"],
+    "answer": "flex"
+  },
+  {
+    "id": 6,
+    "question": "What does the class `p-6` do?",
+    "options": ["Sets padding to 6rem", "Sets padding to 6px", "Sets uniform padding (all sides) to a Tailwind scale value", "Sets padding only to the left"],
+    "answer": "Sets uniform padding (all sides) to a Tailwind scale value"
+  },
+  {
+    "id": 7,
+    "question": "Which class will make text center-aligned?",
+    "options": ["align-center", "text-center", "center-text", "justify-center"],
+    "answer": "text-center"
+  },
+  {
+    "id": 8,
+    "question": "How do you apply responsive styles in Tailwind?",
+    "options": ["Using media queries manually", "Using the @responsive directive", "By prefixing classes with breakpoints like md:, lg:", "Tailwind does not support responsive styles"],
+    "answer": "By prefixing classes with breakpoints like md:, lg:"
+  },
+  {
+    "id": 9,
+    "question": "What does `hover:bg-green-500` do?",
+    "options": ["Sets background green always", "Sets background green on hover", "Removes background on hover", "None of the above"],
+    "answer": "Sets background green on hover"
+  },
+  {
+    "id": 10,
+    "question": "Which class will round the corners of a button?",
+    "options": ["border-rounded", "rounded", "corner-round", "btn-rounded"],
+    "answer": "rounded"
+  },
+  {
+    "id": 11,
+    "question": "How do you make an element hidden in Tailwind?",
+    "options": ["invisible", "hidden", "d-none", "display-none"],
+    "answer": "hidden"
+  },
+  {
+    "id": 12,
+    "question": "Which class controls font size in Tailwind?",
+    "options": ["font-size", "fs-md", "text-lg", "font-md"],
+    "answer": "text-lg"
+  },
+  {
+    "id": 13,
+    "question": "What is the default Tailwind CSS configuration file name?",
+    "options": ["tailwind.config.json", "tailwind.config.css", "tailwind.config.js", "tw.config.js"],
+    "answer": "tailwind.config.js"
+  },
+  {
+    "id": 14,
+    "question": "How can you customize Tailwind’s default theme?",
+    "options": ["Using @tailwind base", "Editing tailwind.config.js", "Adding inline styles", "You cannot customize Tailwind"],
+    "answer": "Editing tailwind.config.js"
+  },
+  {
+    "id": 15,
+    "question": "Which plugin is commonly used to add animations in Tailwind?",
+    "options": ["@tailwind/animate", "tailwindcss-animations", "@tailwindcss/forms", "@tailwindcss/typography"],
+    "answer": "tailwindcss-animations"
+  },
+  {
+    "id": 16,
+    "question": "Which class applies a shadow in Tailwind?",
+    "options": ["box-shadow", "shadow-md", "shadow-4", "shadow-box"],
+    "answer": "shadow-md"
+  },
+  {
+    "id": 17,
+    "question": "What does `w-full` do?",
+    "options": ["Sets width to 100%", "Sets font weight to full", "Wraps text", "Centers the element"],
+    "answer": "Sets width to 100%"
+  },
+  {
+    "id": 18,
+    "question": "Which class makes an element take full height?",
+    "options": ["h-full", "height-100", "full-height", "100h"],
+    "answer": "h-full"
+  },
+  {
+    "id": 19,
+    "question": "How do you add a border to an element?",
+    "options": ["border-1", "b-1", "border", "bd-1"],
+    "answer": "border"
+  },
+  {
+    "id": 20,
+    "question": "Which class will uppercase text?",
+    "options": ["text-upper", "text-uppercase", "uppercase", "capitalize"],
+    "answer": "uppercase"
+  },
+  {
+    "id": 21,
+    "question": "What does `gap-4` do?",
+    "options": ["Adds spacing between flex/grid children", "Adds margin", "Sets column width", "Aligns items"],
+    "answer": "Adds spacing between flex/grid children"
+  },
+  {
+    "id": 22,
+    "question": "What class will vertically align items in the center in a flexbox?",
+    "options": ["align-center", "items-middle", "items-center", "vertical-center"],
+    "answer": "items-center"
+  },
+  {
+    "id": 23,
+    "question": "How do you apply a red text color?",
+    "options": ["text-red", "red-text", "text-red-500", "text-danger"],
+    "answer": "text-red-500"
+  },
+  {
+    "id": 24,
+    "question": "What does `mx-auto` do?",
+    "options": ["Sets horizontal margin to auto", "Applies margin to x-axis", "Centers element horizontally", "All of the above"],
+    "answer": "All of the above"
+  },
+  {
+    "id": 25,
+    "question": "Which class will limit the maximum width of a container?",
+    "options": ["max-w", "container", "max-w-xl", "limit-width"],
+    "answer": "max-w-xl"
+  },
+  {
+    "id": 26,
+    "question": "Which class will give you rounded full corners?",
+    "options": ["rounded-max", "rounded-full", "border-full", "circle"],
+    "answer": "rounded-full"
+  },
+  {
+    "id": 27,
+    "question": "What does `text-sm` mean?",
+    "options": ["Text is small", "Set to 1rem", "Set small margin", "Small border"],
+    "answer": "Text is small"
+  },
+  {
+    "id": 28,
+    "question": "Which directive includes base styles in Tailwind?",
+    "options": ["@tailwind components", "@tailwind utilities", "@tailwind base", "@import base"],
+    "answer": "@tailwind base"
+  },
+  {
+    "id": 29,
+    "question": "Which Tailwind variant helps apply styles for dark mode?",
+    "options": ["dark:", "theme-dark:", "darkmode:", "night:"],
+    "answer": "dark:"
+  },
+  {
+    "id": 30,
+    "question": "Which class hides overflow content?",
+    "options": ["hidden", "overflow-none", "overflow-hidden", "d-none"],
+    "answer": "overflow-hidden"
+  },
+  {
+    "id": 31,
+    "question": "Which plugin is used to style form elements?",
+    "options": ["@tailwindcss/forms", "tailwind-forms", "formify", "@tailwind/forms"],
+    "answer": "@tailwindcss/forms"
+  },
+  {
+    "id": 32,
+    "question": "What does `z-10` represent?",
+    "options": ["Zoom level", "Z-index", "Font size", "Padding level"],
+    "answer": "Z-index"
+  },
+  {
+    "id": 33,
+    "question": "Which utility sets an element to absolute positioning?",
+    "options": ["position-absolute", "abs", "absolute", "pos-abs"],
+    "answer": "absolute"
+  },
+  {
+    "id": 34,
+    "question": "Which class adds a gradient background?",
+    "options": ["gradient-bg", "bg-gradient-to-r", "bg-linear", "gradient-to-right"],
+    "answer": "bg-gradient-to-r"
+  },
+  {
+    "id": 35,
+    "question": "How do you center text in Tailwind?",
+    "options": ["text-middle", "align-text-center", "text-center", "center"],
+    "answer": "text-center"
+  },
+  {
+    "id": 36,
+    "question": "What does `justify-between` do in flex?",
+    "options": ["Adds spacing between columns", "Spreads items to edges with space between", "Centers items", "Aligns items to start"],
+    "answer": "Spreads items to edges with space between"
+  },
+  {
+    "id": 37,
+    "question": "Which Tailwind class is used to animate transitions?",
+    "options": ["animate", "transition", "trans", "timing"],
+    "answer": "transition"
+  },
+  {
+    "id": 38,
+    "question": "What does `divide-x` do?",
+    "options": ["Creates horizontal borders", "Adds spacing between columns", "Adds vertical dividers between flex children", "Sets column width"],
+    "answer": "Adds vertical dividers between flex children"
+  },
+  {
+    "id": 39,
+    "question": "Which class makes an image fully responsive?",
+    "options": ["img-fluid", "responsive-img", "w-full", "scale-img"],
+    "answer": "w-full"
+  },
+  {
+    "id": 40,
+    "question": "What does `ring-2` apply?",
+    "options": ["Adds a border", "Adds padding", "Applies a focus ring with 2px width", "Adds a shadow"],
+    "answer": "Applies a focus ring with 2px width"
+  }
+]

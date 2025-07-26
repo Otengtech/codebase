@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "question": "Which keyword is used to declare a variable in JavaScript?",
+    "options": ["var", "int", "string", "float"],
+    "answer": "var"
+  },
+  {
+    "id": 2,
+    "question": "What will `typeof null` return in JavaScript?",
+    "options": ["null", "object", "undefined", "boolean"],
+    "answer": "object"
+  },
+  {
+    "id": 3,
+    "question": "Which symbol is used for single-line comments in JavaScript?",
+    "options": ["//", "<!--", "#", "/*"],
+    "answer": "//"
+  },
+  {
+    "id": 4,
+    "question": "Which method is used to convert a JSON string into a JavaScript object?",
+    "options": ["JSON.parse()", "JSON.stringify()", "parse.JSON()", "JSON.toObject()"],
+    "answer": "JSON.parse()"
+  },
+  {
+    "id": 5,
+    "question": "Which function is used to delay code execution by a specific time?",
+    "options": ["setTimeout()", "setInterval()", "delay()", "wait()"],
+    "answer": "setTimeout()"
+  },
+  {
+    "id": 6,
+    "question": "What does the '===' operator do in JavaScript?",
+    "options": ["Compares value and type", "Assigns a value", "Compares only value", "Checks if defined"],
+    "answer": "Compares value and type"
+  },
+  {
+    "id": 7,
+    "question": "Which method adds one or more elements to the end of an array?",
+    "options": ["push()", "pop()", "shift()", "unshift()"],
+    "answer": "push()"
+  },
+  {
+    "id": 8,
+    "question": "How do you write a function in JavaScript?",
+    "options": ["function myFunc()", "def myFunc()", "func myFunc()", "function:myFunc()"],
+    "answer": "function myFunc()"
+  },
+  {
+    "id": 9,
+    "question": "Which keyword stops the execution of a loop?",
+    "options": ["break", "return", "exit", "stop"],
+    "answer": "break"
+  },
+  {
+    "id": 10,
+    "question": "Which built-in method returns the character at a specified index?",
+    "options": ["charAt()", "getChar()", "character()", "indexOf()"],
+    "answer": "charAt()"
+  },
+  {
+    "id": 11,
+    "question": "Which of the following is a JavaScript data type?",
+    "options": ["Boolean", "Float", "Character", "Short"],
+    "answer": "Boolean"
+  },
+  {
+    "id": 12,
+    "question": "Which of these is a JavaScript framework?",
+    "options": ["React", "Laravel", "Django", "Rails"],
+    "answer": "React"
+  },
+  {
+    "id": 13,
+    "question": "How do you call a function named `greet`?",
+    "options": ["greet()", "call greet", "function greet", "greet{}"],
+    "answer": "greet()"
+  },
+  {
+    "id": 14,
+    "question": "What is the default value of an uninitialized variable?",
+    "options": ["undefined", "null", "0", "NaN"],
+    "answer": "undefined"
+  },
+  {
+    "id": 15,
+    "question": "Which function is used to execute code repeatedly at intervals?",
+    "options": ["setInterval()", "setTimeout()", "repeat()", "timeLoop()"],
+    "answer": "setInterval()"
+  },
+  {
+    "id": 16,
+    "question": "Which operator is used to assign a value?",
+    "options": ["=", "==", "===", "!="],
+    "answer": "="
+  },
+  {
+    "id": 17,
+    "question": "How can you convert a string to an integer in JavaScript?",
+    "options": ["parseInt()", "Number.toInt()", "stringToInt()", "parseInteger()"],
+    "answer": "parseInt()"
+  },
+  {
+    "id": 18,
+    "question": "What does `NaN` stand for?",
+    "options": ["Not a Number", "Negative and Null", "Name and Number", "Number as Null"],
+    "answer": "Not a Number"
+  },
+  {
+    "id": 19,
+    "question": "Which keyword declares a block-scoped variable?",
+    "options": ["let", "var", "const", "int"],
+    "answer": "let"
+  },
+  {
+    "id": 20,
+    "question": "How do you access the first element in an array?",
+    "options": ["array[0]", "array.first()", "array(0)", "array.get(1)"],
+    "answer": "array[0]"
+  },
+  {
+    "id": 21,
+    "question": "Which object is used for date and time in JavaScript?",
+    "options": ["Date", "Time", "Clock", "Calendar"],
+    "answer": "Date"
+  },
+  {
+    "id": 22,
+    "question": "What is the result of `2 + '2'`?",
+    "options": ["'22'", "4", "NaN", "TypeError"],
+    "answer": "'22'"
+  },
+  {
+    "id": 23,
+    "question": "Which method removes the last element from an array?",
+    "options": ["pop()", "shift()", "remove()", "splice()"],
+    "answer": "pop()"
+  },
+  {
+    "id": 24,
+    "question": "Which operator is used for logical AND?",
+    "options": ["&&", "||", "&", "!"],
+    "answer": "&&"
+  },
+  {
+    "id": 25,
+    "question": "Which symbol is used for object property access?",
+    "options": [".", ":", "#", "@@"],
+    "answer": "."
+  },
+  {
+    "id": 26,
+    "question": "What does `localStorage` allow you to do?",
+    "options": ["Store data in the browser", "Create databases", "Host files", "Style web pages"],
+    "answer": "Store data in the browser"
+  },
+  {
+    "id": 27,
+    "question": "Which loop checks the condition after executing the block once?",
+    "options": ["do...while", "while", "for", "loop"],
+    "answer": "do...while"
+  },
+  {
+    "id": 28,
+    "question": "Which keyword defines a constant in JavaScript?",
+    "options": ["const", "let", "var", "final"],
+    "answer": "const"
+  },
+  {
+    "id": 29,
+    "question": "Which method joins all array elements into a string?",
+    "options": ["join()", "concat()", "combine()", "toString()"],
+    "answer": "join()"
+  },
+  {
+    "id": 30,
+    "question": "Which operator is used for string concatenation?",
+    "options": ["+", "&", "%", "$"],
+    "answer": "+"
+  },
+  {
+    "id": 31,
+    "question": "How do you write an if statement in JavaScript?",
+    "options": ["if (condition) {}", "if condition then", "if: condition", "if = condition"],
+    "answer": "if (condition) {}"
+  },
+  {
+    "id": 32,
+    "question": "What is a JavaScript object?",
+    "options": ["A collection of key-value pairs", "A single variable", "An HTML element", "A function"],
+    "answer": "A collection of key-value pairs"
+  },
+  {
+    "id": 33,
+    "question": "Which method is used to round a number down?",
+    "options": ["Math.floor()", "Math.round()", "Math.ceil()", "Math.down()"],
+    "answer": "Math.floor()"
+  },
+  {
+    "id": 34,
+    "question": "How do you create an array?",
+    "options": ["let arr = []", "let arr = {}", "let arr = ()", "let arr = <>"],
+    "answer": "let arr = []"
+  },
+  {
+    "id": 35,
+    "question": "Which symbol represents a template literal?",
+    "options": ["`", "'", "\"", "~"],
+    "answer": "`"
+  },
+  {
+    "id": 36,
+    "question": "What does the `this` keyword refer to in a method?",
+    "options": ["The current object", "A new object", "Global object", "Parent object"],
+    "answer": "The current object"
+  },
+  {
+    "id": 37,
+    "question": "Which array method returns the first match based on a condition?",
+    "options": ["find()", "filter()", "map()", "some()"],
+    "answer": "find()"
+  },
+  {
+    "id": 38,
+    "question": "What does `===` return if the values and types are equal?",
+    "options": ["true", "false", "undefined", "error"],
+    "answer": "true"
+  },
+  {
+    "id": 39,
+    "question": "What will `typeof []` return?",
+    "options": ["object", "array", "list", "undefined"],
+    "answer": "object"
+  },
+  {
+    "id": 40,
+    "question": "What is the correct syntax for a switch statement?",
+    "options": ["switch(expression) { case x: break; }", "if switch(expression)", "switch case(expression)", "switch: expression { case x }"],
+    "answer": "switch(expression) { case x: break; }"
+  }
+]

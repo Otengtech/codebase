@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "question": "What is Node.js primarily used for?",
+    "options": ["Front-end development", "Database design", "Server-side scripting", "Machine learning"],
+    "answer": "Server-side scripting"
+  },
+  {
+    "id": 2,
+    "question": "Which engine does Node.js use to execute JavaScript?",
+    "options": ["SpiderMonkey", "V8", "Chakra", "Nashorn"],
+    "answer": "V8"
+  },
+  {
+    "id": 3,
+    "question": "Which of these is not a core module in Node.js?",
+    "options": ["fs", "http", "url", "express"],
+    "answer": "express"
+  },
+  {
+    "id": 4,
+    "question": "What does 'npm' stand for?",
+    "options": ["Node Package Manager", "New Project Manager", "Node Program Module", "Network Package Manager"],
+    "answer": "Node Package Manager"
+  },
+  {
+    "id": 5,
+    "question": "Which command initializes a new Node.js project?",
+    "options": ["npm install", "npm init", "node start", "node init"],
+    "answer": "npm init"
+  },
+  {
+    "id": 6,
+    "question": "What is the purpose of 'require' in Node.js?",
+    "options": ["To create a module", "To define a class", "To import modules", "To export a file"],
+    "answer": "To import modules"
+  },
+  {
+    "id": 7,
+    "question": "What file is required to define dependencies in a Node.js project?",
+    "options": ["package.json", "index.js", "config.json", "server.js"],
+    "answer": "package.json"
+  },
+  {
+    "id": 8,
+    "question": "Which method is used to read a file asynchronously in Node.js?",
+    "options": ["fs.readFileSync()", "fs.readFile()", "fs.get()", "fileSystem.read()"],
+    "answer": "fs.readFile()"
+  },
+  {
+    "id": 9,
+    "question": "What does the 'path' module in Node.js provide?",
+    "options": ["HTTP utilities", "File system interaction", "Path utilities", "Database connections"],
+    "answer": "Path utilities"
+  },
+  {
+    "id": 10,
+    "question": "Which middleware is commonly used in Express to parse incoming request bodies?",
+    "options": ["body-parser", "url-parser", "data-parser", "json-parser"],
+    "answer": "body-parser"
+  },
+  {
+    "id": 11,
+    "question": "What HTTP method is used to update a resource?",
+    "options": ["GET", "POST", "PUT", "FETCH"],
+    "answer": "PUT"
+  },
+  {
+    "id": 12,
+    "question": "How do you export a function from a Node.js module?",
+    "options": ["export myFunc", "module.exports = myFunc", "include myFunc", "require(myFunc)"],
+    "answer": "module.exports = myFunc"
+  },
+  {
+    "id": 13,
+    "question": "Which module is used to create a server in Node.js?",
+    "options": ["url", "net", "http", "querystring"],
+    "answer": "http"
+  },
+  {
+    "id": 14,
+    "question": "Which statement best describes non-blocking I/O?",
+    "options": ["Code runs line by line synchronously", "Each function waits for the previous to complete", "Tasks are handled asynchronously", "I/O blocks the execution flow"],
+    "answer": "Tasks are handled asynchronously"
+  },
+  {
+    "id": 15,
+    "question": "What is the default scope of variables declared with `var` in Node.js?",
+    "options": ["Module scope", "Global scope", "Function scope", "Block scope"],
+    "answer": "Function scope"
+  },
+  {
+    "id": 16,
+    "question": "Which method is used to handle exceptions in asynchronous code?",
+    "options": ["try/catch", "async/await", ".catch()", "process.on('error')"],
+    "answer": ".catch()"
+  },
+  {
+    "id": 17,
+    "question": "What does `process.env` refer to?",
+    "options": ["Environment variables", "File path", "Process ID", "Execution context"],
+    "answer": "Environment variables"
+  },
+  {
+    "id": 18,
+    "question": "Which of the following is used to listen to events in Node.js?",
+    "options": ["EventEmitter", "EventListener", "OnClick", "Callback"],
+    "answer": "EventEmitter"
+  },
+  {
+    "id": 19,
+    "question": "Which built-in module helps compress and decompress files?",
+    "options": ["fs", "buffer", "zlib", "stream"],
+    "answer": "zlib"
+  },
+  {
+    "id": 20,
+    "question": "What is used to install global Node.js packages?",
+    "options": ["npm install package", "npm install -g package", "node install package", "install package globally"],
+    "answer": "npm install -g package"
+  },
+  {
+    "id": 21,
+    "question": "Which of the following is a Node.js web application framework?",
+    "options": ["Laravel", "Spring", "Express", "Django"],
+    "answer": "Express"
+  },
+  {
+    "id": 22,
+    "question": "How do you start a Node.js server file?",
+    "options": ["start index.js", "run app.js", "node filename.js", "launch server.js"],
+    "answer": "node filename.js"
+  },
+  {
+    "id": 23,
+    "question": "What is the default file name Node.js looks for when starting?",
+    "options": ["main.js", "index.js", "start.js", "server.js"],
+    "answer": "index.js"
+  },
+  {
+    "id": 24,
+    "question": "Which keyword is used to define asynchronous functions?",
+    "options": ["await", "async", "defer", "promise"],
+    "answer": "async"
+  },
+  {
+    "id": 25,
+    "question": "Which of the following is used to handle streams in Node.js?",
+    "options": ["fs", "stream", "net", "pipe"],
+    "answer": "stream"
+  },
+  {
+    "id": 26,
+    "question": "What does `__dirname` represent?",
+    "options": ["Path to node_modules", "Name of the current function", "Directory of the current module", "Global folder name"],
+    "answer": "Directory of the current module"
+  },
+  {
+    "id": 27,
+    "question": "What is the file extension for Node.js modules?",
+    "options": [".js", ".node", ".mod", ".json"],
+    "answer": ".js"
+  },
+  {
+    "id": 28,
+    "question": "Which statement is true about the event loop?",
+    "options": ["It blocks I/O", "It runs in multiple threads", "It handles asynchronous operations", "It runs once per request"],
+    "answer": "It handles asynchronous operations"
+  },
+  {
+    "id": 29,
+    "question": "How do you install a dependency in a Node.js project?",
+    "options": ["npm get", "node add", "npm install", "node require"],
+    "answer": "npm install"
+  },
+  {
+    "id": 30,
+    "question": "What command lists all globally installed npm packages?",
+    "options": ["npm show", "npm ls -g", "npm list-all", "npm find"],
+    "answer": "npm ls -g"
+  },
+  {
+    "id": 31,
+    "question": "Which core module helps to create TCP servers in Node.js?",
+    "options": ["http", "net", "dns", "url"],
+    "answer": "net"
+  },
+  {
+    "id": 32,
+    "question": "Which of the following is NOT true about Node.js?",
+    "options": ["It is single-threaded", "It is blocking by default", "It uses an event-driven model", "It is open-source"],
+    "answer": "It is blocking by default"
+  },
+  {
+    "id": 33,
+    "question": "Which core module is used to work with query strings in URLs?",
+    "options": ["path", "url", "http", "querystring"],
+    "answer": "querystring"
+  },
+  {
+    "id": 34,
+    "question": "Which method is used to write a response back to the client?",
+    "options": ["res.end()", "res.send()", "res.write()", "res.close()"],
+    "answer": "res.write()"
+  },
+  {
+    "id": 35,
+    "question": "Which of the following is a type of stream in Node.js?",
+    "options": ["Read", "Write", "Transform", "All of the above"],
+    "answer": "All of the above"
+  },
+  {
+    "id": 36,
+    "question": "What does `buffer` module provide in Node.js?",
+    "options": ["HTTP communication", "Binary data handling", "Data fetching", "Network sockets"],
+    "answer": "Binary data handling"
+  },
+  {
+    "id": 37,
+    "question": "Which method registers a one-time listener for the event?",
+    "options": ["on()", "once()", "listen()", "addListener()"],
+    "answer": "once()"
+  },
+  {
+    "id": 38,
+    "question": "What does `console.time()` do?",
+    "options": ["Starts a timer", "Sets a delay", "Pauses execution", "Prints time"],
+    "answer": "Starts a timer"
+  },
+  {
+    "id": 39,
+    "question": "How do you handle unhandled exceptions in Node.js?",
+    "options": ["catch()", "try/catch", "process.on('uncaughtException')", "errorListener()"],
+    "answer": "process.on('uncaughtException')"
+  },
+  {
+    "id": 40,
+    "question": "What command removes a package from a Node.js project?",
+    "options": ["npm delete", "npm uninstall", "node remove", "npm remove-package"],
+    "answer": "npm uninstall"
+  }
+]
