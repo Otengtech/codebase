@@ -33,13 +33,11 @@ app.use("/api", nodejsRoutes);
 app.use("/api", mdbRoutes);
 app.use("/api", tRoutes);
 
-// ✅ Serve frontend React build (if exists)
-app.use(express.static(path.join(__dirname, 'dist')));
-
-// Redirect all requests to index.html (for React Router)
-app.get("/*", (req, res) => {
+app.use(express.static(path.join(__dirname, "dist")));
+app.get(/^\/(?!api).*/, (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
+
 
 // ✅ Start server after connecting to MongoDB
 const PORT = process.env.PORT || 5000;
