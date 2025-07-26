@@ -7,7 +7,7 @@ import sendEmail from "../Utils/sendEmail.js";
 import dotenv from "dotenv"
 dotenv.config();
 
-const API_URL = process.env.VITE_API_URL;
+const FRONTEND_URL = process.env.FRONTEND_URL;
 
 // Signup
 export const signup = async (req, res) => {
@@ -71,7 +71,7 @@ export const forgotPassword = async (req, res) => {
     user.tokenExpiry = Date.now() + 3600000; // 1 hour
     await user.save();
 
-    const resetURL = `${API_URL}/reset-password/${token}`;
+    const resetURL = `${FRONTEND_URL}/reset-password/${token}`;
     const message = `
       <p>You requested a password reset.</p>
       <p>Click the link below to reset it (valid for 1 hour):</p>
