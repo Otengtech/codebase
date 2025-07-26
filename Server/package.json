@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "type": "module",
-  
+
   "scripts": {
-  "start": "node server.js",  // or whatever file you're using
+  "start": "node server.js",
   "build": "cd client && npm install && npm run build && cp -r dist ../"
 },
 
