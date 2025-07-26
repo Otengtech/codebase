@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "../App.css";
-import { Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "../Pages/Login";
 import Home from "../Pages/Home";
 import Html from "./Html/Html";
