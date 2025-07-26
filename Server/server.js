@@ -3,9 +3,8 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import authRoutes from "./routes/authRoutes.js";
 import quizRoutes from "./routes/htmlQuizRoutes.js";
@@ -35,13 +34,12 @@ app.use("/api", mdbRoutes);
 app.use("/api", tRoutes);
 
 // ✅ Serve frontend React build (if exists)
-const buildPath = path.join(__dirname, "frontend/build");
-if (fs.existsSync(buildPath)) {
-  app.use(express.static(buildPath));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(buildPath, "index.html"));
-  });
-}
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Redirect all requests to index.html (for React Router)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 // ✅ Start server after connecting to MongoDB
 const PORT = process.env.PORT || 5000;
