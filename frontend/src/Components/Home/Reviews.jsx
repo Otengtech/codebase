@@ -127,145 +127,157 @@ const Reviews = () => {
 
   return (
     <>
-    <Navbar />
-    <section className="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white py-28 px-4">
-      <div className="max-w-6xl mx-auto flex items-center justify-center gap-10">
-        {/* Left Side - Importance */}
-        <div className="space-y-6">
-          <h2 className="text-sky-300 text-4xl font-bold">Why Your Reviews Matter</h2>
-          <ul className="list-disc list-inside text-lg space-y-2">
-            <li>Helps us improve our service and quality.</li>
-            <li>Builds trust with other users.</li>
-            <li>Boosts transparency and reliability.</li>
-            <li>Encourages our team to keep delivering the best.</li>
-          </ul>
+      <Navbar />
+      <section className="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white py-20 px-4">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-start justify-center gap-10">
+          {/* Left Side - Importance */}
+          <div className="space-y-6 lg:w-1/2">
+            <h2 className="text-sky-300 text-3xl md:text-4xl font-bold">
+              Why Your Reviews Matter
+            </h2>
+            <ul className="list-disc list-inside text-base md:text-lg space-y-2">
+              <li>Helps us improve our service and quality.</li>
+              <li>Builds trust with other users.</li>
+              <li>Boosts transparency and reliability.</li>
+              <li>Encourages our team to keep delivering the best.</li>
+            </ul>
+          </div>
+
+          {/* Right Side - Form */}
+          <form
+            className="backdrop-blur-lg bg-white/10 p-6 rounded-2xl shadow-lg space-y-4 w-full lg:w-1/2"
+            onSubmit={addReview}
+          >
+            <h3 className="text-center text-2xl md:text-3xl text-sky-300 font-bold mb-2">
+              Send a Review
+            </h3>
+
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Your Name"
+              className="w-full px-5 py-3 border bg-transparent text-white border-gray-400 rounded-full focus:outline-sky-300"
+            />
+
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Your Email"
+              className="w-full px-5 py-3 border bg-transparent text-white border-gray-400 rounded-full focus:outline-sky-300"
+            />
+
+            {/* File Upload */}
+            <div className="flex flex-wrap gap-4 items-center">
+              <label
+                htmlFor="image-upload"
+                className="cursor-pointer px-4 py-2 bg-sky-300 text-black rounded-lg hover:bg-sky-200"
+              >
+                Choose Image
+              </label>
+              <input
+                id="image-upload"
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="hidden"
+              />
+              <button
+                type="button"
+                onClick={clearPreview}
+                className="px-4 py-2 bg-sky-300 text-black rounded-lg hover:bg-sky-200"
+              >
+                Clear Image
+              </button>
+            </div>
+
+            {previewUrl && (
+              <img
+                src={previewUrl}
+                alt="Preview"
+                className="w-full max-w-xs h-40 object-cover rounded-xl mx-auto"
+              />
+            )}
+
+            <textarea
+              rows="4"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Your Review"
+              className="w-full p-4 border bg-transparent text-white border-gray-400 rounded-xl resize-none focus:outline-sky-300"
+            />
+
+            <button
+              type="submit"
+              className="w-full bg-sky-300 text-black py-3 rounded-full font-semibold text-lg hover:bg-sky-200"
+            >
+              Submit Review
+            </button>
+          </form>
         </div>
 
-        {/* Right Side - Form */}
-        <form
-          className="backdrop-blur-lg bg-white/10 p-6 rounded-2xl shadow-lg space-y-4"
-          onSubmit={addReview}
-        >
-          <h3 className="text-center text-3xl text-sky-300 font-bold mb-2">
-            Send a Review
+        {/* Review Display Section */}
+        <div className="mt-16 space-y-6 max-w-5xl mx-auto px-4">
+          <h3 className="text-center text-sky-300 text-2xl md:text-3xl font-bold">
+            What Others Are Saying
           </h3>
 
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Your Name"
-            className="w-full px-6 py-3 border bg-transparent text-white border-gray-400 rounded-full focus:outline-sky-300"
-          />
-
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Your Email"
-            className="w-full px-6 py-3 border bg-transparent text-white border-gray-400 rounded-full focus:outline-sky-300"
-          />
-
-          {/* File Upload */}
-          <div className="flex gap-4 items-center">
-            <label
-              htmlFor="image-upload"
-              className="cursor-pointer px-4 py-2 bg-sky-300 text-black rounded-lg hover:bg-sky-200"
-            >
-              Choose Image
-            </label>
-            <input
-              id="image-upload"
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="hidden"
-            />
-            <button
-              type="button"
-              onClick={clearPreview}
-              className="px-4 py-2 bg-sky-300 text-black rounded-lg hover:bg-sky-200"
-            >
-              Clear Image
-            </button>
-          </div>
-
-          {previewUrl && (
-            <img
-              src={previewUrl}
-              alt="Preview"
-              className="w-full max-w-xs h-40 object-cover rounded-xl mx-auto"
-            />
+          {reviews.length === 0 ? (
+            <p className="text-center text-gray-300">
+              No reviews yet. Be the first to leave one!
+            </p>
+          ) : (
+            <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
+              {reviews.map((review) => {
+                const isLiked = JSON.parse(
+                  localStorage.getItem("likedReviews") || "[]"
+                ).includes(review._id);
+                return (
+                  <div
+                    key={review._id}
+                    className="bg-white/10 backdrop-blur-lg p-6 rounded-xl shadow-md space-y-4"
+                  >
+                    <div className="flex items-center gap-4">
+                      <img
+                        src={
+                          review.imageUrl || "https://via.placeholder.com/50"
+                        }
+                        alt={review.name}
+                        className="w-14 h-14 rounded-full object-cover border border-sky-300"
+                      />
+                      <div>
+                        <h4 className="font-semibold text-sky-300">
+                          {review.name}
+                        </h4>
+                        <p className="text-sm text-gray-400">
+                          {new Date(review.createdAt).toLocaleDateString()}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-white italic">"{review.message}"</p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex gap-1 text-sky-300">
+                        {Array(5)
+                          .fill()
+                          .map((_, i) => (
+                            <FaStar key={i} />
+                          ))}
+                      </div>
+                      <button
+                        onClick={() => toggleLike(review._id)}
+                        className={`flex items-center gap-1 text-white hover:text-sky-300 transition`}
+                      >
+                        <FaThumbsUp /> {review.likes || 0}
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           )}
-
-          <textarea
-            rows="4"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Your Review"
-            className="w-full p-4 border bg-transparent text-white border-gray-400 rounded-xl resize-none focus:outline-sky-300"
-          />
-
-          <button
-            type="submit"
-            className="w-full bg-sky-300 text-black py-3 rounded-full font-semibold text-lg hover:bg-sky-200"
-          >
-            Submit Review
-          </button>
-        </form>
-      </div>
-
-      {/* Review Display Section */}
-      <div className="mt-16 space-y-6 max-w-5xl mx-auto">
-        <h3 className="text-center text-sky-300 text-3xl font-bold">What Others Are Saying</h3>
-
-        {reviews.length === 0 ? (
-          <p className="text-center text-gray-300">No reviews yet. Be the first to leave one!</p>
-        ) : (
-          <div className="grid md:grid-cols-2 gap-6">
-            {reviews.map((review) => {
-              const isLiked = JSON.parse(localStorage.getItem("likedReviews") || "[]").includes(review._id);
-              return (
-                <div
-                  key={review._id}
-                  className="bg-white/10 backdrop-blur-lg p-6 rounded-xl shadow-md space-y-4"
-                >
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={review.imageUrl || "https://via.placeholder.com/50"}
-                      alt={review.name}
-                      className="w-14 h-14 rounded-full object-cover border border-sky-300"
-                    />
-                    <div>
-                      <h4 className="font-semibold text-sky-300">{review.name}</h4>
-                      <p className="text-sm text-gray-400">
-                        {new Date(review.createdAt).toLocaleDateString()}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-white italic">"{review.message}"</p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex gap-1 text-sky-300">
-                      {Array(5)
-                        .fill()
-                        .map((_, i) => (
-                          <FaStar key={i} />
-                        ))}
-                    </div>
-                    <button
-                      onClick={() => toggleLike(review._id)}
-                      className={`flex items-center gap-1 text-white hover:text-sky-300 transition`}
-                    >
-                      <FaThumbsUp /> {review.likes || 0}
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
-    </section>
+        </div>
+      </section>
     </>
   );
 };
