@@ -45,8 +45,11 @@ const Hero = () => {
       {/* Left Section */}
       <div className="w-full md:w-1/2 space-y-6">
         <h1 className="text-lg text-violet-200">WELCOME {name}</h1>
-        <h2 className="text-4xl md:text-5xl text-sky-200 font-bold leading-tight min-h-[3.5rem] md:min-h-[4rem]">
-          <span className="inline-flex items-center">
+        <h2
+          className="text-4xl md:text-5xl text-sky-200 font-bold leading-tight
+             h-[4.5rem] md:h-[5.5rem] overflow-hidden"
+        >
+          <span className="inline-flex items-center flex-wrap">
             {displayText}
             <span className="animate-pulse text-violet-300 ml-1">|</span>
           </span>

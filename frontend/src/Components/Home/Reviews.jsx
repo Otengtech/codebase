@@ -310,7 +310,7 @@ const Reviews = () => {
                       />
                       <div>
                         <h4 className="font-semibold text-lg">{review.name}</h4>
-                        <h4 className="font-semibold text-lg">
+                        <h4 className="text-sm text-gray-400">
                           {review.email}
                         </h4>
 
@@ -337,10 +337,14 @@ const Reviews = () => {
                     >
                       <div className="flex flex-col items-center justify-start">
                         <div>
-                          <FaHeart className={isLiked ? "text-pink-600" : ""} />
-                          <span className="text-sm">
-                            {review.likes || 0} likes
-                          </span>
+                          <div className="flex items-center justify-center">
+                            <FaHeart
+                              className={isLiked ? "text-pink-600" : ""}
+                            />
+                            <span className="text-sm">
+                              {review.likes || 0} likes
+                            </span>
+                          </div>
                         </div>
                         <p className="text-sm text-gray-500">
                           {new Date(review.createdAt).toLocaleDateString()}

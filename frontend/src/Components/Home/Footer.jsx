@@ -33,7 +33,7 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-sky-300 text-lg mb-3">Resources</h3>
           <ul className="space-y-2 text-gray-300 text-sm">
-            <li><a to="/courses" className="hover:text-white">Courses</a></li>
+            <li><Link to="/course" className="hover:text-white">Courses</Link></li>
             <li><Link to="/blog" className="hover:text-white">Blog</Link></li>
             <li><Link to="/quiz" className="hover:text-white">Quiz</Link></li>
             <li><Link to="/terms" className="hover:text-white">Terms & Conditions</Link></li>
@@ -44,8 +44,8 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-sky-300 text-lg mb-3">Connect with Us</h3>
           <p className="text-sm text-gray-300 mb-3">We’d love to hear from you.</p>
-          <p className="text-sm text-gray-300">Email: <a href="mailto:support@codebase.com" className="hover:text-white">support@codebase.com</a></p>
-          <p className="text-sm text-gray-300 mb-4">Phone: +1 (555) 123-4567</p>
+          <p className="text-sm text-gray-300">Email: <a href="codebase326@gmail.com" className="hover:text-white">codebase326@gmail.com</a></p>
+          <p className="text-sm text-gray-300 mb-4">Phone: +233593957373</p>
 
           {/* Social Links */}
           <div className="flex gap-4 mt-2">
@@ -60,6 +60,9 @@ const Footer = () => {
       {/* Bottom */}
       <div className="mt-10 border-t border-gray-600 pt-4 text-center text-sm text-gray-500">
         © {new Date().getFullYear()} CodeBase. All rights reserved.
+      </div>
+      <div className=" pt-4 text-center text-sm text-gray-300">
+        Designed by Ebenezer Oteng 
       </div>
     </footer>
   );
