@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../App.css";
 import { Link } from "react-router-dom";
-import rightImage from "../../assets/rightImage.png"
+import rightImage from "../../assets/rightImage.png";
 
 const phrases = [
   "Explore. Learn. Win.",
@@ -45,10 +45,13 @@ const Hero = () => {
       {/* Left Section */}
       <div className="w-full md:w-1/2 space-y-6">
         <h1 className="text-lg text-violet-200">WELCOME {name}</h1>
-        <h2 className="text-4xl md:text-5xl text-sky-200 font-bold leading-tight">
-          {displayText}
-          <span className="animate-pulse text-violet-300">|</span>
+        <h2 className="text-4xl md:text-5xl text-sky-200 font-bold leading-tight min-h-[3.5rem] md:min-h-[4rem]">
+          <span className="inline-flex items-center">
+            {displayText}
+            <span className="animate-pulse text-violet-300 ml-1">|</span>
+          </span>
         </h2>
+
         <p className="text-gray-300 text-base md:text-lg">
           Get the skills and real-world experience — begin your journey with us.
           Transition from Beginner to Ultimate is no time.
@@ -65,25 +68,24 @@ const Hero = () => {
             </button>
           </Link>
           <div className="flex items-center mt-6 space-x-3">
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className={`w-10 h-10 rounded-full ${
-                i % 2 === 0 ? "bg-violet-500" : "bg-sky-200"
-              } animate-bounce-custom1`}
-              style={{
-                animationDelay: `${i * 0.2}s`,
-              }}
-            ></div>
-          ))}
-        </div>
+            {[...Array(6)].map((_, i) => (
+              <div
+                key={i}
+                className={`w-10 h-10 rounded-full ${
+                  i % 2 === 0 ? "bg-violet-500" : "bg-sky-200"
+                } animate-bounce-custom1`}
+                style={{
+                  animationDelay: `${i * 0.2}s`,
+                }}
+              ></div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Right Section - Animated Circles */}
       <div className="w-full md:w-1/2 mt-10 md:mt-0 flex flex-col md:ml-20 justify-center space-y-6">
-        <img src={rightImage} alt="hero-image" 
-        className="w-full" />
+        <img src={rightImage} alt="hero-image" className="w-full" />
       </div>
     </div>
   );
