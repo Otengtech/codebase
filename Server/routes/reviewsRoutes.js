@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-const Review = require("../models/Review");
+import Review from "../models/Review.js";
 
 // GET all reviews
 router.get("/", async (req, res) => {
@@ -42,4 +42,4 @@ router.patch("/:id/like", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
