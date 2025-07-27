@@ -1,10 +1,14 @@
 import React from "react";
-import { FaArrowRight, FaQuoteLeft, FaQuoteRight, FaHeart } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaQuoteLeft,
+  FaQuoteRight,
+  FaHeart,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import da from "../../assets/d.jfif";
 import m from "../../assets/m.jfif";
 import js from "../../assets/js.jpg";
-
 
 const reviews = [
   {

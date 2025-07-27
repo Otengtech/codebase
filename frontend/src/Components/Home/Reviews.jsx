@@ -310,9 +310,10 @@ const Reviews = () => {
                       />
                       <div>
                         <h4 className="font-semibold text-lg">{review.name}</h4>
-                        <p className="text-sm text-gray-500">
-                          {new Date(review.createdAt).toLocaleDateString()}
-                        </p>
+                        <h4 className="font-semibold text-lg">
+                          {review.email}
+                        </h4>
+
                         <div className="flex mt-1">
                           {Array.from({ length: 5 }).map((_, i) => (
                             <FaStar
@@ -335,54 +336,19 @@ const Reviews = () => {
                       className="flex items-center gap-2 text-pink-500 hover:text-pink-600 transition"
                     >
                       <FaHeart className={isLiked ? "text-pink-600" : ""} />
-                      <span className="text-sm">{review.likes || 0} likes</span>
+                      <div className="flex flex-col items-center justify-start">
+                        <span className="text-sm">
+                          {review.likes || 0} likes
+                        </span>
+                        <p className="text-sm text-gray-500">
+                          {new Date(review.createdAt).toLocaleDateString()}
+                        </p>
+                      </div>
                     </button>
                     <FaQuoteRight className="text-xl text-indigo-600 mt-4 float-right" />
                   </div>
                 );
               })}
-
-              {reviews.map((review, index) => (
-                <div
-                  key={index}
-                  className="bg-white text-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300"
-                >
-                  <FaQuoteLeft className="text-2xl text-indigo-600 mb-3" />
-                  <div className="flex items-center gap-4 mb-4">
-                    <img
-                      src={review.avatar}
-                      alt={review.name}
-                      className="w-14 h-14 rounded-full object-cover"
-                    />
-                    <div>
-                      <h4 className="font-semibold text-lg">{review.name}</h4>
-                      <p className="text-sm text-gray-500">{review.email}</p>
-                      <div className="flex mt-1">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <svg
-                            key={i}
-                            className={`w-4 h-4 mr-1 ${
-                              i < review.rating
-                                ? "text-yellow-400"
-                                : "text-gray-300"
-                            }`}
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z" />
-                          </svg>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-sm text-gray-700 mb-4">{review.comment}</p>
-                  <div className="flex items-center gap-2 text-pink-500">
-                    <FaHeart />
-                    <span className="text-sm">{review.likes} likes</span>
-                  </div>
-                  <FaQuoteRight className="text-xl text-indigo-600 mt-4 float-right" />
-                </div>
-              ))}
             </div>
           )}
         </div>
