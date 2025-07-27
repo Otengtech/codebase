@@ -1,34 +1,38 @@
 import React from "react";
 import { FaArrowRight, FaQuoteLeft, FaQuoteRight, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import da from "../../assets/d.jfif";
+import m from "../../assets/m.jfif";
+import js from "../../assets/js.jpg";
+
 
 const reviews = [
   {
-    name: "Jane Doe",
-    email: "jane.doe@example.com",
-    avatar: "https://i.pravatar.cc/100?img=1",
+    name: "Daniel Owusu",
+    email: "danieldaniel123@gmail.com",
+    avatar: da,
     rating: 5,
     comment:
       "This course was amazing! The instructor explained every concept clearly and practically. I now feel more confident building full stack projects.",
-    likes: 128,
+    likes: 19,
   },
   {
     name: "John Smith",
-    email: "john.smith@example.com",
-    avatar: "https://i.pravatar.cc/100?img=2",
+    email: "john3smith@gmail.com",
+    avatar: js,
     rating: 4,
     comment:
       "Very informative and well-structured. I learned a lot about backend services and frontend deployment. It’s definitely worth the time.",
-    likes: 94,
+    likes: 8,
   },
   {
-    name: "Emily Carter",
-    email: "emily.carter@example.com",
-    avatar: "https://i.pravatar.cc/100?img=3",
-    rating: 5,
+    name: "Micheal Trading",
+    email: "mtrading001@gmai.com",
+    avatar: m,
+    rating: 4,
     comment:
       "Loved the real-world examples and the hands-on projects. The instructor’s approach made everything feel doable. Highly recommend this to beginners!",
-    likes: 201,
+    likes: 15,
   },
 ];
 

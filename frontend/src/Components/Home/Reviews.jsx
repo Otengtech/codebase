@@ -2,11 +2,49 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { FaStar, FaThumbsUp, } from "react-icons/fa";
-import { FaArrowRight, FaQuoteLeft, FaQuoteRight, FaHeart } from "react-icons/fa";
+import { FaStar, FaThumbsUp } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaQuoteLeft,
+  FaQuoteRight,
+  FaHeart,
+} from "react-icons/fa";
 import Navbar from "./Navbar";
+import da from "../../assets/d.jfif";
+import m from "../../assets/m.jfif";
+import js from "../../assets/js.jpg";
 
 const API_URL = import.meta.env.VITE_API_URL;
+
+const reviews = [
+  {
+    name: "Daniel Owusu",
+    email: "danieldaniel123@gmail.com",
+    avatar: da,
+    rating: 5,
+    comment:
+      "This course was amazing! The instructor explained every concept clearly and practically. I now feel more confident building full stack projects.",
+    likes: 19,
+  },
+  {
+    name: "John Smith",
+    email: "john3smith@gmail.com",
+    avatar: js,
+    rating: 4,
+    comment:
+      "Very informative and well-structured. I learned a lot about backend services and frontend deployment. It’s definitely worth the time.",
+    likes: 8,
+  },
+  {
+    name: "Micheal Trading",
+    email: "mtrading001@gmai.com",
+    avatar: m,
+    rating: 4,
+    comment:
+      "Loved the real-world examples and the hands-on projects. The instructor’s approach made everything feel doable. Highly recommend this to beginners!",
+    likes: 15,
+  },
+];
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -213,13 +251,14 @@ const Reviews = () => {
             <div className="flex gap-2 justify-center items-center">
               <p>Rating:</p>
               {[1, 2, 3, 4, 5].map((star) => (
-              
                 <button
                   key={star}
                   type="button"
                   onClick={() => setRating(star)}
                   className={
-                    star <= rating ? "text-yellow-400 text-2xl focus:outline-none" : "text-gray-400 text-xl focus:outline-none"
+                    star <= rating
+                      ? "text-yellow-400 text-2xl focus:outline-none"
+                      : "text-gray-400 text-xl focus:outline-none"
                   }
                 >
                   ★
@@ -244,15 +283,15 @@ const Reviews = () => {
           </h3>
 
           {reviews.length === 0 ? (
-            <p className="text-center text-gray-300">
-              No reviews yet. Be the first to leave one!
-            </p>
+            <p className="text-center text-gray-300">No reviews yet.</p>
           ) : (
-            <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
+            <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {/* 🔹 Fetched reviews (from DB) */}
               {reviews.map((review) => {
                 const isLiked = JSON.parse(
                   localStorage.getItem("likedReviews") || "[]"
                 ).includes(review._id);
+
                 return (
                   <div
                     key={review._id}
@@ -262,7 +301,9 @@ const Reviews = () => {
                     <div className="flex items-center gap-4 mb-4">
                       <img
                         src={
-                          review.imageUrl || "https://via.placeholder.com/50"
+                          review.imageUrl ||
+                          review.avatar ||
+                          "https://via.placeholder.com/50"
                         }
                         alt={review.name}
                         className="w-14 h-14 rounded-full object-cover border border-indigo-200"
@@ -273,31 +314,75 @@ const Reviews = () => {
                           {new Date(review.createdAt).toLocaleDateString()}
                         </p>
                         <div className="flex mt-1">
-                          {Array(5)
-                            .fill()
-                            .map((_, i) => (
-                              <FaStar
-                                key={i}
-                                className="w-4 h-4 mr-1 text-yellow-400"
-                              />
-                            ))}
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <FaStar
+                              key={i}
+                              className={`w-4 h-4 mr-1 ${
+                                i < review.rating
+                                  ? "text-yellow-400"
+                                  : "text-gray-300"
+                              }`}
+                            />
+                          ))}
                         </div>
                       </div>
                     </div>
                     <p className="text-sm text-gray-700 mb-4 italic">
-                      "{review.message}"
+                      "{review.message || review.comment}"
                     </p>
                     <button
                       onClick={() => toggleLike(review._id)}
                       className="flex items-center gap-2 text-pink-500 hover:text-pink-600 transition"
                     >
-                      <FaHeart />
+                      <FaHeart className={isLiked ? "text-pink-600" : ""} />
                       <span className="text-sm">{review.likes || 0} likes</span>
                     </button>
                     <FaQuoteRight className="text-xl text-indigo-600 mt-4 float-right" />
                   </div>
                 );
               })}
+
+              {reviews.map((review, index) => (
+                <div
+                  key={index}
+                  className="bg-white text-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300"
+                >
+                  <FaQuoteLeft className="text-2xl text-indigo-600 mb-3" />
+                  <div className="flex items-center gap-4 mb-4">
+                    <img
+                      src={review.avatar}
+                      alt={review.name}
+                      className="w-14 h-14 rounded-full object-cover"
+                    />
+                    <div>
+                      <h4 className="font-semibold text-lg">{review.name}</h4>
+                      <p className="text-sm text-gray-500">{review.email}</p>
+                      <div className="flex mt-1">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <svg
+                            key={i}
+                            className={`w-4 h-4 mr-1 ${
+                              i < review.rating
+                                ? "text-yellow-400"
+                                : "text-gray-300"
+                            }`}
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z" />
+                          </svg>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-700 mb-4">{review.comment}</p>
+                  <div className="flex items-center gap-2 text-pink-500">
+                    <FaHeart />
+                    <span className="text-sm">{review.likes} likes</span>
+                  </div>
+                  <FaQuoteRight className="text-xl text-indigo-600 mt-4 float-right" />
+                </div>
+              ))}
             </div>
           )}
         </div>
