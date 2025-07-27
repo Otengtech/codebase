@@ -7,21 +7,34 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 const HtmlQuiz = () => {
   const [questions, setQuestions] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState(null);
   const [timeLeft, setTimeLeft] = useState(20);
   const [quizEnd, setQuizEnd] = useState(false);
-  const [topScore, setTopScore] = useState(
+  const [topScore, setTopScore] = useState(() =>
     parseInt(localStorage.getItem("htmlTopScore")) || 0
   );
   const [cancelled, setCancelled] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
+    setLoading(true);
     fetch(`${API_URL}/api/html-quiz`)
-      .then((res) => res.json())
-      .then((data) => setQuestions(data));
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch questions");
+        return res.json();
+      })
+      .then((data) => {
+        setQuestions(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -42,22 +55,19 @@ const HtmlQuiz = () => {
   const handleAnswer = (option) => {
     if (selected) return;
     setSelected(option);
-    if (option === questions[current].answer) {
+
+    const isCorrect = option === questions[current].answer;
+    if (isCorrect) {
       setScore((prev) => prev + 1);
     }
+
     setTimeout(() => {
       handleNext();
     }, 1000);
   };
 
   const handleNext = (timedOut = false) => {
-    if (!timedOut && selected === null) return;
-
     const isLast = current + 1 >= questions.length;
-
-    if (!timedOut && selected && selected === questions[current].answer) {
-      setScore((prev) => prev + 1);
-    }
 
     if (!isLast) {
       setCurrent((prev) => prev + 1);
@@ -88,11 +98,24 @@ const HtmlQuiz = () => {
     setCancelled(true);
   };
 
-  if (questions.length === 0)
-    return <div className="text-white text-xl">Loading Quiz...</div>;
-
   const progressPercent =
     ((current + (quizEnd ? 1 : 0)) / questions.length) * 100;
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white text-xl bg-black">
+        Loading quiz...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-red-400 text-xl bg-black">
+        {error}
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-screen bg-gradient-to-r from-gray-900 to-violet-900 text-white flex items-center justify-center px-4 py-8 overflow-hidden">
@@ -100,6 +123,7 @@ const HtmlQuiz = () => {
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="w-full h-full bg-[url('/noise.png')] opacity-5 absolute" />
       </div>
+
       <div className="w-full max-w-4xl mx-auto bg-white/10 backdrop-blur-md rounded-xl shadow-xl border border-white/10 p-8 relative z-10">
         <div className="w-full bg-gray-300/50 rounded-full h-3 mb-6">
           <div
