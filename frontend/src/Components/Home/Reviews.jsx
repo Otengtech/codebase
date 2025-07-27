@@ -70,7 +70,7 @@ const Reviews = () => {
         createdAt: new Date().toISOString(),
       };
 
-      const res = await axios.post(`${API_URL}/reviews`, newReview);
+      const res = await axios.post(`${API_URL}/api/reviews`, newReview);
 
       setReviews((prev) => [res.data, ...prev]);
 
@@ -94,7 +94,7 @@ const Reviews = () => {
     const alreadyLiked = localStorage.getItem(likedKey);
 
     try {
-      const res = await axios.patch(`${API_URL}/reviews/${id}/like`, {
+      const res = await axios.patch(`${API_URL}/api/reviews/${id}/like`, {
         like: !alreadyLiked,
       });
 
