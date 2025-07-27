@@ -7,14 +7,25 @@ const Navbar = () => {
   const [showLearnDropdown, setShowLearnDropdown] = useState(false);
   const [selectedLang, setSelectedLang] = useState("");
   const [userName, setUserName] = useState(localStorage.getItem("name") || "");
-  const [userEmail, setUserEmail] = useState(localStorage.getItem("email") || "");
-  const [profileImage, setProfileImage] = useState(localStorage.getItem("profileImage") || null);
+  const [userEmail, setUserEmail] = useState(
+    localStorage.getItem("email") || ""
+  );
+  const [profileImage, setProfileImage] = useState(
+    localStorage.getItem("profileImage") || null
+  );
 
   const navigate = useNavigate();
   const accountRef = useRef();
   const learnRef = useRef();
 
-  const learnItems = ["HTML", "CSS", "JavaScript", "NodeJS", "TailwindCss", "MongoDB"];
+  const learnItems = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "NodeJS",
+    "TailwindCss",
+    "MongoDB",
+  ];
   const navItems = ["Blog", "Course", "Quiz", "About", "Contact"];
 
   useEffect(() => {
@@ -62,17 +73,32 @@ const Navbar = () => {
   return (
     <nav className="bg-gradient-to-r from-gray-900 to-violet-900 fixed top-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           <Link
             to="/"
             className="flex items-center text-lg font-bold text-sky-200 gap-2"
           >
+            <div className="flex items-center mt-2 space-x-3">
+              {[...Array(1)].map((_, i) => (
+                <div
+                  key={i}
+                  className={`w-2 h-2 rounded-full ${
+                    i % 2 === 0 ? "bg-sky-200" : "bg-sky-200"
+                  } animate-bounce-custom1`}
+                  style={{
+                    animationDelay: `${i * 0.2}s`,
+                  }}
+                ></div>
+              ))}
+            </div>
             <i className="fas fa-graduation-cap"></i> CodeBase
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6 text-sm relative">
-            <Link to="/" className="text-sky-200 hover:text-sky-100">Home</Link>
+            <Link to="/" className="text-sky-200 hover:text-sky-100">
+              Home
+            </Link>
 
             {/* Learn Select */}
             <div>
@@ -84,7 +110,9 @@ const Navbar = () => {
               >
                 <option value="">Learn</option>
                 {learnItems.map((lang, i) => (
-                  <option key={i} value={lang.toLowerCase()}>{lang}</option>
+                  <option key={i} value={lang.toLowerCase()}>
+                    {lang}
+                  </option>
                 ))}
               </select>
             </div>
@@ -131,12 +159,19 @@ const Navbar = () => {
                     )}
                     <label className="absolute -bottom-2 -right-2 cursor-pointer bg-white rounded-full p-1 shadow hover:bg-gray-100">
                       <i className="fa-solid fa-camera text-yellow-500 text-sm"></i>
-                      <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        className="hidden"
+                      />
                     </label>
                   </div>
 
                   <div className="font-bold text-lg">{userName || "Guest"}</div>
-                  <div className="text-sm text-center text-gray-100">{userEmail || "No email provided"}</div>
+                  <div className="text-sm text-center text-gray-100">
+                    {userEmail || "No email provided"}
+                  </div>
 
                   <button
                     onClick={handleLogout}
@@ -158,7 +193,10 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-gray-400 z-50">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-gray-400 z-50"
+          >
             <i className={`fas ${isOpen ? "fa-times" : "fa-bars"} fa-lg`}></i>
           </button>
         </div>
@@ -166,7 +204,7 @@ const Navbar = () => {
 
       {/* Mobile Slide-in Menu */}
       <div
-        className={`fixed top-0 left-0 h-screen w-4/5 max-w-xs bg-gray-800 text-white z-40 transform transition-transform duration-300 ${
+        className={`fixed top-0 left-0 h-screen w-4/5 max-w-xs bg-white/5 border border-white/10 backdrop-blur-md text-white z-40 transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -174,7 +212,11 @@ const Navbar = () => {
           {/* Profile */}
           <div className="flex items-center space-x-3">
             {profileImage ? (
-              <img src={profileImage} alt="Profile" className="w-10 h-10 rounded-full object-cover border-2 border-white" />
+              <img
+                src={profileImage}
+                alt="Profile"
+                className="w-10 h-10 rounded-full object-cover border-2 border-white"
+              />
             ) : (
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-lg font-semibold">
                 {userName ? userName.charAt(0).toUpperCase() : "G"}
@@ -187,7 +229,13 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Nav Items */}
-          <Link to="/" onClick={() => setIsOpen(false)} className="hover:text-sky-400">Home</Link>
+          <Link
+            to="/"
+            onClick={() => setIsOpen(false)}
+            className="hover:text-sky-400"
+          >
+            Home
+          </Link>
 
           {/* Learn Dropdown */}
           <div ref={learnRef}>
@@ -195,7 +243,12 @@ const Navbar = () => {
               onClick={() => setShowLearnDropdown((prev) => !prev)}
               className="w-full text-left hover:text-sky-400 flex justify-between items-center"
             >
-              Learn <i className={`fas fa-chevron-${showLearnDropdown ? "up" : "down"}`}></i>
+              Learn{" "}
+              <i
+                className={`fas fa-chevron-${
+                  showLearnDropdown ? "up" : "down"
+                }`}
+              ></i>
             </button>
             {showLearnDropdown && (
               <div className="ml-4 mt-2 space-y-2">

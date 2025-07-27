@@ -101,7 +101,7 @@ const NodeQuiz = () => {
             <div className="flex justify-center gap-4 mt-6">
               <button
                 onClick={handleRetry}
-                className="px-5 py-2 bg-green-500 rounded hover:bg-green-400"
+                className="px-5 py-2 bg-yellow-500 rounded hover:bg-yellow-400"
               >
                 Try Again
               </button>
@@ -123,11 +123,11 @@ const NodeQuiz = () => {
               transition={{ duration: 0.4 }}
             >
               <div className="flex justify-between items-center text-sm mb-4">
-                <span className="text-green-400">
+                <span className="text-yellow-400">
                   Question {current + 1} / {questions.length}
                 </span>
                 <span>Score: {score}</span>
-                <span className="text-yellow-400">Time: {timeLeft}s</span>
+                <span className="text-green-400">Time: {timeLeft}s</span>
               </div>
 
               <h2 className="text-2xl font-semibold mb-6">
@@ -159,7 +159,7 @@ const NodeQuiz = () => {
               <div className="mt-8 text-center">
                 <button
                   onClick={handleCancel}
-                  className="px-5 py-2 bg-green-500 rounded hover:bg-green-400"
+                  className="px-5 py-2 bg-yellow-500 rounded hover:bg-yellow-400"
                 >
                   Cancel Quiz
                 </button>

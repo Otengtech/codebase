@@ -11,41 +11,70 @@ const NodejsQuizStart = () => {
     if (storedScore) setTopScore(parseInt(storedScore));
   }, []);
 
+  const percentage = (topScore / 40) * 100;
+
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center py-20 px-6">
-        <h1 className="text-3xl md:text-5xl text-green-400 font-bold mb-6 text-center">
-          Node.js Quiz Challenge
-        </h1>
+      <div className="min-h-screen bg-gradient-to-r from-[#0f172a] via-[#10261f] to-[#0f172a] text-white flex items-center justify-center py-20 px-4">
+        <div className="max-w-6xl w-full grid md:grid-cols-2 gap-10 bg-[#111827]/70 backdrop-blur-sm rounded-xl shadow-2xl p-8 md:p-12 border border-gray-700">
 
-        <div className="bg-gray-800 shadow-lg rounded-lg p-6 max-w-xl w-full mb-8">
-          <h2 className="text-xl font-semibold mb-4">Before You Start:</h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-300">
-            <li>Total of 40 challenging Node.js questions</li>
-            <li>15 seconds per question – automatic switch</li>
-            <li>Only one answer per question</li>
-            <li>Once done, you’ll see your score and option to retry</li>
-            <li>Your top score is saved locally</li>
-          </ul>
+          {/* Left Column - Info */}
+          <div>
+            <h1 className="text-4xl md:text-5xl font-bold text-green-400 mb-6">Node.js Quiz Challenge</h1>
+            <p className="text-lg text-gray-300 mb-6">
+              Ready to test your backend skills? Answer 40 Node.js-focused questions to sharpen your server-side expertise.
+            </p>
+            <div className="bg-gray-800 border border-gray-600 rounded-lg p-6 space-y-3 text-sm md:text-base">
+              <h2 className="text-xl font-semibold text-green-400">Before You Start:</h2>
+              <ul className="list-disc list-inside text-gray-300 space-y-2">
+                <li> 40 practical Node.js questions</li>
+                <li> 15 seconds per question – auto next</li>
+                <li> Only one correct answer each</li>
+                <li> Score summary after completion</li>
+                <li> Top score saved in your browser</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Right Column - Stats & Actions */}
+          <div className="flex flex-col items-center justify-center text-center gap-6">
+            <h3 className="text-2xl font-semibold text-green-400">Your Progress</h3>
+            <div className="w-full">
+              <div className="flex justify-between mb-1 text-sm text-gray-400">
+                <span>Top Score</span>
+                <span>{topScore} / 40</span>
+              </div>
+              <div className="w-full bg-gray-700 rounded-full h-4 shadow-inner">
+                <div
+                  className="bg-green-400 h-4 rounded-full transition-all duration-500"
+                  style={{ width: `${percentage}%` }}
+                ></div>
+              </div>
+              <p className="text-sm mt-2 text-gray-400 italic">
+                Beat your top score and become a Node.js pro!
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-4 mt-4 w-full">
+              <Link to="/nodejsquiz">
+                <button className="w-full bg-green-400 text-gray-900 font-semibold py-3 rounded-lg hover:bg-green-300 transition">
+                  Start the Node.js Quiz
+                </button>
+              </Link>
+              <Link to="/quiz">
+                <button className="w-full bg-gray-800 border border-gray-600 text-green-400 py-3 rounded-lg hover:bg-gray-700 transition">
+                  Go Back
+                </button>
+              </Link>
+            </div>
+
+            <div className="mt-8 text-sm text-gray-400">
+              <p>Share the challenge with your dev squad!</p>
+              <p className="italic">#NodeNinja #BackendBoss</p>
+            </div>
+          </div>
         </div>
-
-        <div className="text-center mb-8">
-          <p className="text-lg">
-            <span className="font-semibold">Top Score:</span> {topScore} / 40
-          </p>
-        </div>
-
-        <Link to="/nodejsquiz">
-          <button className="bg-gray-800 hover:bg-gray-700 transition duration-200 text-green-400 px-6 py-3 rounded-lg text-lg font-medium">
-            Start Quiz
-          </button>
-        </Link>
-        <Link to="/quiz">
-          <button className="bg-gray-800 mt-5 hover:bg-gray-700 transition duration-200 text-green-400 px-6 py-3 rounded-lg text-lg font-medium">
-            Go Back
-          </button>
-        </Link>
       </div>
     </>
   );

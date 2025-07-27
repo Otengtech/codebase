@@ -40,7 +40,7 @@ const Newsletter = () => {
     <section className="bg-gradient-to-r from-gray-900 to-violet-900 py-16 px-6 text-center">
       <div className="max-w-2xl mx-auto text-white space-y-6">
         <h2 className="text-3xl font-bold text-sky-300">Join Our Community</h2>
-        <p className="text-gray-300 text-md text-justify">
+        <p className="text-gray-300 text-md text-left">
           Join our ever-growing community of passionate learners, self-taught
           developers, and tech enthusiasts who are leveling up their skills,
           collaborating on exciting projects, and sharing knowledge in a

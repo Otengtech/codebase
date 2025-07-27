@@ -16,7 +16,7 @@ const Html = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl text-orange-500 font-bold mb-6 text-center">
-            HTML Starter
+            HTML
           </h2>
           <div className="sm:flex md:flex lg:flex flex mt-6 items-center justify-center mb-6 space-x-2">
             {[...Array(7)].map((_, index) => (
