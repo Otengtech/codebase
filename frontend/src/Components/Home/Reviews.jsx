@@ -79,7 +79,7 @@ const Reviews = () => {
     let imageUrl = await uploadImageToImgBB();
 
     try {
-      const res = await axios.post(`${API_URL}/reviews`, {
+      const res = await axios.post(`${API_URL}/api/reviews`, {
         name,
         email,
         message,
