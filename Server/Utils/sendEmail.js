@@ -1,21 +1,22 @@
-// utils/sendEmail.js
 import nodemailer from "nodemailer";
 
 const sendEmail = async (to, subject, html) => {
   const transporter = nodemailer.createTransport({
-    service: "Gmail",
+    service: "gmail", // or "hotmail", "yahoo", etc.
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
   });
 
-  await transporter.sendMail({
-    from: process.env.EMAIL_USER,
+  const mailOptions = {
+    from: `"CodeBase" <${process.env.EMAIL_USER}>`,
     to,
     subject,
     html,
-  });
+  };
+
+  await transporter.sendMail(mailOptions);
 };
 
 export default sendEmail;

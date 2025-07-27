@@ -335,11 +335,13 @@ const Reviews = () => {
                       onClick={() => toggleLike(review._id)}
                       className="flex items-center gap-2 text-pink-500 hover:text-pink-600 transition"
                     >
-                      <FaHeart className={isLiked ? "text-pink-600" : ""} />
                       <div className="flex flex-col items-center justify-start">
-                        <span className="text-sm">
-                          {review.likes || 0} likes
-                        </span>
+                        <div>
+                          <FaHeart className={isLiked ? "text-pink-600" : ""} />
+                          <span className="text-sm">
+                            {review.likes || 0} likes
+                          </span>
+                        </div>
                         <p className="text-sm text-gray-500">
                           {new Date(review.createdAt).toLocaleDateString()}
                         </p>
