@@ -14,6 +14,7 @@ const Reviews = () => {
   const [message, setMessage] = useState("");
   const [image, setImage] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [rating, setRating] = useState(5);
 
   useEffect(() => {
     fetchReviews();
@@ -85,6 +86,7 @@ const Reviews = () => {
         message,
         imageUrl,
         likes: 0,
+        rating,
         createdAt: new Date(),
       });
 
@@ -172,7 +174,7 @@ const Reviews = () => {
             <div className="flex flex-wrap gap-4 items-center">
               <label
                 htmlFor="image-upload"
-                className="cursor-pointer px-4 py-2 bg-sky-300 text-black rounded-lg hover:bg-sky-200"
+                className="cursor-pointer px-4 py-2 bg-sky-300 text-black rounded-full text-sm hover:bg-sky-200"
               >
                 Choose Image
               </label>
@@ -186,7 +188,7 @@ const Reviews = () => {
               <button
                 type="button"
                 onClick={clearPreview}
-                className="px-4 py-2 bg-sky-300 text-black rounded-lg hover:bg-sky-200"
+                className="px-4 py-2 bg-sky-300 text-black rounded-full text-sm hover:bg-sky-200"
               >
                 Clear Image
               </button>
@@ -207,6 +209,22 @@ const Reviews = () => {
               placeholder="Your Review"
               className="w-full p-4 border bg-transparent text-white border-gray-400 rounded-xl resize-none focus:outline-sky-300"
             />
+            <div className="flex gap-2 justify-center items-center">
+              <p>Rating:</p>
+              {[1, 2, 3, 4, 5].map((star) => (
+              
+                <button
+                  key={star}
+                  type="button"
+                  onClick={() => setRating(star)}
+                  className={
+                    star <= rating ? "text-yellow-400 text-2xl focus:outline-none" : "text-gray-400 text-xl focus:outline-none"
+                  }
+                >
+                  ★
+                </button>
+              ))}
+            </div>
 
             <button
               type="submit"
@@ -237,41 +255,45 @@ const Reviews = () => {
                 return (
                   <div
                     key={review._id}
-                    className="bg-white/10 backdrop-blur-lg p-6 rounded-xl shadow-md space-y-4"
+                    className="bg-white text-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300"
                   >
-                    <div className="flex items-center gap-4">
+                    <FaQuoteLeft className="text-2xl text-indigo-600 mb-3" />
+                    <div className="flex items-center gap-4 mb-4">
                       <img
                         src={
                           review.imageUrl || "https://via.placeholder.com/50"
                         }
                         alt={review.name}
-                        className="w-14 h-14 rounded-full object-cover border border-sky-300"
+                        className="w-14 h-14 rounded-full object-cover border border-indigo-200"
                       />
                       <div>
-                        <h4 className="font-semibold text-sky-300">
-                          {review.name}
-                        </h4>
-                        <p className="text-sm text-gray-400">
+                        <h4 className="font-semibold text-lg">{review.name}</h4>
+                        <p className="text-sm text-gray-500">
                           {new Date(review.createdAt).toLocaleDateString()}
                         </p>
+                        <div className="flex mt-1">
+                          {Array(5)
+                            .fill()
+                            .map((_, i) => (
+                              <FaStar
+                                key={i}
+                                className="w-4 h-4 mr-1 text-yellow-400"
+                              />
+                            ))}
+                        </div>
                       </div>
                     </div>
-                    <p className="text-white italic">"{review.message}"</p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex gap-1 text-sky-300">
-                        {Array(5)
-                          .fill()
-                          .map((_, i) => (
-                            <FaStar key={i} />
-                          ))}
-                      </div>
-                      <button
-                        onClick={() => toggleLike(review._id)}
-                        className={`flex items-center gap-1 text-white hover:text-sky-300 transition`}
-                      >
-                        <FaThumbsUp /> {review.likes || 0}
-                      </button>
-                    </div>
+                    <p className="text-sm text-gray-700 mb-4 italic">
+                      "{review.message}"
+                    </p>
+                    <button
+                      onClick={() => toggleLike(review._id)}
+                      className="flex items-center gap-2 text-pink-500 hover:text-pink-600 transition"
+                    >
+                      <FaHeart />
+                      <span className="text-sm">{review.likes || 0} likes</span>
+                    </button>
+                    <FaQuoteRight className="text-xl text-indigo-600 mt-4 float-right" />
                   </div>
                 );
               })}

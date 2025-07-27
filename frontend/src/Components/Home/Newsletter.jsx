@@ -44,9 +44,7 @@ const Newsletter = () => {
           Join our ever-growing community of passionate learners, self-taught
           developers, and tech enthusiasts who are leveling up their skills,
           collaborating on exciting projects, and sharing knowledge in a
-          friendly and supportive space. Whether you're just starting your
-          journey or looking to stay sharp, you’ll always find value,
-          inspiration, and encouragement here.
+          friendly and supportive space.
         </p>
 
         <form
