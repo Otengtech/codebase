@@ -164,7 +164,7 @@ const NodeQuiz = () => {
                   Try Again
                 </button>
                 <Link
-                  to="/jsquizstart"
+                  to="/nodejsquizstart"
                   className="px-6 py-2 bg-gray-700 rounded hover:bg-gray-600 transition"
                 >
                   Back to Start
