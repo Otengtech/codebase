@@ -78,7 +78,7 @@ const Blog = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-gray-900 text-gray-100 py-28 px-6">
+      <div className="bg-gradient-to-r from-gray-900 to-violet-900 text-gray-100 py-28 px-6">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -102,7 +102,7 @@ const Blog = () => {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 120 }}
-                className="bg-gray-800 rounded-xl cursor-pointer shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+                className="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl cursor-pointer shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
               >
                 <img
                   src={post.image}

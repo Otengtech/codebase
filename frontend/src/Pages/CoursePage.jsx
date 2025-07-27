@@ -120,7 +120,7 @@ const Course = () => {
     <>
     <Navbar />
       {
-        <section className="py-28 bg-gray-900 relative">
+        <section className="py-28 bg-gradient-to-r from-gray-900 to-violet-900 relative">
           <motion.div
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -150,7 +150,7 @@ const Course = () => {
               {courses.map((course, index) => (
                 <div
                   key={index}
-                  className="min-w-[240px] cursor-pointer max-w-xs bg-gray-800 rounded-2xl shadow-xl hover:scale-105 transition duration-700 flex-shrink-0"
+                  className="bg-white/5 border border-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-[1.02] transition-all duration-500"
                 >
                   <Link to={course.to}>
                     <img
@@ -158,7 +158,7 @@ const Course = () => {
                       alt={course.name}
                       className="w-full h-48 rounded-t-2xl"
                     />
-                    <div className="p-6">
+                    <div className="py-6">
                       <h3 className="text-base text-2xl font-bold text-sky-300 mb-1">
                         {course.name}
                       </h3>

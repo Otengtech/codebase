@@ -1,68 +1,65 @@
 import React from "react";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white border-t border-gray-700 py-10 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Brand / Description */}
+    <footer className="bg-gradient-to-r from-gray-800 to-violet-900 text-white border-t border-gray-700 px-6 pt-12 pb-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+
+        {/* Brand and Vision */}
         <div>
           <h2 className="text-2xl text-sky-300 font-bold mb-4">CodeBase</h2>
-          <p className="text-sm text-gray-400">
-            Empowering your lifestyle through innovation, style, and wellness.
-            Stay connected with us!
+          <p className="text-sm text-gray-300 mb-4">
+            At CodeBase, we aim to cultivate a thriving community of developers and learners by providing top-notch resources, real-world projects, and continuous support.
+          </p>
+          <p className="text-sm text-gray-300">
+            Empower your lifestyle through technology, wellness, and innovation.
           </p>
         </div>
 
-        {/* Quick Links and Resources */}
-        <div className="flex justify-between">
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-semibold text-sky-300 text-lg mb-3">Quick Links</h3>
-            <ul className="space-y-2 text-gray-400 text-sm">
-              <li><a href="/" className="hover:text-white">Home</a></li>
-              <li><a href="/about" className="hover:text-white">About Us</a></li>
-              <li><a href="/services" className="hover:text-white">Services</a></li>
-              <li><a href="/contact" className="hover:text-white">Contact</a></li>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h3 className="font-semibold text-sky-300 text-lg mb-3">Resources</h3>
-            <ul className="space-y-2 text-gray-400 text-sm">
-              <li><a href="/blog" className="hover:text-white">Blog</a></li>
-              <li><a href="/faq" className="hover:text-white">FAQ</a></li>
-              <li><a href="/privacy-policy" className="hover:text-white">Privacy Policy</a></li>
-              <li><a href="/terms" className="hover:text-white">Terms & Conditions</a></li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Newsletter */}
+        {/* Quick Links */}
         <div>
-          <h2 className="text-2xl text-sky-300 font-bold mb-2">Join Our Community</h2>
-          <p className="text-sm text-gray-400 mb-4">
-            Subscribe to our newsletter and never miss an update.
-          </p>
-          <form className="flex flex-col sm:flex-row gap-3">
-            <input
-              type="email"
-              placeholder="Enter email"
-              className="px-4 py-2 rounded-md bg-gray-700 border border-gray-600 text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-300"
-            />
-            <button
-              type="submit"
-              className="bg-sky-300 text-gray-900 px-6 py-2 rounded-md font-semibold hover:bg-sky-200 transition"
-            >
-              Subscribe
-            </button>
-          </form>
+          <h3 className="font-semibold text-sky-300 text-lg mb-3">Quick Links</h3>
+          <ul className="space-y-2 text-gray-300 text-sm">
+            <li><Link to="/" className="hover:text-white">Home</Link></li>
+            <li><Link to="/about" className="hover:text-white">About Us</Link></li>
+            <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
+            <li><Link to="/faq" className="hover:text-white">FAQ</Link></li>
+          </ul>
+        </div>
+
+        {/* Resources */}
+        <div>
+          <h3 className="font-semibold text-sky-300 text-lg mb-3">Resources</h3>
+          <ul className="space-y-2 text-gray-300 text-sm">
+            <li><a to="/courses" className="hover:text-white">Courses</a></li>
+            <li><Link to="/blog" className="hover:text-white">Blog</Link></li>
+            <li><Link to="/quiz" className="hover:text-white">Quiz</Link></li>
+            <li><Link to="/terms" className="hover:text-white">Terms & Conditions</Link></li>
+          </ul>
+        </div>
+
+        {/* Contact & Social */}
+        <div>
+          <h3 className="font-semibold text-sky-300 text-lg mb-3">Connect with Us</h3>
+          <p className="text-sm text-gray-300 mb-3">We’d love to hear from you.</p>
+          <p className="text-sm text-gray-300">Email: <a href="mailto:support@codebase.com" className="hover:text-white">support@codebase.com</a></p>
+          <p className="text-sm text-gray-300 mb-4">Phone: +1 (555) 123-4567</p>
+
+          {/* Social Links */}
+          <div className="flex gap-4 mt-2">
+            <a href="#" className="text-gray-300 hover:text-sky-300 transition"><FaFacebookF /></a>
+            <a href="#" className="text-gray-300 hover:text-sky-300 transition"><FaTwitter /></a>
+            <a href="#" className="text-gray-300 hover:text-sky-300 transition"><FaInstagram /></a>
+            <a href="#" className="text-gray-300 hover:text-sky-300 transition"><FaLinkedinIn /></a>
+          </div>
         </div>
       </div>
 
       {/* Bottom */}
       <div className="mt-10 border-t border-gray-600 pt-4 text-center text-sm text-gray-500">
-        © 2025 CodeBase. All rights reserved.
+        © {new Date().getFullYear()} CodeBase. All rights reserved.
       </div>
     </footer>
   );

@@ -122,7 +122,7 @@ const InfiniteCarousel = () => {
         {[...services, ...services].map((service, index) => (
           <div
             key={`${service.title}-${index}`}
-            className="w-72 flex-shrink-0 cursor-pointer bg-gray-900 p-4 mx-2 my-2 rounded-xl shadow-md transform transition-all duration-100 hover:scale-105"
+            className="w-72 flex-shrink-0 cursor-pointer bg-white/5 border border-white/10 backdrop-blur-md p-4 mx-2 my-2 rounded-xl shadow-md transform transition-all duration-100 hover:scale-105"
           >
             <div className="text-3xl text-sky-200 mb-2 flex justify-center">
               {service.icon}

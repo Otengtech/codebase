@@ -47,7 +47,7 @@ const Contact = () => {
       {loader && <Loader />}
       <Navbar />
       {!loader && (
-        <div className="min-h-screen py-12 bg-gray-900 text-white">
+        <div className="min-h-screen py-12 bg-gradient-to-r from-gray-900 to-violet-900">
           <div className="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16">
             {/* LEFT: Contact Info */}
             <div className="space-y-6">
@@ -76,7 +76,7 @@ const Contact = () => {
 
             {/* RIGHT: Contact Form */}
             <form
-              className="bg-gray-800 p-8 rounded-xl shadow-xl space-y-6"
+              className="bg-gray-800/30 backdrop-blur-md p-8 rounded-xl shadow-xl space-y-6 border border-white/10"
               onSubmit={handleSubmit}
             >
               <h2 className="text-2xl font-bold text-sky-300 mb-4">
@@ -88,7 +88,7 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                  className="w-full px-4 py-3 placeholder:text-sky-200 rounded-md bg-gray-700/40 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-sky-400"
                   placeholder="Your name"
                   required
                 />
@@ -97,7 +97,7 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-md bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                  className="w-full px-4 py-3 placeholder:text-sky-200 rounded-md bg-gray-700/40 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-sky-400"
                   placeholder="Your email"
                   required
                 />
@@ -106,7 +106,7 @@ const Contact = () => {
                   rows="5"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-md bg-gray-700 text-white border border-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-sky-400"
+                  className="w-full px-4 py-3 placeholder:text-sky-200 rounded-md bg-gray-700/40 text-white border border-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-sky-400"
                   placeholder="Your message..."
                   required
                 ></textarea>

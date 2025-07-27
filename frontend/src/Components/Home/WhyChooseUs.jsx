@@ -24,27 +24,6 @@ const features = [
     color: "bg-green-50",
   },
   {
-    title: "Flexible Timing",
-    icon: <MdAccessTime className="text-4xl" />,
-    description:
-      "Study at your own pace with flexible schedules and on-demand access to course materials — perfect for students and working professionals.",
-    color: "bg-yellow-50",
-  },
-  {
-    title: "Expert Mentors",
-    icon: <FaChalkboardTeacher className="text-4xl" />,
-    description:
-      "Learn from experienced instructors and developers who provide clear explanations, real-life examples, and personalized guidance.",
-    color: "bg-purple-50",
-  },
-  {
-    title: "Global Community",
-    icon: <FaUsers className="text-4xl" />,
-    description:
-      "Become part of a vibrant, international community of learners where you can collaborate, share knowledge, and grow together.",
-    color: "bg-pink-50",
-  },
-  {
     title: "1000+ Learners",
     icon: <PiStudentFill className="text-4xl" />,
     description:
@@ -55,7 +34,7 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="w-full bg-gray-900 px-4 md:px-20 py-20">
+    <section className="w-full bg-gradient-to-r from-gray-900 to-violet-900 px-4 md:px-20 py-20">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold text-sky-300 mb-2">Why Choose Us?</h2>
         <p className="text-gray-200 text-lg">
@@ -67,7 +46,7 @@ const WhyChooseUs = () => {
         {features.map((feature, idx) => (
           <div
             key={idx}
-            className={`rounded-2xl p-6 bg-gray-700 cursor-pointer hover:shadow-xl transition duration-300 flex flex-col items-center text-center`}
+            className={`rounded-2xl p-6 bg-white/5 border border-white/10 backdrop-blur-md cursor-pointer hover:shadow-xl transition duration-300 flex flex-col items-center text-center`}
           >
             <div className="mb-4 text-gray-300">{feature.icon}</div>
             <h4 className="text-xl font-semibold text-sky-300 mb-2">

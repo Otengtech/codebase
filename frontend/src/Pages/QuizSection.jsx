@@ -68,7 +68,7 @@ export default function QuizSection() {
   return (
     <>
       <Navbar />
-      <section className="py-28 bg-gray-900 px-4 md:px-10">
+      <section className="py-28 bg-gradient-to-r from-gray-800 to-violet-900 px-4 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -93,7 +93,7 @@ export default function QuizSection() {
           {courses.map((course, index) => (
             <div
               key={index}
-              className="bg-gray-700 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-3 transition-all duration-300 p-6 flex flex-col justify-between"
+              className="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-3 transition-all duration-300 p-6 flex flex-col justify-between"
             >
               {/* Badge */}
               <div className="flex items-center justify-between mb-4">
