@@ -56,19 +56,20 @@ export const login = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
-
-// Forgot Password
 export const forgotPassword = async (req, res) => {
   const { email } = req.body;
+  console.log("Reset request for:", email);
 
   try {
     const user = await User.findOne({ email });
-    if (!user)
+    if (!user) {
+      console.log("No user found");
       return res.status(404).json({ message: "No user found with that email." });
+    }
 
     const token = crypto.randomBytes(20).toString("hex");
     user.resetToken = token;
-    user.tokenExpiry = Date.now() + 3600000; // 1 hour
+    user.tokenExpiry = Date.now() + 3600000;
     await user.save();
 
     const resetURL = `${FRONTEND_URL}/reset-password/${token}`;
@@ -78,10 +79,17 @@ export const forgotPassword = async (req, res) => {
       <a href="${resetURL}">${resetURL}</a>
     `;
 
-    await sendEmail(user.email, "Password Reset", message);
+    try {
+      await sendEmail(user.email, "Password Reset", message);
+      console.log("Email sent successfully");
+    } catch (emailErr) {
+      console.error("Email send failed:", emailErr);
+      return res.status(500).json({ message: "Failed to send reset email." });
+    }
+
     res.json({ message: "Reset email sent. Please check your inbox." });
   } catch (err) {
-    console.error(err);
+    console.error("Forgot password error:", err);
     res.status(500).json({ message: "Something went wrong." });
   }
 };

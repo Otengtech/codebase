@@ -179,6 +179,24 @@ const AuthPage = () => {
                 <i className="fa fa-user absolute top-9 left-3 text-white"></i>
               </div>
             )}
+            {isLogin && (
+              <div className="relative">
+                <label className="block mb-1 text-sm font-medium text-gray-300">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full pl-10 pr-4 py-2 rounded-md bg-white bg-opacity-20 text-white placeholder-gray-300 focus:outline-none"
+                  placeholder="Full Name"
+                />
+                <i className="fa fa-user absolute top-9 left-3 text-white"></i>
+              </div>
+            )}
+            
 
             <div className="relative">
               <label className="block mb-1 text-sm font-medium text-gray-300">

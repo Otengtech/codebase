@@ -337,16 +337,16 @@ const Reviews = () => {
                     >
                       <div className="flex flex-col items-center justify-start">
                         <div>
-                          <div className="flex items-center justify-center">
+                          <div className="flex items-center justify-start">
                             <FaHeart
-                              className={isLiked ? "text-pink-600" : ""}
+                              className={isLiked ? "text-pink-600" : "text-gray-500"}
                             />
-                            <span className="text-sm">
+                            <span className="text-sm ml-1">
                               {review.likes || 0} likes
                             </span>
                           </div>
                         </div>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-400">
                           {new Date(review.createdAt).toLocaleDateString()}
                         </p>
                       </div>

@@ -43,11 +43,11 @@ const Hero = () => {
   return (
     <div className="w-full min-h-[90vh] bg-gradient-to-r from-gray-900 to-violet-900 flex flex-col md:flex-row items-center justify-between px-6 md:px-28 py-20 text-white">
       {/* Left Section */}
-      <div className="w-full md:w-1/2 space-y-6">
+      <div className="w-full md:w-1/2 space-y-4">
         <h1 className="text-lg text-violet-200">WELCOME {name}</h1>
         <h2
           className="text-4xl md:text-5xl text-sky-200 font-bold leading-tight
-             h-[4.8rem] md:h-[5.5rem] overflow-hidden"
+             h-[4.9rem] md:h-[5.5rem] overflow-hidden"
         >
           <span className="inline-flex items-center flex-wrap">
             {displayText}
@@ -61,12 +61,12 @@ const Hero = () => {
         </p>
         <div className="flex gap-4 flex-wrap">
           <Link to="/course">
-            <button className="py-3 text-gray-900 px-6 bg-violet-600 hover:bg-violet-500 rounded-md transition">
+            <button className="py-3 text-gray-900 px-6 bg-violet-600 hover:bg-violet-500 rounded-full transition">
               OUR COURSES
             </button>
           </Link>
           <Link to="/blog">
-            <button className="py-3 px-6 bg-sky-300 text-gray-900 hover:bg-sky-200 rounded-md transition">
+            <button className="py-3 px-6 bg-sky-300 text-gray-900 hover:bg-sky-200 rounded-full transition">
               OUR BLOG
             </button>
           </Link>
