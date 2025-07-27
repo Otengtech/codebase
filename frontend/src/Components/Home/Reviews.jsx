@@ -10,7 +10,6 @@ import axios from "axios";
 import Navbar from "./Navbar";
 
 const API_URL = import.meta.env.VITE_API_URL;
-const IMGBB_API_KEY = import.meta.env.VITE_IMGBB_API_KEY;
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -39,17 +38,13 @@ const Reviews = () => {
 
   const handleImageUpload = async () => {
     if (!imageFile) return "";
-
     const formData = new FormData();
     formData.append("image", imageFile);
 
     try {
       setUploading(true);
-      const res = await axios.post(
-        `https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`,
-        formData
-      );
-      return res.data.data.url;
+      const res = await axios.post(`${API_URL}/upload`, formData); // Backend handles imgbb
+      return res.data.url;
     } catch (err) {
       console.error("Image upload failed", err);
       return "";
