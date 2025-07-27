@@ -42,6 +42,7 @@ import About from "./Home/About";
 import ContactUs from "./Home/Contact";
 import MoveTop from "./Home/MoveTop";
 import ScrollToTop from "./Home/ScrollToTop";
+import ReviewSection from "./Home/Reviews.jsx";
 
 const App = () => {
   return (
@@ -89,6 +90,7 @@ const App = () => {
         <Route path="/nodejsquiz" element={<NodeQuiz />} />
         <Route path="/mdbquiz" element={<MdbQuiz />} />
         <Route path="/tquiz" element={<TailwindQuiz />} />
+        <Route path="/reviews" element={<ReviewSection />} />
       </Routes>
     </Router>
   );

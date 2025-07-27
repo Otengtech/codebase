@@ -58,7 +58,7 @@ const Newsletter = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Your email address"
-            className="w-full sm:w-auto px-6 py-3 placeholder:text-sky-200 rounded-md bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-sky-300"
+            className="w-full sm:w-auto px-6 py-3 placeholder:text-gray-200 rounded-md bg-transparent border border-gray-200 text-white focus:outline-none focus:ring-2 focus:ring-sky-200"
             required
           />
           <button
