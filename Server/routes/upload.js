@@ -1,34 +1,30 @@
-// server/routes/upload.js or inside your reviews route
 import express from "express";
-import axios from "axios";
 import multer from "multer";
+import axios from "axios";
 import FormData from "form-data";
-import dotenv from "dotenv";
+import fs from "fs";
 
-dotenv.config();
 const router = express.Router();
-const upload = multer(); // memory storage
+const upload = multer({ dest: "uploads/" }); // store file temporarily
 
 router.post("/upload", upload.single("image"), async (req, res) => {
   try {
-    const imageBuffer = req.file.buffer.toString("base64");
+    const filePath = req.file.path;
 
-    const form = new FormData();
-    form.append("image", imageBuffer);
+    const formData = new FormData();
+    formData.append("image", fs.readFileSync(filePath).toString("base64"));
 
     const imgbbRes = await axios.post(
       `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`,
-      form,
-      {
-        headers: form.getHeaders(),
-      }
+      formData
     );
 
-    const imageUrl = imgbbRes.data.data.url;
-    res.status(200).json({ url: imageUrl });
-  } catch (error) {
-    console.error("Image upload failed:", error);
-    res.status(500).json({ message: "Image upload failed" });
+    fs.unlinkSync(filePath); // clean up
+
+    res.json({ url: imgbbRes.data.data.url });
+  } catch (err) {
+    console.error("Upload error:", err.message);
+    res.status(500).json({ error: "Image upload failed" });
   }
 });
 
