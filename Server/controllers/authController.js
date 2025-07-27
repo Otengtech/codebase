@@ -58,41 +58,33 @@ export const login = async (req, res) => {
 };
 export const forgotPassword = async (req, res) => {
   const { email } = req.body;
-  console.log("Reset request for:", email);
-
   try {
     const user = await User.findOne({ email });
-    if (!user) {
-      console.log("No user found");
+    if (!user)
       return res.status(404).json({ message: "No user found with that email." });
-    }
 
     const token = crypto.randomBytes(20).toString("hex");
     user.resetToken = token;
     user.tokenExpiry = Date.now() + 3600000;
     await user.save();
 
-    const resetURL = `${FRONTEND_URL}/reset-password/${token}`;
+    const resetURL = `${process.env.FRONTEND_URL}/reset-password/${token}`;
     const message = `
       <p>You requested a password reset.</p>
-      <p>Click the link below to reset it (valid for 1 hour):</p>
+      <p>Click the link below to reset your password:</p>
       <a href="${resetURL}">${resetURL}</a>
     `;
 
-    try {
-      await sendEmail(user.email, "Password Reset", message);
-      console.log("Email sent successfully");
-    } catch (emailErr) {
-      console.error("Email send failed:", emailErr);
-      return res.status(500).json({ message: "Failed to send reset email." });
-    }
+    console.log("Sending email to:", user.email);
+    await sendEmail(user.email, "Password Reset", message);
 
-    res.json({ message: "Reset email sent. Please check your inbox." });
-  } catch (err) {
-    console.error("Forgot password error:", err);
-    res.status(500).json({ message: "Something went wrong." });
+    res.status(200).json({ message: "Reset email sent." });
+  } catch (error) {
+    console.error("Forgot Password Error ➤", error.message, error.stack);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
 
 // Reset Password
 export const resetPassword = async (req, res) => {
