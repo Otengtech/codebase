@@ -30,7 +30,7 @@ const Reviews = () => {
 
   const fetchReviews = async () => {
     try {
-      const res = await axios.get(`${API_URL}/reviews`);
+      const res = await axios.get(`${API_URL}/api/reviews`);
       setReviews(res.data);
     } catch (err) {
       console.error("Failed to load reviews", err);
