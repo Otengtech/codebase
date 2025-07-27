@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const MdbQuiz = () => {
   const [questions, setQuestions] = useState([]);
   const [current, setCurrent] = useState(0);
@@ -15,9 +17,10 @@ const MdbQuiz = () => {
   const [cancelled, setCancelled] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/mdb-quiz`)
+    fetch(`${API_URL}/mdb-quiz`)
       .then((res) => res.json())
-      .then((data) => setQuestions(data));
+      .then((data) => setQuestions(data))
+      .catch((err) => console.error("Error loading quiz:", err));
   }, []);
 
   useEffect(() => {
@@ -25,7 +28,7 @@ const MdbQuiz = () => {
       const timer = setInterval(() => {
         setTimeLeft((prev) => {
           if (prev === 1) {
-            handleNext(); // timeout triggers next question
+            handleNext();
             return 20;
           }
           return prev - 1;
@@ -56,9 +59,12 @@ const MdbQuiz = () => {
     } else {
       setQuizEnd(true);
 
-      if (!cancelled && score > topScore) {
-        localStorage.setItem("mdbTopScore", score);
-        setTopScore(score);
+      if (!cancelled) {
+        setTopScore((prevTop) => {
+          const newTop = score > prevTop ? score : prevTop;
+          localStorage.setItem("mdbTopScore", newTop);
+          return newTop;
+        });
       }
     }
   };
@@ -78,7 +84,7 @@ const MdbQuiz = () => {
   };
 
   if (questions.length === 0)
-    return <div className="text-white">Loading...</div>;
+    return <div className="text-white text-center mt-10">Loading...</div>;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white flex items-center justify-center px-4 py-8">
