@@ -210,6 +210,7 @@ const Reviews = () => {
 
             <button
               type="submit"
+              onClick={addReview}
               className="w-full bg-sky-300 text-black py-3 rounded-full font-semibold text-lg hover:bg-sky-200"
             >
               Submit Review
