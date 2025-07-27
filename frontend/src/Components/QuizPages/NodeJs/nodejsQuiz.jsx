@@ -25,7 +25,7 @@ const NodeQuiz = () => {
       const timer = setInterval(() => {
         setTimeLeft((prev) => {
           if (prev === 1) {
-            handleNext();
+            handleNext(); // move on without scoring
             return 20;
           }
           return prev - 1;
@@ -38,21 +38,24 @@ const NodeQuiz = () => {
   const handleAnswer = (option) => {
     if (selected) return;
     setSelected(option);
+
     if (option === questions[current].answer) {
       setScore((prev) => prev + 1);
     }
-    setTimeout(() => {
-      handleNext();
-    }, 1000);
+
+    setTimeout(() => handleNext(), 1000);
   };
 
   const handleNext = () => {
-    if (current + 1 < questions.length) {
-      setCurrent(current + 1);
+    const isLast = current + 1 >= questions.length;
+
+    if (!isLast) {
+      setCurrent((prev) => prev + 1);
       setSelected(null);
       setTimeLeft(20);
     } else {
       setQuizEnd(true);
+
       if (!cancelled && score > topScore) {
         localStorage.setItem("nodeTopScore", score);
         setTopScore(score);

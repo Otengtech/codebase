@@ -27,7 +27,7 @@ const JsQuiz = () => {
       const timer = setInterval(() => {
         setTimeLeft((prev) => {
           if (prev === 1) {
-            handleNext(true); // time ran out
+            handleNext(); // just skip, no scoring
             return 20;
           }
           return prev - 1;
@@ -48,15 +48,8 @@ const JsQuiz = () => {
     }, 1000);
   };
 
-  const handleNext = (timedOut = false) => {
-    if (!timedOut && selected === null) return;
-
+  const handleNext = () => {
     const isLast = current + 1 >= questions.length;
-
-    if (!timedOut && selected && selected === questions[current].answer) {
-      setScore((prev) => prev + 1);
-    }
-
     if (!isLast) {
       setCurrent((prev) => prev + 1);
       setSelected(null);
