@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { FaStar, FaThumbsUp } from "react-icons/fa";
+import { FaStar, FaThumbsUp, } from "react-icons/fa";
+import { FaArrowRight, FaQuoteLeft, FaQuoteRight, FaHeart } from "react-icons/fa";
 import Navbar from "./Navbar";
 
 const API_URL = import.meta.env.VITE_API_URL;
