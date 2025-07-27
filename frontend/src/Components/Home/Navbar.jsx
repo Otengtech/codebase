@@ -138,7 +138,7 @@ const Navbar = () => {
               </button>
 
               <div
-                className={`absolute top-14 right-0 z-50 p-5 w-64 backdrop-blur-md bg-yellow-500/90 shadow-xl ring-1 ring-yellow-400 rounded-xl transition-all duration-300 ${
+                className={`absolute top-14 right-0 z-50 p-5 w-64 bg-white/5 border border-white/10 backdrop-blur-md shadow-xl rounded-xl transition-all duration-300 ${
                   accountMenu
                     ? "translate-x-0 opacity-100"
                     : "translate-x-10 opacity-0 pointer-events-none"

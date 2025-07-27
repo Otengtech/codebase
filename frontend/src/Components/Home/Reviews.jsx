@@ -1,27 +1,19 @@
+// Enhanced Reviews Component with Glass Effect, Gradient Background, and Real-Time Updates
 import React, { useEffect, useState } from "react";
-import {
-  FaQuoteLeft,
-  FaQuoteRight,
-  FaHeart,
-  FaStar,
-  FaRegStar,
-} from "react-icons/fa";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { FaStar, FaThumbsUp } from "react-icons/fa";
 import Navbar from "./Navbar";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    avatar: "",
-    rating: 5,
-    comment: "",
-  });
-  const [imageFile, setImageFile] = useState(null);
-  const [uploading, setUploading] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [image, setImage] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
 
   useEffect(() => {
     fetchReviews();
@@ -29,242 +21,251 @@ const Reviews = () => {
 
   const fetchReviews = async () => {
     try {
-      const res = await axios.get(`${API_URL}/api/reviews`);
+      const res = await axios.get(`${API_URL}/reviews`);
       setReviews(res.data);
     } catch (err) {
-      console.error("Failed to load reviews", err);
+      console.error("Failed to fetch reviews:", err);
     }
   };
 
-  const handleImageUpload = async () => {
-    if (!imageFile) return "";
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+    if (file) {
+      const url = URL.createObjectURL(file);
+      setPreviewUrl(url);
+    }
+  };
+
+  const clearPreview = (e) => {
+    e.preventDefault();
+    setPreviewUrl(null);
+    setImage(null);
+  };
+
+  const uploadImageToImgBB = async () => {
+    if (!image) return "";
     const formData = new FormData();
-    formData.append("image", imageFile);
+    formData.append("image", image);
 
     try {
-      setUploading(true);
-      const res = await axios.post(`${API_URL}/api/upload`, formData); // Backend handles imgbb
-      return res.data.url;
+      const res = await fetch(
+        `https://api.imgbb.com/1/upload?key=69f4521c64f28a3fcff440ca4af10f8e`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const data = await res.json();
+      return data?.data?.url || "";
     } catch (err) {
-      console.error("Image upload failed", err);
+      console.error("Image upload error:", err);
+      toast.error("Image upload failed");
       return "";
-    } finally {
-      setUploading(false);
     }
   };
 
-  const handleSubmit = async (e) => {
+  const addReview = async (e) => {
     e.preventDefault();
-
-    const avatarUrl = await handleImageUpload();
-    if (!avatarUrl) {
-      alert("Failed to upload image. Please try again.");
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      toast.error("Input fields shouldn't be empty", { autoClose: 1000 });
+      return;
+    }
+    if (!email.includes("@")) {
+      toast.error("Enter a valid email", { autoClose: 1000 });
       return;
     }
 
+    let imageUrl = await uploadImageToImgBB();
+
     try {
-      const newReview = {
-        ...form,
-        avatar: avatarUrl,
+      const res = await axios.post(`${API_URL}/reviews`, {
+        name,
+        email,
+        message,
+        imageUrl,
         likes: 0,
-        createdAt: new Date().toISOString(),
-      };
-
-      const res = await axios.post(`${API_URL}/api/reviews`, newReview);
-
-      setReviews((prev) => [res.data, ...prev]);
-
-      // ✅ Reset the form and image preview
-      setForm({
-        name: "",
-        email: "",
-        avatar: "",
-        rating: 5,
-        comment: "",
+        createdAt: new Date(),
       });
-      setImageFile(null);
+
+      if (res.status === 201) {
+        toast.success("Review submitted successfully!", { autoClose: 1000 });
+        setName("");
+        setEmail("");
+        setMessage("");
+        setImage(null);
+        setPreviewUrl(null);
+        fetchReviews();
+      }
     } catch (err) {
-      console.error("Review submission failed", err);
-      alert("Something went wrong while submitting your review.");
+      console.error("Error submitting review:", err);
+      toast.error("Error submitting review", { autoClose: 1000 });
     }
   };
 
-  const handleLike = async (id) => {
-    const likedKey = `liked_${id}`;
-    const alreadyLiked = localStorage.getItem(likedKey);
+  const toggleLike = async (id) => {
+    const likedReviews = JSON.parse(localStorage.getItem("likedReviews")) || [];
+    const isLiked = likedReviews.includes(id);
 
     try {
-      const res = await axios.patch(`${API_URL}/api/reviews/${id}/like`, {
-        like: !alreadyLiked,
+      await axios.patch(`${API_URL}/reviews/${id}/like`, {
+        like: !isLiked,
       });
 
-      setReviews((prev) =>
-        prev.map((r) => (r.id === id ? { ...r, likes: res.data.likes } : r))
-      );
-
-      if (alreadyLiked) {
-        localStorage.removeItem(likedKey);
+      let updatedLikes = [...likedReviews];
+      if (isLiked) {
+        updatedLikes = updatedLikes.filter((rid) => rid !== id);
       } else {
-        localStorage.setItem(likedKey, "true");
+        updatedLikes.push(id);
       }
+      localStorage.setItem("likedReviews", JSON.stringify(updatedLikes));
+      fetchReviews();
     } catch (err) {
-      console.error("Like update failed", err);
+      console.error("Like update failed:", err);
     }
   };
 
   return (
     <>
-      <Navbar />
-      <div className="bg-gradient-to-r from-gray-900 to-violet-900 min-h-screen py-28 md:px-20 p-4 text-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col items-center lg:flex-row gap-10 mb-16">
-            {/* Left Text */}
-            <div className="lg:w-1/2 space-y-4">
-              <h2 className="text-4xl font-bold text-indigo-400">
-                We Value Your Feedback
-              </h2>
-              <p className="text-gray-200 text-md leading-relaxed">
-                Your reviews are the heartbeat of our growth. They guide us to
-                improve our services, help others make informed decisions, and
-                build a trusted community. Every word you write helps us shape a
-                better experience for all. Whether it’s praise or constructive
-                feedback, your voice makes a real difference.
-              </p>
-            </div>
+    <Navbar />
+    <section className="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white py-28 px-4">
+      <div className="max-w-6xl mx-auto flex items-center justify-center gap-10">
+        {/* Left Side - Importance */}
+        <div className="space-y-6">
+          <h2 className="text-sky-300 text-4xl font-bold">Why Your Reviews Matter</h2>
+          <ul className="list-disc list-inside text-lg space-y-2">
+            <li>Helps us improve our service and quality.</li>
+            <li>Builds trust with other users.</li>
+            <li>Boosts transparency and reliability.</li>
+            <li>Encourages our team to keep delivering the best.</li>
+          </ul>
+        </div>
 
-            {/* Review Form */}
-            <form
-              onSubmit={handleSubmit}
-              className="lg:w-1/2 bg-white/5 border border-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg space-y-4 text-white"
+        {/* Right Side - Form */}
+        <form
+          className="backdrop-blur-lg bg-white/10 p-6 rounded-2xl shadow-lg space-y-4"
+          onSubmit={addReview}
+        >
+          <h3 className="text-center text-3xl text-sky-300 font-bold mb-2">
+            Send a Review
+          </h3>
+
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Your Name"
+            className="w-full px-6 py-3 border bg-transparent text-white border-gray-400 rounded-full focus:outline-sky-300"
+          />
+
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Your Email"
+            className="w-full px-6 py-3 border bg-transparent text-white border-gray-400 rounded-full focus:outline-sky-300"
+          />
+
+          {/* File Upload */}
+          <div className="flex gap-4 items-center">
+            <label
+              htmlFor="image-upload"
+              className="cursor-pointer px-4 py-2 bg-sky-300 text-black rounded-lg hover:bg-sky-200"
             >
-              <div className="text-center text-sky-300 font-bold text-3xl">
-                REVIEW
-              </div>
-              <input
-                type="text"
-                placeholder="Name"
-                value={form.name}
-                required
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full px-6 py-3 focus:outline-none border border-gray-200 rounded-full bg-transparent placeholder-gray-300 text-white"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                value={form.email}
-                required
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full px-6 py-3 focus:outline-none border border-gray-200 rounded-full bg-transparent placeholder-gray-300 text-white"
-              />
-              <label className="w-full">
-                <div className="w-full cursor-pointer bg-indigo-600 hover:bg-indigo-500 transition mt-4 text-white text-center font-semibold py-3 px-6 rounded-full shadow-md">
-                  {imageFile ? "Change Image" : "Choose Profile Image"}
-                </div>
-                <input
-                  type="file"
-                  accept="image/*"
-                  required
-                  onChange={(e) => setImageFile(e.target.files[0])}
-                  className="hidden"
-                />
-              </label>
-              {imageFile && (
-                <img
-                  src={URL.createObjectURL(imageFile)}
-                  alt="Preview"
-                  className="w-16 h-16 rounded-full object-cover mx-auto"
-                />
-              )}
-
-              {/* Star Rating */}
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-300">Rating:</span>
-                {[1, 2, 3, 4, 5].map((star) =>
-                  star <= form.rating ? (
-                    <FaStar
-                      key={star}
-                      className="text-yellow-400 cursor-pointer"
-                      onClick={() => setForm({ ...form, rating: star })}
-                    />
-                  ) : (
-                    <FaRegStar
-                      key={star}
-                      className="text-yellow-200 cursor-pointer"
-                      onClick={() => setForm({ ...form, rating: star })}
-                    />
-                  )
-                )}
-              </div>
-
-              <textarea
-                placeholder="Write your review..."
-                value={form.comment}
-                required
-                onChange={(e) => setForm({ ...form, comment: e.target.value })}
-                className="w-full px-6 py-3 focus:outline-none border border-gray-200 rounded-full bg-transparent placeholder-gray-300 text-white"
-              />
-              <button
-                type="submit"
-                onClick={handleSubmit}
-                disabled={uploading}
-                className="bg-indigo-600 text-white w-full px-4 py-3 rounded-full hover:bg-indigo-700 transition disabled:opacity-50"
-              >
-                {uploading ? "Uploading..." : "Submit Review"}
-              </button>
-            </form>
+              Choose Image
+            </label>
+            <input
+              id="image-upload"
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="hidden"
+            />
+            <button
+              type="button"
+              onClick={clearPreview}
+              className="px-4 py-2 bg-sky-300 text-black rounded-lg hover:bg-sky-200"
+            >
+              Clear Image
+            </button>
           </div>
 
-          {/* Review List */}
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {reviews.map((review, index) => (
-              <div
-                key={index}
-                className="bg-white text-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300"
-              >
-                <FaQuoteLeft className="text-2xl text-indigo-600 mb-3" />
-                <div className="flex items-center gap-4 mb-4">
-                  <img
-                    src={review.avatar}
-                    alt={review.name}
-                    className="w-14 h-14 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-lg">{review.name}</h4>
-                    <p className="text-sm text-gray-500">{review.email}</p>
-                    <div className="flex mt-1">
-                      {[...Array(5)].map((_, i) =>
-                        i < review.rating ? (
-                          <FaStar
-                            key={i}
-                            className="text-yellow-400 w-4 h-4 mr-1"
-                          />
-                        ) : (
-                          <FaRegStar
-                            key={i}
-                            className="text-gray-300 w-4 h-4 mr-1"
-                          />
-                        )
-                      )}
+          {previewUrl && (
+            <img
+              src={previewUrl}
+              alt="Preview"
+              className="w-full max-w-xs h-40 object-cover rounded-xl mx-auto"
+            />
+          )}
+
+          <textarea
+            rows="4"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Your Review"
+            className="w-full p-4 border bg-transparent text-white border-gray-400 rounded-xl resize-none focus:outline-sky-300"
+          />
+
+          <button
+            type="submit"
+            className="w-full bg-sky-300 text-black py-3 rounded-full font-semibold text-lg hover:bg-sky-200"
+          >
+            Submit Review
+          </button>
+        </form>
+      </div>
+
+      {/* Review Display Section */}
+      <div className="mt-16 space-y-6 max-w-5xl mx-auto">
+        <h3 className="text-center text-sky-300 text-3xl font-bold">What Others Are Saying</h3>
+
+        {reviews.length === 0 ? (
+          <p className="text-center text-gray-300">No reviews yet. Be the first to leave one!</p>
+        ) : (
+          <div className="grid md:grid-cols-2 gap-6">
+            {reviews.map((review) => {
+              const isLiked = JSON.parse(localStorage.getItem("likedReviews") || "[]").includes(review._id);
+              return (
+                <div
+                  key={review._id}
+                  className="bg-white/10 backdrop-blur-lg p-6 rounded-xl shadow-md space-y-4"
+                >
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={review.imageUrl || "https://via.placeholder.com/50"}
+                      alt={review.name}
+                      className="w-14 h-14 rounded-full object-cover border border-sky-300"
+                    />
+                    <div>
+                      <h4 className="font-semibold text-sky-300">{review.name}</h4>
+                      <p className="text-sm text-gray-400">
+                        {new Date(review.createdAt).toLocaleDateString()}
+                      </p>
                     </div>
                   </div>
+                  <p className="text-white italic">"{review.message}"</p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex gap-1 text-sky-300">
+                      {Array(5)
+                        .fill()
+                        .map((_, i) => (
+                          <FaStar key={i} />
+                        ))}
+                    </div>
+                    <button
+                      onClick={() => toggleLike(review._id)}
+                      className={`flex items-center gap-1 text-white hover:text-sky-300 transition`}
+                    >
+                      <FaThumbsUp /> {review.likes || 0}
+                    </button>
+                  </div>
                 </div>
-                <p className="text-sm text-gray-700 mb-4">{review.comment}</p>
-                <p className="text-xs text-gray-500 mb-2">
-                  {new Date(review.createdAt).toLocaleString()}
-                </p>
-                <button
-                  onClick={() => handleLike(review.id)}
-                  className="flex items-center gap-2 text-pink-500 hover:text-pink-600"
-                >
-                  <FaHeart />
-                  <span className="text-sm">{review.likes} likes</span>
-                </button>
-                <FaQuoteRight className="text-xl text-indigo-600 mt-4 float-right" />
-              </div>
-            ))}
+              );
+            })}
           </div>
-        </div>
+        )}
       </div>
+    </section>
     </>
   );
 };

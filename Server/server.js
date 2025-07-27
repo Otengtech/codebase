@@ -15,8 +15,7 @@
   import tRoutes from "./routes/tRoutes.js";
   import contactRoutes from "./routes/contactRoutes.js";
   import newsletterRoutes from "./routes/newsletterRoute.js"
-  import reviewRoutes from "./routes/reviewsRoutes.js"
-  import uploadRoute from "./routes/upload.js"
+  import reviewRoutes from "./routes/reviewsRoutes.js";
 
   // ✅ Fix __dirname for ES Modules
   const __filename = fileURLToPath(import.meta.url);
@@ -57,8 +56,7 @@
   app.use("/api", tRoutes);
   app.use("/api", contactRoutes);
   app.use("/api", newsletterRoutes);
-  app.use("/api/reviews", reviewRoutes);
-  app.use("/api", uploadRoute);
+  app.use("/api", reviewRoutes);
 
   app.use(express.static(path.join(__dirname, "dist")));
   app.get(/^\/(?!api).*/, (req, res) => {
