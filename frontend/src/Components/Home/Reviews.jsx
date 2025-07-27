@@ -21,7 +21,7 @@ const Reviews = () => {
 
   const fetchReviews = async () => {
     try {
-      const res = await axios.get(`${API_URL}/reviews`);
+      const res = await axios.get(`${API_URL}/api/reviews`);
       setReviews(res.data);
     } catch (err) {
       console.error("Failed to fetch reviews:", err);
@@ -108,7 +108,7 @@ const Reviews = () => {
     const isLiked = likedReviews.includes(id);
 
     try {
-      await axios.patch(`${API_URL}/reviews/${id}/like`, {
+      await axios.patch(`${API_URL}/api/reviews/${id}/like`, {
         like: !isLiked,
       });
 
