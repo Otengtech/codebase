@@ -128,8 +128,8 @@ const Reviews = () => {
   return (
     <>
       <Navbar />
-      <section className="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white py-20 px-4">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-start justify-center gap-10">
+      <section className="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white py-28 px-4">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-10">
           {/* Left Side - Importance */}
           <div className="space-y-6 lg:w-1/2">
             <h2 className="text-sky-300 text-3xl md:text-4xl font-bold">
