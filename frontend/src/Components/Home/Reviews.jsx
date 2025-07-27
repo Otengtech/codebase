@@ -43,7 +43,7 @@ const Reviews = () => {
 
     try {
       setUploading(true);
-      const res = await axios.post(`${API_URL}/upload`, formData); // Backend handles imgbb
+      const res = await axios.post(`${API_URL}/api/upload`, formData); // Backend handles imgbb
       return res.data.url;
     } catch (err) {
       console.error("Image upload failed", err);
