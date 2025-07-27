@@ -62,7 +62,10 @@ const Reviews = () => {
     e.preventDefault();
 
     const avatarUrl = await handleImageUpload();
-    if (!avatarUrl) return;
+    if (!avatarUrl) {
+      alert("Failed to upload image. Please try again.");
+      return;
+    }
 
     try {
       const newReview = {
@@ -71,12 +74,23 @@ const Reviews = () => {
         likes: 0,
         createdAt: new Date().toISOString(),
       };
+
       const res = await axios.post(`${API_URL}/reviews`, newReview);
+
       setReviews((prev) => [res.data, ...prev]);
-      setForm({ name: "", email: "", avatar: "", rating: 5, comment: "" });
+
+      // ✅ Reset the form and image preview
+      setForm({
+        name: "",
+        email: "",
+        avatar: "",
+        rating: 5,
+        comment: "",
+      });
       setImageFile(null);
     } catch (err) {
       console.error("Review submission failed", err);
+      alert("Something went wrong while submitting your review.");
     }
   };
 
@@ -196,6 +210,7 @@ const Reviews = () => {
               />
               <button
                 type="submit"
+                onClick={handleSubmit}
                 disabled={uploading}
                 className="bg-indigo-600 text-white w-full px-4 py-3 rounded-full hover:bg-indigo-700 transition disabled:opacity-50"
               >
