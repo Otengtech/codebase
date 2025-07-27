@@ -19,9 +19,9 @@ export const sendEmail = async (to, subject, html) => {
 
     console.log("Email sent to:", to);
   } catch (err) {
-    console.error("sendEmail Error ➤", err.message);
-    throw err;
-  }
+  console.error("sendEmail Error ➤", err); // FULL error object
+  throw err;
+}
 };
 
 
