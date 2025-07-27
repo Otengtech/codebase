@@ -1,6 +1,6 @@
 // routes/contactRoute.js (or inside server.js/app.js if small project)
 import express from "express";
-import sendEmail from "../utils/sendEmail.js";
+import sendEmail from "../Utils/sendEmail.js";
 
 const router = express.Router();
 
