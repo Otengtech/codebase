@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const TailwindQuiz = () => {
   const [questions, setQuestions] = useState([]);
   const [current, setCurrent] = useState(0);
@@ -15,9 +17,10 @@ const TailwindQuiz = () => {
   const [cancelled, setCancelled] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/t-quiz`)
+    fetch(`${API_URL}/t-quiz`)
       .then((res) => res.json())
-      .then((data) => setQuestions(data));
+      .then((data) => setQuestions(data))
+      .catch((err) => console.error("Failed to load Tailwind quiz:", err));
   }, []);
 
   useEffect(() => {
@@ -25,7 +28,7 @@ const TailwindQuiz = () => {
       const timer = setInterval(() => {
         setTimeLeft((prev) => {
           if (prev === 1) {
-            handleNext(); // auto-advance without affecting score
+            handleNext();
             return 20;
           }
           return prev - 1;
@@ -38,25 +41,30 @@ const TailwindQuiz = () => {
   const handleAnswer = (option) => {
     if (selected) return;
     setSelected(option);
+
     if (option === questions[current].answer) {
       setScore((prev) => prev + 1);
     }
-    setTimeout(() => {
-      handleNext();
-    }, 1000);
+
+    setTimeout(() => handleNext(), 1000);
   };
 
   const handleNext = () => {
     const isLast = current + 1 >= questions.length;
+
     if (!isLast) {
       setCurrent((prev) => prev + 1);
       setSelected(null);
       setTimeLeft(20);
     } else {
       setQuizEnd(true);
-      if (!cancelled && score > topScore) {
-        localStorage.setItem("tailwindTopScore", score);
-        setTopScore(score);
+
+      if (!cancelled) {
+        setTopScore((prevTop) => {
+          const newTop = score > prevTop ? score : prevTop;
+          localStorage.setItem("tailwindTopScore", newTop);
+          return newTop;
+        });
       }
     }
   };
@@ -76,7 +84,7 @@ const TailwindQuiz = () => {
   };
 
   if (questions.length === 0)
-    return <div className="text-white">Loading...</div>;
+    return <div className="text-white text-center mt-10">Loading...</div>;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white flex items-center justify-center px-4 py-8">
