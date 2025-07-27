@@ -9,6 +9,10 @@ const reviewSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  likes: {
+  type: Number,
+  default: 0,
+}
 });
 
 const Review = mongoose.model("Review", reviewSchema);
