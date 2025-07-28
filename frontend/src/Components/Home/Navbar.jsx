@@ -212,7 +212,7 @@ const Navbar = () => {
       {isOpen && <div className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden" onClick={() => setIsOpen(false)} />}
 
       {/* BOTTOM NAVBAR */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 py-3 bg-gray-900 text-sky-300 flex justify-around items-center h-14 shadow-lg border-t border-white/10">
+      <div className="md:hidden fixed bottom-0 left-0 pb-3 right-0 z-50 bg-gray-900 text-sky-300 flex justify-around items-center h-20 shadow-lg border-t border-white/10">
         {bottomLinks.map((item) => {
           const isActive = location.pathname === item.to;
           return (
@@ -223,7 +223,7 @@ const Navbar = () => {
                 isActive ? "scale-110 text-sky-400" : "hover:scale-105"
               }`}
             >
-              <i className={`fas ${item.icon} text-lg`}></i>
+              <i className={`fas ${item.icon} text-xl`}></i>
               {item.label}
             </Link>
           );
