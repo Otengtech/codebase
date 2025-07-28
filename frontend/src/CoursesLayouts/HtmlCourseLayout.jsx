@@ -70,7 +70,7 @@ const CourseLayout = () => {
         <aside
           className={`${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } lg:translate-x-0 fixed lg:static w-72 h-full custom-scroll bg-gradient-to-br from-gray-900 to-purple-600 text-white p-4 z-40 transition-transform duration-300 ease-in-out overflow-y-auto`}
+          } lg:translate-x-0 fixed lg:static w-72 h-full custom-scroll bg-gradient-to-br from-gray-900 to-purple-600 text-white px-4 py-4 pb-16 z-40 transition-transform duration-300 ease-in-out overflow-y-auto`}
         >
           <h2 className="text-2xl font-bold text-sky-300 mb-4">HTML Course</h2>
           <div className="space-y-4">
@@ -101,7 +101,7 @@ const CourseLayout = () => {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 custom-scroll md:py-10 md:px-20 py-10 px-4 overflow-y-auto bg-slate-100">
+        <main className="flex-1 custom-scroll md:py-10 md:px-20 pt-10 pb-16 px-4 overflow-y-auto bg-slate-100">
           <div
             className={`transition-opacity duration-500 ${
               fade ? "opacity-100" : "opacity-0"
