@@ -1055,6 +1055,1289 @@ p {
       </div>
     ),
   },
+  "HTML Lists": {
+    title: "HTML Lists",
+    content: (
+      <div className="space-y-4">
+        <p>HTML provides three types of lists:</p>
+        <ul className="list-disc pl-5">
+          <li>
+            <strong>Ordered list</strong> - uses the &lt;ol&gt; tag.
+          </li>
+          <li>
+            <strong>Unordered list</strong> - uses the &lt;ul&gt; tag.
+          </li>
+          <li>
+            <strong>Description list</strong> - uses the &lt;dl&gt;, &lt;dt&gt;,
+            and &lt;dd&gt; tags.
+          </li>
+        </ul>
+        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+          <pre>
+            <code>{`
+<!-- Ordered list -->
+<ol>
+  <li>First item</li>
+  <li>Second item</li>
+</ol>
+
+<!-- Unordered list -->
+<ul>
+  <li>Apple</li>
+  <li>Banana</li>
+</ul>
+
+<!-- Description list -->
+<dl>
+  <dt>HTML</dt>
+  <dd>Standard markup language for web pages</dd>
+</dl>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Block & Inline": {
+    title: "HTML Block & Inline",
+    content: (
+      <div className="space-y-4">
+        <p>
+          HTML elements are either <strong>block-level</strong> or{" "}
+          <strong>inline</strong>.
+        </p>
+        <p>
+          <strong>Block-level</strong> elements take up the full width
+          available, starting on a new line. Examples: &lt;div&gt;, &lt;p&gt;,
+          &lt;h1&gt;-&lt;h6&gt;
+        </p>
+        <p>
+          <strong>Inline</strong> elements only take up as much width as
+          necessary. Examples: &lt;span&gt;, &lt;a&gt;, &lt;img&gt;
+        </p>
+        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+          <pre>
+            <code>{`
+<!-- Block element -->
+<div>This is a block element</div>
+
+<!-- Inline element -->
+<span>This is an inline element</span>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Div": {
+    title: "HTML Div",
+    content: (
+      <div className="space-y-4">
+        <p>
+          The <code className="text-purple-300">&lt;div&gt;</code> tag is used
+          as a container for HTML elements. It's a block-level element and has
+          no default style.
+        </p>
+        <p>
+          It is useful for grouping content and applying CSS styles or layout.
+        </p>
+        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+          <pre>
+            <code>{`
+<div style="background-color:lightgray;">
+  <h2>Title</h2>
+  <p>This is inside a div container</p>
+</div>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Classes": {
+    title: "HTML Classes",
+    content: (
+      <div className="space-y-4">
+        <p>
+          The <code className="text-purple-300">class</code> attribute specifies
+          one or more class names for an element. Classes are used by CSS and
+          JavaScript to select and manipulate elements.
+        </p>
+        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+          <pre>
+            <code>{`
+<!-- HTML -->
+<p class="intro">This is a paragraph.</p>
+
+<!-- CSS -->
+<style>
+.intro {
+  color: blue;
+  font-weight: bold;
+}
+</style>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Id": {
+    title: "HTML Id",
+    content: (
+      <div className="space-y-4">
+        <p>
+          The <code className="text-purple-300">id</code> attribute defines a
+          unique identifier for an HTML element. It must be unique within the
+          document.
+        </p>
+        <p>Useful for JavaScript targeting or CSS styling.</p>
+        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+          <pre>
+            <code>{`
+<!-- HTML -->
+<h2 id="main-title">Welcome</h2>
+
+<!-- CSS -->
+<style>
+#main-title {
+  color: green;
+}
+</style>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Iframes": {
+    title: "HTML Iframes",
+    content: (
+      <div className="space-y-4">
+        <p>
+          The <code className="text-purple-300">&lt;iframe&gt;</code> tag embeds
+          another HTML page within the current page.
+        </p>
+        <p>Useful for embedding videos, maps, or web pages.</p>
+        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+          <pre>
+            <code>{`
+<iframe src="https://www.example.com" width="300" height="200"></iframe>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML JavaScript": {
+    title: "HTML JavaScript",
+    content: (
+      <div className="space-y-4">
+        <p>
+          JavaScript can be added to an HTML document using the{" "}
+          <code className="text-purple-400">&lt;script&gt;</code> tag. It allows
+          you to make the page interactive and dynamic.
+        </p>
+
+        <p>Here is a simple example that shows an alert when the page loads:</p>
+
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Example</title>
+  </head>
+  <body>
+    <h1>Hello JavaScript</h1>
+    <script>
+      alert("Welcome to my website!");
+    </script>
+  </body>
+</html>
+          `}</code>
+          </pre>
+        </div>
+
+        <p>You can also use external JavaScript files like this:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<script src="script.js"></script>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML File Paths": {
+    title: "HTML File Paths",
+    content: (
+      <div className="space-y-4">
+        <p>
+          HTML file paths are used to link external resources like images,
+          stylesheets, and scripts. They tell the browser where to find the
+          files.
+        </p>
+
+        <p>There are two main types of file paths:</p>
+        <ul className="list-disc list-inside">
+          <li>
+            <strong>Relative Path</strong> – Based on the current file location.
+          </li>
+          <li>
+            <strong>Absolute Path</strong> – Full URL or root-based path.
+          </li>
+        </ul>
+
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<!-- Relative Path -->
+<img src="images/logo.png" alt="Logo" />
+
+<!-- Go up one folder -->
+<img src="../logo.png" alt="Logo" />
+
+<!-- Absolute Path -->
+<img src="https://example.com/images/logo.png" alt="Logo" />
+          `}</code>
+          </pre>
+        </div>
+
+        <p>Project Structure Example:</p>
+        <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+📁 project-folder/
+├── index.html
+├── images/
+│   └── logo.png
+├── css/
+│   └── style.css
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Head": {
+    title: "HTML Head",
+    content: (
+      <div className="space-y-4">
+        <p>
+          The <code className="text-purple-400">&lt;head&gt;</code> element
+          contains meta-information about the HTML document. It is not displayed
+          on the page.
+        </p>
+
+        <p>
+          Common tags inside <code>&lt;head&gt;</code>:
+        </p>
+        <ul className="list-disc list-inside">
+          <li>
+            <code>&lt;title&gt;</code> – Document title
+          </li>
+          <li>
+            <code>&lt;meta&gt;</code> – Metadata like description, charset
+          </li>
+          <li>
+            <code>&lt;link&gt;</code> – External CSS
+          </li>
+          <li>
+            <code>&lt;script&gt;</code> – JavaScript files
+          </li>
+          <li>
+            <code>&lt;style&gt;</code> – Internal styles
+          </li>
+        </ul>
+
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn HTML the easy way!" />
+  <title>HTML Course</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
+</head>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Layout": {
+    title: "HTML Layout",
+    content: (
+      <div className="space-y-4">
+        <p>
+          HTML layout refers to the structure and arrangement of elements on a
+          webpage.
+        </p>
+
+        <p>Common semantic layout elements include:</p>
+        <ul className="list-disc list-inside">
+          <li>
+            <code>&lt;header&gt;</code>
+          </li>
+          <li>
+            <code>&lt;nav&gt;</code>
+          </li>
+          <li>
+            <code>&lt;main&gt;</code>
+          </li>
+          <li>
+            <code>&lt;section&gt;</code>
+          </li>
+          <li>
+            <code>&lt;aside&gt;</code>
+          </li>
+          <li>
+            <code>&lt;footer&gt;</code>
+          </li>
+        </ul>
+
+        <p>Basic layout example:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<body>
+  <header>My Website</header>
+  <nav>Links</nav>
+  <main>
+    <section>Main Content</section>
+    <aside>Sidebar</aside>
+  </main>
+  <footer>Footer Info</footer>
+</body>
+          `}</code>
+          </pre>
+        </div>
+
+        <p>Sample CSS using Flexbox:</p>
+        <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+main {
+  display: flex;
+  gap: 1rem;
+}
+section {
+  flex: 3;
+}
+aside {
+  flex: 1;
+}
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Responsive": {
+    title: "HTML Responsive",
+    content: (
+      <div className="space-y-4">
+        <p>
+          Responsive design allows your HTML page to look great on all devices —
+          mobile, tablet, or desktop.
+        </p>
+
+        <p>Key techniques include:</p>
+        <ul className="list-disc list-inside">
+          <li>
+            Using the <code>&lt;meta name="viewport"&gt;</code> tag
+          </li>
+          <li>CSS media queries</li>
+          <li>Flexible layouts and images</li>
+        </ul>
+
+        <p>Viewport meta tag example:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+          `}</code>
+          </pre>
+        </div>
+
+        <p>Media query CSS example:</p>
+        <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+body {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 20px;
+  }
+}
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Semantics": {
+    title: "HTML Semantics",
+    content: (
+      <div className="space-y-4">
+        <p>
+          Semantic HTML uses meaningful tags that clearly describe their
+          purpose. It helps improve accessibility, SEO, and code readability.
+        </p>
+
+        <p>Examples of semantic tags:</p>
+        <ul className="list-disc list-inside">
+          <li>
+            <code>&lt;header&gt;</code> – Introductory content or navigation
+            links
+          </li>
+          <li>
+            <code>&lt;nav&gt;</code> – Navigation links
+          </li>
+          <li>
+            <code>&lt;main&gt;</code> – Main content area
+          </li>
+          <li>
+            <code>&lt;section&gt;</code> – Group of related content
+          </li>
+          <li>
+            <code>&lt;article&gt;</code> – Independent content
+          </li>
+          <li>
+            <code>&lt;footer&gt;</code> – Footer information
+          </li>
+        </ul>
+
+        <p>Example:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<body>
+  <header>
+    <h1>My Website</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <article>
+        <h2>Post Title</h2>
+        <p>This is a blog post.</p>
+      </article>
+    </section>
+  </main>
+  <footer>© 2025 MySite</footer>
+</body>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Style Guide": {
+    title: "HTML Style Guide",
+    content: (
+      <div className="space-y-4">
+        <p>
+          An HTML style guide is a set of rules to keep your code clean,
+          readable, and consistent. It improves collaboration and
+          maintainability.
+        </p>
+
+        <p>🧑‍💻 Best Practices:</p>
+        <ul className="list-disc list-inside">
+          <li>
+            Use lowercase tag names: <code>&lt;div&gt;</code>, not{" "}
+            <code>&lt;DIV&gt;</code>
+          </li>
+          <li>Close all HTML tags properly</li>
+          <li>Use double quotes around attributes</li>
+          <li>Indent nested elements for clarity</li>
+          <li>Use semantic tags where possible</li>
+        </ul>
+
+        <p>💡 Good Example:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Best Practices</title>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome</h1>
+    </header>
+    <main>
+      <p>This is a clean HTML structure.</p>
+    </main>
+  </body>
+</html>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Entities": {
+    title: "HTML Entities",
+    content: (
+      <div className="space-y-4">
+        <p>
+          HTML entities are used to display reserved characters (like{" "}
+          <code>&lt;</code> and <code>&gt;</code>) or special symbols that can't
+          be typed directly.
+        </p>
+
+        <p>Examples:</p>
+        <ul className="list-disc list-inside">
+          <li>
+            <code>&amp;lt;</code> → &lt;
+          </li>
+          <li>
+            <code>&amp;gt;</code> → &gt;
+          </li>
+          <li>
+            <code>&amp;amp;</code> → &amp;
+          </li>
+          <li>
+            <code>&amp;copy;</code> → ©
+          </li>
+          <li>
+            <code>&amp;nbsp;</code> → (non-breaking space)
+          </li>
+        </ul>
+
+        <p>🧪 Example usage:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<p>This is &lt;em&gt;important&lt;/em&gt; text.</p>
+<p>Use &amp;copy; to represent copyright.</p>
+<p>Don’t forget to escape &amp; signs!</p>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Forms": {
+    title: "HTML Forms",
+    content: (
+      <div className="space-y-4">
+        <p>
+          HTML forms are used to collect user input. The data is usually sent to
+          a server for processing.
+        </p>
+
+        <p>
+          A form is created using the{" "}
+          <code className="text-purple-400">&lt;form&gt;</code> tag.
+        </p>
+
+        <p>🔰 Basic example:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<form action="/submit" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" />
+  <br />
+  <input type="submit" value="Submit" />
+</form>
+          `}</code>
+          </pre>
+        </div>
+
+        <p>
+          The <code>action</code> attribute defines where the form data is sent,
+          and <code>method</code> specifies how it's sent (GET or POST).
+        </p>
+      </div>
+    ),
+  },
+  "HTML Form Attributes": {
+    title: "HTML Form Attributes",
+    content: (
+      <div className="space-y-4">
+        <p>
+          HTML form attributes define the behavior and destination of the form
+          data.
+        </p>
+
+        <p>📝 Common form attributes:</p>
+        <ul className="list-disc list-inside">
+          <li>
+            <code>action</code> – URL to send the form data
+          </li>
+          <li>
+            <code>method</code> – HTTP method: <code>GET</code> or{" "}
+            <code>POST</code>
+          </li>
+          <li>
+            <code>target</code> – Where to open the response (<code>_self</code>
+            , <code>_blank</code>, etc.)
+          </li>
+          <li>
+            <code>autocomplete</code> – Enables or disables autofill
+          </li>
+          <li>
+            <code>novalidate</code> – Disables form validation
+          </li>
+        </ul>
+
+        <p>🎯 Example with attributes:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<form action="/register" method="POST" target="_blank" autocomplete="on">
+  <input type="text" name="username" />
+  <input type="submit" />
+</form>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Form Elements": {
+    title: "HTML Form Elements",
+    content: (
+      <div className="space-y-4">
+        <p>
+          HTML provides various elements to build interactive forms and collect
+          input from users.
+        </p>
+
+        <p>📋 Common form elements:</p>
+        <ul className="list-disc list-inside">
+          <li>
+            <code>&lt;input&gt;</code> – Single-line input
+          </li>
+          <li>
+            <code>&lt;textarea&gt;</code> – Multi-line input
+          </li>
+          <li>
+            <code>&lt;select&gt;</code> – Dropdown menu
+          </li>
+          <li>
+            <code>&lt;option&gt;</code> – Options inside{" "}
+            <code>&lt;select&gt;</code>
+          </li>
+          <li>
+            <code>&lt;button&gt;</code> – Clickable button
+          </li>
+          <li>
+            <code>&lt;label&gt;</code> – Label for an input
+          </li>
+        </ul>
+
+        <p>🧪 Example:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<form>
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" />
+  <br />
+  <label for="message">Message:</label>
+  <textarea id="message" name="message"></textarea>
+  <br />
+  <label for="gender">Gender:</label>
+  <select id="gender" name="gender">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+  <br />
+  <button type="submit">Send</button>
+</form>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Input Types": {
+    title: "HTML Input Types",
+    content: (
+      <div className="space-y-4">
+        <p>
+          The <code className="text-purple-400">&lt;input&gt;</code> tag
+          supports various <strong>types</strong> to define the kind of user
+          data expected.
+        </p>
+
+        <p>🎛️ Common input types:</p>
+        <ul className="list-disc list-inside">
+          <li>
+            <code>text</code> – Single-line text input
+          </li>
+          <li>
+            <code>email</code> – Validates email format
+          </li>
+          <li>
+            <code>password</code> – Obscured text for passwords
+          </li>
+          <li>
+            <code>number</code> – Numeric input
+          </li>
+          <li>
+            <code>date</code> – Date picker
+          </li>
+          <li>
+            <code>radio</code> – Single option from a group
+          </li>
+          <li>
+            <code>checkbox</code> – Multiple selections
+          </li>
+          <li>
+            <code>submit</code> – Submits the form
+          </li>
+          <li>
+            <code>file</code> – File upload
+          </li>
+        </ul>
+
+        <p>🔧 Example:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<form>
+  <input type="text" placeholder="Name" />
+  <input type="email" placeholder="Email" />
+  <input type="password" placeholder="Password" />
+  <input type="date" />
+  <input type="checkbox" /> Accept terms
+  <br />
+  <input type="submit" value="Register" />
+</form>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Input Attributes": {
+    title: "HTML Input Attributes",
+    content: (
+      <div className="space-y-4">
+        <p>
+          HTML <code className="text-purple-400">&lt;input&gt;</code> elements
+          support various attributes to control input behavior, validation, and
+          accessibility.
+        </p>
+
+        <p>🔧 Common input attributes:</p>
+        <ul className="list-disc list-inside">
+          <li>
+            <code>type</code> – Specifies input type (text, email, password,
+            etc.)
+          </li>
+          <li>
+            <code>name</code> – Name used when submitting form data
+          </li>
+          <li>
+            <code>value</code> – Default value
+          </li>
+          <li>
+            <code>placeholder</code> – Temporary hint inside the field
+          </li>
+          <li>
+            <code>required</code> – Makes the field mandatory
+          </li>
+          <li>
+            <code>readonly</code> – Makes field uneditable
+          </li>
+          <li>
+            <code>disabled</code> – Disables the field
+          </li>
+          <li>
+            <code>maxlength</code> – Max number of characters allowed
+          </li>
+        </ul>
+
+        <p>🧪 Example:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<input type="text" name="username" placeholder="Enter your name" required maxlength="20" />
+<input type="email" name="email" value="user@example.com" readonly />
+<input type="password" disabled />
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "Input Form Attributes": {
+    title: "Input Form Attributes",
+    content: (
+      <div className="space-y-4">
+        <p>
+          Some attributes on{" "}
+          <code className="text-purple-400">&lt;input&gt;</code> elements
+          control how they behave inside forms or interact with form
+          submissions.
+        </p>
+
+        <p>📋 Useful input-specific form attributes:</p>
+        <ul className="list-disc list-inside">
+          <li>
+            <code>form</code> – Binds input to a form outside its nesting
+          </li>
+          <li>
+            <code>formaction</code> – Overrides the form's action URL (on submit
+            buttons)
+          </li>
+          <li>
+            <code>formenctype</code> – Encoding type for form data (e.g.{" "}
+            <code>multipart/form-data</code>)
+          </li>
+          <li>
+            <code>formmethod</code> – Overrides the form's method (GET/POST)
+          </li>
+          <li>
+            <code>formtarget</code> – Where to open response (e.g.{" "}
+            <code>_blank</code>)
+          </li>
+          <li>
+            <code>formnovalidate</code> – Bypasses HTML validation
+          </li>
+        </ul>
+
+        <p>🧪 Example with a submit button:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<form id="mainForm" action="/default" method="POST">
+  <input type="text" name="name" />
+  <button type="submit">Submit Normally</button>
+  <button type="submit" formaction="/alternate" formmethod="GET" formtarget="_blank">
+    Submit to Another Page
+  </button>
+</form>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Canvas": {
+    title: "HTML Canvas",
+    content: (
+      <div className="space-y-4">
+        <p>
+          The <code className="text-purple-400">&lt;canvas&gt;</code> element is
+          used to draw graphics via JavaScript. It can render shapes, graphs,
+          games, animations, and more.
+        </p>
+
+        <p>🖼️ Canvas must be accessed and drawn using JavaScript:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<canvas id="myCanvas" width="300" height="150" style="border:1px solid #000;"></canvas>
+
+<script>
+  const canvas = document.getElementById("myCanvas");
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#FF0000";
+  ctx.fillRect(20, 20, 100, 50);
+</script>
+          `}</code>
+          </pre>
+        </div>
+
+        <p>
+          The <code>getContext("2d")</code> method returns a drawing context for
+          2D rendering.
+        </p>
+      </div>
+    ),
+  },
+  "HTML SVG": {
+    title: "HTML SVG",
+    content: (
+      <div className="space-y-4">
+        <p>
+          SVG (Scalable Vector Graphics) is an XML-based markup for creating
+          vector graphics directly in HTML.
+        </p>
+
+        <p>
+          🎯 SVG is perfect for icons, charts, and responsive illustrations. It
+          scales without losing quality.
+        </p>
+
+        <p>🖌️ Example of a simple SVG shape:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<svg width="200" height="100">
+  <rect width="200" height="100" style="fill:blue;" />
+  <text x="50" y="55" fill="white" font-size="20">SVG Box</text>
+</svg>
+          `}</code>
+          </pre>
+        </div>
+
+        <p>
+          You can style SVGs with CSS or inline <code>style</code> attributes,
+          and they can be interactive using JavaScript.
+        </p>
+      </div>
+    ),
+  },
+  "HTML Media": {
+    title: "HTML Media",
+    content: (
+      <div className="space-y-4">
+        <p>
+          HTML allows you to embed media like <strong>video</strong>,{" "}
+          <strong>audio</strong>, and other external content directly into
+          webpages.
+        </p>
+
+        <p>✨ Common media elements:</p>
+        <ul className="list-disc list-inside">
+          <li>
+            <code>&lt;video&gt;</code> – Embed videos
+          </li>
+          <li>
+            <code>&lt;audio&gt;</code> – Embed sound files
+          </li>
+          <li>
+            <code>&lt;iframe&gt;</code> – Embed external resources (e.g.,
+            YouTube)
+          </li>
+          <li>
+            <code>&lt;object&gt;</code> / <code>&lt;embed&gt;</code> – Load
+            plug-in-based content
+          </li>
+        </ul>
+
+        <p>🧪 Basic example:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<video width="300" controls>
+  <source src="movie.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<audio controls>
+  <source src="audio.mp3" type="audio/mpeg" />
+  Your browser does not support the audio element.
+</audio>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Video": {
+    title: "HTML Video",
+    content: (
+      <div className="space-y-4">
+        <p>
+          The <code className="text-purple-400">&lt;video&gt;</code> tag is used
+          to embed video content. It supports multiple formats and fallback
+          text.
+        </p>
+
+        <p>🎥 Common attributes:</p>
+        <ul className="list-disc list-inside">
+          <li>
+            <code>controls</code> – Show play/pause/volume buttons
+          </li>
+          <li>
+            <code>autoplay</code> – Start playing automatically
+          </li>
+          <li>
+            <code>muted</code> – Start muted
+          </li>
+          <li>
+            <code>loop</code> – Play video in a loop
+          </li>
+          <li>
+            <code>poster</code> – Show an image before playback
+          </li>
+        </ul>
+
+        <p>🧪 Example:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<video width="400" controls poster="thumbnail.jpg">
+  <source src="sample.mp4" type="video/mp4" />
+  <source src="sample.ogg" type="video/ogg" />
+  Your browser does not support the video tag.
+</video>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Audio": {
+    title: "HTML Audio",
+    content: (
+      <div className="space-y-4">
+        <p>
+          The <code className="text-purple-400">&lt;audio&gt;</code> tag is used
+          to embed sound files. It supports multiple audio formats and fallback
+          text.
+        </p>
+
+        <p>🎧 Common attributes:</p>
+        <ul className="list-disc list-inside">
+          <li>
+            <code>controls</code> – Show playback controls
+          </li>
+          <li>
+            <code>autoplay</code> – Play automatically when page loads
+          </li>
+          <li>
+            <code>loop</code> – Repeat the audio indefinitely
+          </li>
+          <li>
+            <code>muted</code> – Mute by default
+          </li>
+        </ul>
+
+        <p>🎼 Example:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<audio controls>
+  <source src="sound.mp3" type="audio/mpeg" />
+  <source src="sound.ogg" type="audio/ogg" />
+  Your browser does not support the audio element.
+</audio>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML Plug-ins": {
+    title: "HTML Plug-ins",
+    content: (
+      <div className="space-y-4">
+        <p>
+          HTML supports embedding external content or applications using{" "}
+          <code className="text-purple-400">&lt;object&gt;</code>,{" "}
+          <code>&lt;embed&gt;</code>, and <code>&lt;iframe&gt;</code>.
+        </p>
+
+        <p>
+          🔌 These were mainly used for things like Flash, PDFs, and Java
+          applets. Modern usage favors <code>&lt;iframe&gt;</code> for safer,
+          flexible embeds.
+        </p>
+
+        <p>
+          📄 Example with PDF using <code>&lt;embed&gt;</code>:
+        </p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<embed src="file.pdf" width="600" height="500" type="application/pdf" />
+          `}</code>
+          </pre>
+        </div>
+
+        <p>
+          🖼️ Using <code>&lt;object&gt;</code>:
+        </p>
+        <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<object data="file.pdf" type="application/pdf" width="600" height="500">
+  <p>Your browser does not support PDFs. <a href="file.pdf">Download</a> instead.</p>
+</object>
+          `}</code>
+          </pre>
+        </div>
+      </div>
+    ),
+  },
+  "HTML YouTube": {
+    title: "HTML YouTube",
+    content: (
+      <div className="space-y-4">
+        <p>
+          You can embed YouTube videos in your HTML pages using the{" "}
+          <code className="text-purple-400">&lt;iframe&gt;</code> tag. YouTube
+          provides a shareable embed code.
+        </p>
+
+        <p>📺 Example embed code from YouTube:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<iframe width="560" height="315"
+  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+  title="YouTube video player"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen>
+</iframe>
+          `}</code>
+          </pre>
+        </div>
+
+        <p>
+          You can change the video by replacing the URL in the <code>src</code>{" "}
+          attribute with any other YouTube video’s embed link.
+        </p>
+      </div>
+    ),
+  },
+  "HTML Web APIs": {
+    title: "HTML Web APIs",
+    content: (
+      <div className="space-y-4">
+        <p>
+          HTML can interact with various Web APIs provided by the browser to add
+          advanced functionality like geolocation, drag and drop, and storage.
+        </p>
+        <p>
+          These APIs are usually accessed through JavaScript and allow your web
+          applications to be more interactive and powerful.
+        </p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>
+            <strong>Geolocation API:</strong> Get the user's location.
+          </li>
+          <li>
+            <strong>Drag and Drop API:</strong> Allow draggable HTML elements.
+          </li>
+          <li>
+            <strong>Web Storage API:</strong> Store data in browser
+            (localStorage/sessionStorage).
+          </li>
+        </ul>
+        <p>
+          Each API has specific use cases and requires permission or event
+          handling logic.
+        </p>
+      </div>
+    ),
+  },
+  "HTML Geolocation": {
+    title: "HTML Geolocation",
+    content: (
+      <div className="space-y-4">
+        <p>
+          The Geolocation API allows the browser to detect and return the user’s
+          geographical location. It’s useful for maps, local services, etc.
+        </p>
+        <p>Here's a basic example:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<script>
+  navigator.geolocation.getCurrentPosition(function(position) {
+    alert("Latitude: " + position.coords.latitude + 
+          "\\nLongitude: " + position.coords.longitude);
+  });
+</script>
+          `}</code>
+          </pre>
+        </div>
+        <p>
+          This API typically requires user permission and may not work if denied
+          or blocked.
+        </p>
+      </div>
+    ),
+  },
+  "HTML Drag and Drop": {
+    title: "HTML Drag and Drop",
+    content: (
+      <div className="space-y-4">
+        <p>
+          The HTML Drag and Drop API allows elements to be moved using the
+          mouse. It’s commonly used in UI elements like file uploads or sortable
+          lists.
+        </p>
+
+        <p>Example of making a draggable element:</p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<div id="dragme" draggable="true" ondragstart="drag(event)">Drag me!</div>
+
+<script>
+  function drag(event) {
+    event.dataTransfer.setData("text", event.target.id);
+  }
+</script>
+          `}</code>
+          </pre>
+        </div>
+
+        <p>
+          You also need drop targets with events like <code>ondragover</code>{" "}
+          and <code>ondrop</code> to complete the interaction.
+        </p>
+      </div>
+    ),
+  },
+  "HTML Web Storage": {
+    title: "HTML Web Storage",
+    content: (
+      <div className="space-y-4">
+        <p>
+          The Web Storage API allows storing data in the browser using{" "}
+          <code>localStorage</code> or <code>sessionStorage</code>. It provides
+          better performance and security than cookies.
+        </p>
+
+        <p>
+          Example using <code>localStorage</code>:
+        </p>
+        <div className="bg-gradient-to-r from-violet-600 to-purple-500 text-white p-4 rounded-lg overflow-x-auto">
+          <pre>
+            <code>{`
+<script>
+  // Store data
+  localStorage.setItem("username", "John");
+
+  // Retrieve data
+  let user = localStorage.getItem("username");
+  alert(user);
+</script>
+          `}</code>
+          </pre>
+        </div>
+
+        <p>
+          Use <code>sessionStorage</code> to store data for a single session.
+          It's cleared when the page session ends.
+        </p>
+      </div>
+    ),
+  },
 };
 
 export default topicContents;
