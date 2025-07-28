@@ -2,6 +2,7 @@ export const topicGroups = [
   {
     section: "HTML Tutorial",
     items: [
+      { id: "html-home", title: "HTML Home" },
       { id: "html-intro", title: "HTML Introduction" },
       { id: "html-editors", title: "HTML Editors" },
       { id: "html-basic", title: "HTML Basic" },

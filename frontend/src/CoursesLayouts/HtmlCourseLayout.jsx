@@ -4,26 +4,40 @@ import { topicGroups } from "./HtmlTopic";
 import topicContents from "./HtmlContent";
 import { Menu, X } from "lucide-react";
 
+const flatTopics = topicGroups.flatMap(group => group.items);
+
 const CourseLayout = () => {
+  const defaultTopicId = localStorage.getItem("selectedTopicId") || flatTopics[0].id;
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [currentTopic, setCurrentTopic] = useState({
-    id: "html-intro",
-    title: "HTML Introduction",
-  });
+  const [currentTopic, setCurrentTopic] = useState(
+    flatTopics.find(t => t.id === defaultTopicId) || flatTopics[0]
+  );
   const [fade, setFade] = useState(true);
 
-  const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
+  const toggleSidebar = () => setIsSidebarOpen(prev => !prev);
 
   useEffect(() => {
-    // Fade effect
     setFade(false);
     const timeout = setTimeout(() => setFade(true), 150);
-
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Save current topic ID
+    localStorage.setItem("selectedTopicId", currentTopic.id);
 
     return () => clearTimeout(timeout);
   }, [currentTopic]);
+
+  const currentIndex = flatTopics.findIndex(t => t.id === currentTopic.id);
+  const hasPrev = currentIndex > 0;
+  const hasNext = currentIndex < flatTopics.length - 1;
+
+  const handlePrev = () => {
+    if (hasPrev) setCurrentTopic(flatTopics[currentIndex - 1]);
+  };
+
+  const handleNext = () => {
+    if (hasNext) setCurrentTopic(flatTopics[currentIndex + 1]);
+  };
 
   const renderExample = (id) => {
     switch (id) {
@@ -58,9 +72,9 @@ const CourseLayout = () => {
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } lg:translate-x-0 fixed lg:static w-72 h-full custom-scroll bg-gradient-to-br from-gray-900 to-purple-600 text-white p-4 z-40 transition-transform duration-300 ease-in-out overflow-y-auto`}
         >
-          <h2 className="text-2xl font-bold text-sky-300 text-center mb-4">HTML Course</h2>
+          <h2 className="text-2xl font-bold text-sky-300 mb-4">HTML Course</h2>
           <div className="space-y-4">
-            {topicGroups.map((group) => (
+            {topicGroups.map(group => (
               <div key={group.section}>
                 <h3 className="text-sky-300 text-lg font-semibold border-b border-white/20 pb-1 ml-3 mb-2">
                   {group.section}
@@ -87,7 +101,7 @@ const CourseLayout = () => {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 custom-scroll md:py-10 md:px-20 p-10 overflow-y-auto bg-slate-100">
+        <main className="flex-1 custom-scroll md:py-10 md:px-20 py-10 px-4 overflow-y-auto bg-slate-100">
           <div
             className={`transition-opacity duration-500 ${
               fade ? "opacity-100" : "opacity-0"
@@ -104,10 +118,28 @@ const CourseLayout = () => {
             </pre>
 
             {/* Full content from topicContents */}
-            <div className="prose prose-slate max-w-full">
+            <div className="prose prose-slate max-w-full mb-10">
               {topicContents[currentTopic.title]?.content || (
                 <p className="text-red-500">Content not available for this topic.</p>
               )}
+            </div>
+
+            {/* Prev / Next Buttons */}
+            <div className="flex justify-between items-center gap-4">
+              <button
+                onClick={handlePrev}
+                disabled={!hasPrev}
+                className="px-4 py-2 rounded bg-purple-700 text-white disabled:opacity-40 hover:bg-purple-600 transition"
+              >
+                ← Previous
+              </button>
+              <button
+                onClick={handleNext}
+                disabled={!hasNext}
+                className="px-4 py-2 rounded bg-purple-700 text-white disabled:opacity-40 hover:bg-purple-600 transition"
+              >
+                Next →
+              </button>
             </div>
           </div>
         </main>
