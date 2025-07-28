@@ -69,3 +69,37 @@
 .animate-bounce-custom1 {
   animation: bounce-custom1 1s infinite ease-in-out;
 }
+
+/* Thin purple scrollbar for WebKit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9333ea; /* Tailwind's purple-600 */
+  border-radius: 8px;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9333ea transparent;
+}
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #9333ea;
+  border-radius: 8px;
+}
+
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #9999ea transparent;
+}

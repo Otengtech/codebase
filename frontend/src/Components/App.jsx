@@ -43,6 +43,7 @@ import ContactUs from "./Home/Contact";
 import MoveTop from "./Home/MoveTop";
 import ScrollToTop from "./Home/ScrollToTop";
 import ReviewSection from "./Home/Reviews.jsx";
+import CourseLayout from "../CoursesLayouts/HtmlCourseLayout.jsx";
 
 const App = () => {
   return (
@@ -91,6 +92,9 @@ const App = () => {
         <Route path="/mdbquiz" element={<MdbQuiz />} />
         <Route path="/tquiz" element={<TailwindQuiz />} />
         <Route path="/reviews" element={<ReviewSection />} />
+
+        {/* Courses Layouts */}
+        <Route path="/htmlcourse" element={<CourseLayout />} />
       </Routes>
     </Router>
   );

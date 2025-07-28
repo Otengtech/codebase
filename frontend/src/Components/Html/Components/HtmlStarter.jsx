@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import htmlImg from "../../../assets/html.png";
 import Navbar from "../../Home/Navbar";
 import Footer from "../../Home/Footer";
+import { Link } from "react-router-dom";
 
 const Html = () => {
   return (
@@ -82,9 +83,10 @@ const Html = () => {
 
             {/* Enroll Button */}
             <div className="mt-6">
-              <button className="bg-orange-500 hover:bg-orange-400 text-gray-900 font-semibold px-6 py-2 rounded-md transition">
+              <Link to="/htmlcourse"><button className="bg-orange-500 hover:bg-orange-400 text-gray-900 font-semibold px-6 py-2 rounded-md transition">
                 Enroll Now
               </button>
+              </Link>
             </div>
           </div>
         </div>
