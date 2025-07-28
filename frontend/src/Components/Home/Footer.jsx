@@ -61,7 +61,7 @@ const Footer = () => {
       <div className="mt-10 border-t border-gray-600 pt-4 text-center text-sm text-gray-500">
         © {new Date().getFullYear()} CodeBase. All rights reserved.
       </div>
-      <div className=" pt-4 text-center text-sm text-gray-300">
+      <div className=" pt-4 pb-10 md:pb-1 text-center text-sm text-gray-300">
         Designed by Ebenezer Oteng 
       </div>
     </footer>
