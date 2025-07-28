@@ -47,7 +47,7 @@ const Hero = () => {
         <h1 className="text-lg text-violet-200">WELCOME {name}</h1>
         <h2
           className="text-4xl md:text-5xl text-sky-200 font-bold leading-tight
-             h-[4.9rem] md:h-[5.5rem] overflow-hidden"
+             h-[5rem] md:h-[5.5rem] overflow-hidden"
         >
           <span className="inline-flex items-center flex-wrap">
             {displayText}

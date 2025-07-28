@@ -16,7 +16,8 @@ const Navbar = () => {
   const learnRef = useRef();
 
   const learnItems = ["HTML", "CSS", "JavaScript", "NodeJS", "TailwindCss", "MongoDB"];
-  const navItems = ["Blog", "Course", "Quiz", "About", "Contact"];
+  const navItems = ["Blog", "Course", "Quiz", "About", "Contact", "FAQ"];
+  const mobileNavItems = ["About", "Contact", "FAQ", "Terms & Conditions"];
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -155,7 +156,7 @@ const Navbar = () => {
       </nav>
 
       {/* MOBILE SLIDE-IN MENU */}
-      <div className={`fixed top-0 left-0 h-screen w-4/5 max-w-xs bg-white/5 border border-white/10 backdrop-blur-md text-white z-40 transform transition-transform duration-300 ${
+      <div className={`fixed top-10 pt-16 left-0 h-screen w-4/5 max-w-xs bg-white/5 border border-white/10 backdrop-blur-md text-white z-40 transform transition-transform duration-300 ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}>
         <div className="flex flex-col h-full p-6 space-y-6">
@@ -173,8 +174,6 @@ const Navbar = () => {
             </div>
           </div>
 
-          <Link to="/" onClick={() => setIsOpen(false)} className="hover:text-sky-400">Home</Link>
-
           <div ref={learnRef}>
             <button onClick={() => setShowLearnDropdown((prev) => !prev)} className="w-full text-left hover:text-sky-400 flex justify-between items-center">
               Learn <i className={`fas fa-chevron-${showLearnDropdown ? "up" : "down"}`}></i>
@@ -191,7 +190,7 @@ const Navbar = () => {
             )}
           </div>
 
-          {navItems.map((item) => (
+          {mobileNavItems.map((item) => (
             <Link key={item} to={`/${item.toLowerCase()}`} onClick={() => setIsOpen(false)} className="hover:text-sky-400">
               {item}
             </Link>

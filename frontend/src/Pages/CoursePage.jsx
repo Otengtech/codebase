@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import htmlImg from "../assets/html.png";
 import cssImg from "../assets/css.png";
@@ -116,38 +116,53 @@ const courses = [
 ];
 
 const Course = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredCourses = courses.filter((course) =>
+    course.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <>
-    <Navbar />
-      {
-        <section className="py-28 bg-gradient-to-r from-gray-900 to-violet-900 relative">
-          <motion.div
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
-            >
-          <h2 className="text-3xl text-sky-300 md:text-4xl font-bold text-center mb-8">
+      <Navbar />
+      <section className="py-28 bg-gradient-to-r from-gray-900 to-violet-900 relative">
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-10 px-4"
+        >
+          <h2 className="text-3xl text-sky-300 md:text-4xl font-bold text-center mb-4">
             Our Courses
           </h2>
           <div className="flex justify-center">
-            <p className="w-full text-gray-300 md:w-1/2 mx-3 mb-10">
+            <p className="w-full text-gray-300 md:w-1/2 mx-3 mb-6">
               The MERN stack course is a comprehensive web development program
               that teaches students how to build dynamic, full-stack web
               applications using four powerful technologies: MongoDB,
-              Express.js, React.js, and Node.js. This course covers both
-              frontend and backend development, starting with creating user
-              interfaces in React, handling client-server communication with
-              Express and Node.js, and managing data with MongoDB, a NoSQL
-              database.
+              Express.js, React.js, and Node.js.
             </p>
           </div>
-          </motion.div>
-          <div className="relative">
-            <div
-              className="grid grid-cols-1 md:grid-cols-3 gap-10 px-8 md:px-28 py-8"
-            >
-              {courses.map((course, index) => (
+
+          {/* Search Input */}
+          <div className="flex justify-center mb-6">
+            <div className="relative w-full max-w-md">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search courses..."
+                className="w-full py-2 pl-10 pr-4 rounded-lg bg-transparent border border-sky-200 text-sky-200 placeholder-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-300"
+              />
+              <i className="fas fa-search absolute top-1/2 left-3 -translate-y-1/2 text-sky-300 pointer-events-none" />
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="relative">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-3 md:px-28 py-8">
+            {filteredCourses.length > 0 ? (
+              filteredCourses.map((course, index) => (
                 <div
                   key={index}
                   className="bg-white/5 border border-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-[1.02] transition-all duration-500"
@@ -167,10 +182,12 @@ const Course = () => {
                       </p>
                       <div className="text-sm text-gray-400 mt-2">
                         <p>
-                          <strong className="text-sky-300">Duration:</strong> {course.duration}
+                          <strong className="text-sky-300">Duration:</strong>{" "}
+                          {course.duration}
                         </p>
                         <p>
-                          <strong className="text-sky-300">Level:</strong> {course.level}
+                          <strong className="text-sky-300">Level:</strong>{" "}
+                          {course.level}
                         </p>
                       </div>
                       <ul className="list-disc list-inside text-gray-300 text-sm mt-2">
@@ -181,11 +198,15 @@ const Course = () => {
                     </div>
                   </Link>
                 </div>
-              ))}
-            </div>
+              ))
+            ) : (
+              <p className="text-center text-sky-200 col-span-full">
+                No courses match your search.
+              </p>
+            )}
           </div>
-        </section>
-      }
+        </div>
+      </section>
       <Footer />
     </>
   );
