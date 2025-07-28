@@ -17,7 +17,7 @@ const TailwindQuiz = () => {
   const [cancelled, setCancelled] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [topScore, setTopScore] = useState(
-    parseInt(localStorage.getItem("jsTopScore")) || 0
+    parseInt(localStorage.getItem("tailwindTopScore")) || 0
   );
 
   useEffect(() => {
@@ -72,10 +72,10 @@ const TailwindQuiz = () => {
     } else {
       setQuizEnd(true);
       if (!cancelled && score > topScore) {
-        localStorage.setItem("jsTopScore", score);
+        localStorage.setItem("tailwindTopScore", score);
         setTopScore(score);
         setShowConfetti(true);
-        setTimeout(() => setShowConfetti(false), 5000);
+        setTimeout(() => setShowConfetti(false), 20000);
       }
     }
   };

@@ -79,7 +79,7 @@ const HtmlQuiz = () => {
         localStorage.setItem("htmlTopScore", score);
         setTopScore(score);
         setShowConfetti(true);
-        setTimeout(() => setShowConfetti(false), 5000);
+        setTimeout(() => setShowConfetti(false), 20000);
       }
     }
   };

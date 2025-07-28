@@ -78,7 +78,7 @@ const CssQuiz = () => {
         localStorage.setItem("cssTopScore", score);
         setTopScore(score);
         setShowConfetti(true);
-        setTimeout(() => setShowConfetti(false), 5000);
+        setTimeout(() => setShowConfetti(false), 20000);
       }
     }
   };

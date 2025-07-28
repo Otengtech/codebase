@@ -23,7 +23,7 @@ const MoveTop = () => {
 
   return (
     isVisible && (
-      <div className="fixed bottom-6 right-4 z-50">
+      <div className="fixed md:bottom-4 bottom-24 right-4 z-50">
         <button
           onClick={scrollToTop}
           className="w-10 h-10 flex items-center justify-center rounded-full bg-white text-black text-xl shadow-md shadow-gray-800 transition"

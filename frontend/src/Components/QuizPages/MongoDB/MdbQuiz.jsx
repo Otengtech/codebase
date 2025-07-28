@@ -17,7 +17,7 @@ const [questions, setQuestions] = useState([]);
   const [cancelled, setCancelled] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [topScore, setTopScore] = useState(
-    parseInt(localStorage.getItem("jsTopScore")) || 0
+    parseInt(localStorage.getItem("mdbTopScore")) || 0
   );
 
   useEffect(() => {
@@ -72,10 +72,10 @@ const [questions, setQuestions] = useState([]);
     } else {
       setQuizEnd(true);
       if (!cancelled && score > topScore) {
-        localStorage.setItem("jsTopScore", score);
+        localStorage.setItem("mdbTopScore", score);
         setTopScore(score);
         setShowConfetti(true);
-        setTimeout(() => setShowConfetti(false), 5000);
+        setTimeout(() => setShowConfetti(false), 20000);
       }
     }
   };

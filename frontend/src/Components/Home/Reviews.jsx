@@ -13,6 +13,7 @@ import Navbar from "./Navbar";
 import da from "../../assets/d.jfif";
 import m from "../../assets/m.jfif";
 import js from "../../assets/js.jpg";
+import Loader from "./Loader";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -54,6 +55,12 @@ const Reviews = () => {
   const [image, setImage] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [rating, setRating] = useState(5);
+  const [loader, setLoader] = useState(false);
+  useEffect(() => {
+    setLoader(true);
+    const timer = setTimeout(() => setLoader(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     fetchReviews();
@@ -168,197 +175,206 @@ const Reviews = () => {
 
   return (
     <>
+      {loader && <Loader />}
       <Navbar />
-      <section className="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white py-28 px-4">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-10">
-          {/* Left Side - Importance */}
-          <div className="space-y-6 lg:w-1/2">
-            <h2 className="text-sky-300 text-3xl md:text-4xl font-bold">
-              Why Your Reviews Matter
-            </h2>
-            <ul className="list-disc list-inside text-base md:text-lg space-y-2">
-              <li>Helps us improve our service and quality.</li>
-              <li>Builds trust with other users.</li>
-              <li>Boosts transparency and reliability.</li>
-              <li>Encourages our team to keep delivering the best.</li>
-            </ul>
-          </div>
+      {!loader && (
+        <div>
+          <section className="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white py-28 px-4">
+            <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-10">
+              {/* Left Side - Importance */}
+              <div className="space-y-6 lg:w-1/2">
+                <h2 className="text-sky-300 text-3xl md:text-4xl font-bold">
+                  Why Your Reviews Matter
+                </h2>
+                <ul className="list-disc list-inside text-base md:text-lg space-y-2">
+                  <li>Helps us improve our service and quality.</li>
+                  <li>Builds trust with other users.</li>
+                  <li>Boosts transparency and reliability.</li>
+                  <li>Encourages our team to keep delivering the best.</li>
+                </ul>
+              </div>
 
-          {/* Right Side - Form */}
-          <form
-            className="backdrop-blur-lg bg-white/10 p-6 rounded-2xl shadow-lg space-y-4 w-full lg:w-1/2"
-            onSubmit={addReview}
-          >
-            <h3 className="text-center text-2xl md:text-3xl text-sky-300 font-bold mb-2">
-              Send a Review
-            </h3>
-
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your Name"
-              className="w-full px-5 py-3 border bg-transparent text-white border-gray-400 rounded-full focus:outline-sky-300"
-            />
-
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your Email"
-              className="w-full px-5 py-3 border bg-transparent text-white border-gray-400 rounded-full focus:outline-sky-300"
-            />
-
-            {/* File Upload */}
-            <div className="flex flex-wrap gap-4 items-center">
-              <label
-                htmlFor="image-upload"
-                className="cursor-pointer px-4 py-2 bg-sky-300 text-black rounded-full text-sm hover:bg-sky-200"
+              {/* Right Side - Form */}
+              <form
+                className="backdrop-blur-lg bg-white/10 p-6 rounded-2xl shadow-lg space-y-4 w-full lg:w-1/2"
+                onSubmit={addReview}
               >
-                Choose Image
-              </label>
-              <input
-                id="image-upload"
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                className="hidden"
-              />
-              <button
-                type="button"
-                onClick={clearPreview}
-                className="px-4 py-2 bg-sky-300 text-black rounded-full text-sm hover:bg-sky-200"
-              >
-                Clear Image
-              </button>
-            </div>
+                <h3 className="text-center text-2xl md:text-3xl text-sky-300 font-bold mb-2">
+                  Send a Review
+                </h3>
 
-            {previewUrl && (
-              <img
-                src={previewUrl}
-                alt="Preview"
-                className="w-full max-w-xs h-40 object-cover rounded-xl mx-auto"
-              />
-            )}
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your Name"
+                  className="w-full px-5 py-3 border bg-transparent text-white border-gray-400 rounded-full focus:outline-sky-300"
+                />
 
-            <textarea
-              rows="4"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Your Review"
-              className="w-full p-4 border bg-transparent text-white border-gray-400 rounded-xl resize-none focus:outline-sky-300"
-            />
-            <div className="flex gap-2 justify-center items-center">
-              <p>Rating:</p>
-              {[1, 2, 3, 4, 5].map((star) => (
-                <button
-                  key={star}
-                  type="button"
-                  onClick={() => setRating(star)}
-                  className={
-                    star <= rating
-                      ? "text-yellow-400 text-2xl focus:outline-none"
-                      : "text-gray-400 text-xl focus:outline-none"
-                  }
-                >
-                  ★
-                </button>
-              ))}
-            </div>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your Email"
+                  className="w-full px-5 py-3 border bg-transparent text-white border-gray-400 rounded-full focus:outline-sky-300"
+                />
 
-            <button
-              type="submit"
-              onClick={addReview}
-              className="w-full bg-sky-300 text-black py-3 rounded-full font-semibold text-lg hover:bg-sky-200"
-            >
-              Submit Review
-            </button>
-          </form>
-        </div>
-
-        {/* Review Display Section */}
-        <div className="mt-16 space-y-6 max-w-5xl mx-auto px-4">
-          <h3 className="text-center text-sky-300 text-2xl md:text-3xl font-bold">
-            What Others Are Saying
-          </h3>
-
-          {reviews.length === 0 ? (
-            <p className="text-center text-gray-300">No reviews yet.</p>
-          ) : (
-            <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {/* 🔹 Fetched reviews (from DB) */}
-              {reviews.map((review) => {
-                const isLiked = JSON.parse(
-                  localStorage.getItem("likedReviews") || "[]"
-                ).includes(review._id);
-
-                return (
-                  <div
-                    key={review._id}
-                    className="bg-white text-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300"
+                {/* File Upload */}
+                <div className="flex flex-wrap gap-4 items-center">
+                  <label
+                    htmlFor="image-upload"
+                    className="cursor-pointer px-4 py-2 bg-sky-300 text-black rounded-full text-sm hover:bg-sky-200"
                   >
-                    <FaQuoteLeft className="text-2xl text-indigo-600 mb-3" />
-                    <div className="flex items-center gap-4 mb-4">
-                      <img
-                        src={
-                          review.imageUrl ||
-                          review.avatar ||
-                          "https://via.placeholder.com/50"
-                        }
-                        alt={review.name}
-                        className="w-14 h-14 rounded-full object-cover border border-indigo-200"
-                      />
-                      <div>
-                        <h4 className="font-semibold text-lg">{review.name}</h4>
-                        <h4 className="text-sm text-gray-400">
-                          {review.email}
-                        </h4>
+                    Choose Image
+                  </label>
+                  <input
+                    id="image-upload"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    className="hidden"
+                  />
+                  <button
+                    type="button"
+                    onClick={clearPreview}
+                    className="px-4 py-2 bg-sky-300 text-black rounded-full text-sm hover:bg-sky-200"
+                  >
+                    Clear Image
+                  </button>
+                </div>
 
-                        <div className="flex mt-1">
-                          {Array.from({ length: 5 }).map((_, i) => (
-                            <FaStar
-                              key={i}
-                              className={`w-4 h-4 mr-1 ${
-                                i < review.rating
-                                  ? "text-yellow-400"
-                                  : "text-gray-300"
-                              }`}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-sm text-gray-700 mb-4 italic">
-                      "{review.message || review.comment}"
-                    </p>
+                {previewUrl && (
+                  <img
+                    src={previewUrl}
+                    alt="Preview"
+                    className="w-full max-w-xs h-40 object-cover rounded-xl mx-auto"
+                  />
+                )}
+
+                <textarea
+                  rows="4"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Your Review"
+                  className="w-full p-4 border bg-transparent text-white border-gray-400 rounded-xl resize-none focus:outline-sky-300"
+                />
+                <div className="flex gap-2 justify-center items-center">
+                  <p>Rating:</p>
+                  {[1, 2, 3, 4, 5].map((star) => (
                     <button
-                      onClick={() => toggleLike(review._id)}
-                      className="flex items-center gap-2 text-pink-500 hover:text-pink-600 transition"
+                      key={star}
+                      type="button"
+                      onClick={() => setRating(star)}
+                      className={
+                        star <= rating
+                          ? "text-yellow-400 text-2xl focus:outline-none"
+                          : "text-gray-400 text-xl focus:outline-none"
+                      }
                     >
-                      <div className="flex flex-col items-center justify-start">
-                        <div>
-                          <div className="flex items-center justify-start">
-                            <FaHeart
-                              className={isLiked ? "text-pink-600" : "text-gray-500"}
-                            />
-                            <span className="text-sm ml-1">
-                              {review.likes || 0} likes
-                            </span>
+                      ★
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  type="submit"
+                  onClick={addReview}
+                  className="w-full bg-sky-300 text-black py-3 rounded-full font-semibold text-lg hover:bg-sky-200"
+                >
+                  Submit Review
+                </button>
+              </form>
+            </div>
+
+            {/* Review Display Section */}
+            <div className="mt-16 space-y-6 max-w-5xl mx-auto px-4">
+              <h3 className="text-center text-sky-300 text-2xl md:text-3xl font-bold">
+                What Others Are Saying
+              </h3>
+
+              {reviews.length === 0 ? (
+                <p className="text-center text-gray-300">No reviews yet.</p>
+              ) : (
+                <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                  {/* 🔹 Fetched reviews (from DB) */}
+                  {reviews.map((review) => {
+                    const isLiked = JSON.parse(
+                      localStorage.getItem("likedReviews") || "[]"
+                    ).includes(review._id);
+
+                    return (
+                      <div
+                        key={review._id}
+                        className="bg-white text-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300"
+                      >
+                        <FaQuoteLeft className="text-2xl text-indigo-600 mb-3" />
+                        <div className="flex items-center gap-4 mb-4">
+                          <img
+                            src={
+                              review.imageUrl ||
+                              review.avatar ||
+                              "https://via.placeholder.com/50"
+                            }
+                            alt={review.name}
+                            className="w-14 h-14 rounded-full object-cover border border-indigo-200"
+                          />
+                          <div>
+                            <h4 className="font-semibold text-lg">
+                              {review.name}
+                            </h4>
+                            <h4 className="text-sm text-gray-400">
+                              {review.email}
+                            </h4>
+
+                            <div className="flex mt-1">
+                              {Array.from({ length: 5 }).map((_, i) => (
+                                <FaStar
+                                  key={i}
+                                  className={`w-4 h-4 mr-1 ${
+                                    i < review.rating
+                                      ? "text-yellow-400"
+                                      : "text-gray-300"
+                                  }`}
+                                />
+                              ))}
+                            </div>
                           </div>
                         </div>
-                        <p className="text-sm text-gray-400">
-                          {new Date(review.createdAt).toLocaleDateString()}
+                        <p className="text-sm text-gray-700 mb-4 italic">
+                          "{review.message || review.comment}"
                         </p>
+                        <button
+                          onClick={() => toggleLike(review._id)}
+                          className="flex items-center gap-2 text-pink-500 hover:text-pink-600 transition"
+                        >
+                          <div className="flex flex-col items-center justify-start">
+                            <div>
+                              <div className="flex items-center justify-start">
+                                <FaHeart
+                                  className={
+                                    isLiked ? "text-pink-600" : "text-gray-500"
+                                  }
+                                />
+                                <span className="text-sm ml-1">
+                                  {review.likes || 0} likes
+                                </span>
+                              </div>
+                            </div>
+                            <p className="text-sm text-gray-400">
+                              {new Date(review.createdAt).toLocaleDateString()}
+                            </p>
+                          </div>
+                        </button>
+                        <FaQuoteRight className="text-xl text-indigo-600 mt-4 float-right" />
                       </div>
-                    </button>
-                    <FaQuoteRight className="text-xl text-indigo-600 mt-4 float-right" />
-                  </div>
-                );
-              })}
+                    );
+                  })}
+                </div>
+              )}
             </div>
-          )}
+          </section>
         </div>
-      </section>
+      )}
     </>
   );
 };

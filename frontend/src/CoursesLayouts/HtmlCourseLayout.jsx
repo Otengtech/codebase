@@ -4,19 +4,21 @@ import { topicGroups } from "./HtmlTopic";
 import topicContents from "./HtmlContent";
 import { Menu, X } from "lucide-react";
 import { FaSearch } from "react-icons/fa";
+import Loader from "../Components/Home/Loader";
 
-const flatTopics = topicGroups.flatMap(group => group.items);
+const flatTopics = topicGroups.flatMap((group) => group.items);
 
 const CourseLayout = () => {
-  const defaultTopicId = localStorage.getItem("selectedTopicId") || flatTopics[0].id;
+  const defaultTopicId =
+    localStorage.getItem("selectedTopicId") || flatTopics[0].id;
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentTopic, setCurrentTopic] = useState(
-    flatTopics.find(t => t.id === defaultTopicId) || flatTopics[0]
+    flatTopics.find((t) => t.id === defaultTopicId) || flatTopics[0]
   );
   const [fade, setFade] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const toggleSidebar = () => setIsSidebarOpen(prev => !prev);
+  const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
 
   useEffect(() => {
     setFade(false);
@@ -28,7 +30,7 @@ const CourseLayout = () => {
     return () => clearTimeout(timeout);
   }, [currentTopic]);
 
-  const currentIndex = flatTopics.findIndex(t => t.id === currentTopic.id);
+  const currentIndex = flatTopics.findIndex((t) => t.id === currentTopic.id);
   const hasPrev = currentIndex > 0;
   const hasNext = currentIndex < flatTopics.length - 1;
 
@@ -61,13 +63,11 @@ const CourseLayout = () => {
     if (!term) return;
 
     // Search in topic titles first
-    let found = flatTopics.find(
-      t => t.title.toLowerCase().includes(term)
-    );
+    let found = flatTopics.find((t) => t.title.toLowerCase().includes(term));
 
     // If not found, search in content
     if (!found) {
-      found = flatTopics.find(t => {
+      found = flatTopics.find((t) => {
         const content = topicContents[t.title]?.content || "";
         return content.toLowerCase().includes(term);
       });
@@ -85,112 +85,128 @@ const CourseLayout = () => {
       handleSearch();
     }
   };
+  const [loader, setLoader] = useState(false);
+  useEffect(() => {
+    setLoader(true);
+    const timer = setTimeout(() => setLoader(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
+      {loader && <Loader />}
       <Navbar />
-      <div className="flex h-[calc(100vh-5rem)] mt-20 relative">
-        {/* Mobile toggle inside search */}
-        <button
-          onClick={toggleSidebar}
-          className="lg:hidden fixed top-20 right-0 z-50 bg-violet-700 rounded-bl-md text-white p-2 shadow-md focus:outline-none hover:bg-violet-600 transition"
-        >
-          {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+      {!loader && (
+        <div>
+          <div className="flex h-[calc(100vh-5rem)] mt-20 relative">
+            {/* Mobile toggle inside search */}
+            <button
+              onClick={toggleSidebar}
+              className="lg:hidden fixed top-20 right-0 z-50 bg-violet-700 rounded-bl-md text-white p-2 shadow-md focus:outline-none hover:bg-violet-600 transition"
+            >
+              {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
 
-        <aside
-          className={`${
-            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } lg:translate-x-0 fixed lg:static w-72 h-full custom-scroll bg-gradient-to-br from-gray-900 to-purple-600 text-white px-4 pt-4 md:pb-2 pb-28 z-40 transition-transform duration-300 ease-in-out overflow-y-auto`}
-        >
-          <h2 className="text-2xl font-bold text-sky-300 mb-4">HTML Course</h2>
+            <aside
+              className={`${
+                isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+              } lg:translate-x-0 fixed lg:static w-72 h-full custom-scroll bg-gradient-to-br from-gray-900 to-purple-600 text-white px-4 pt-4 md:pb-2 pb-28 z-40 transition-transform duration-300 ease-in-out overflow-y-auto`}
+            >
+              <h2 className="text-2xl font-bold text-sky-300 mb-4">
+                HTML Course
+              </h2>
 
-          {/* Search Input */}
-          <div className="relative mb-6">
-            <input
-              type="text"
-              placeholder="Search topic or content..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="w-full bg-transparent border border-sky-200 text-white placeholder-sky-200 rounded-md px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-sky-400"
-            />
-            <FaSearch
-              onClick={handleSearch}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sky-200 cursor-pointer hover:text-white"
-            />
-          </div>
-
-          {/* Topics List */}
-          <div className="space-y-4 md:pb-2 pb-16">
-            {topicGroups.map(group => (
-              <div key={group.section}>
-                <h3 className="text-sky-300 text-lg font-semibold border-b border-white/20 pb-1 ml-3 mb-2">
-                  {group.section}
-                </h3>
-                <nav className="space-y-1 pl-2">
-                  {group.items.map(({ id, title }) => (
-                    <button
-                      key={id}
-                      onClick={() => {
-                        setCurrentTopic({ id, title });
-                        setIsSidebarOpen(false);
-                      }}
-                      className={`block w-full text-left text-sm px-3 py-1 rounded hover:bg-white/10 ${
-                        currentTopic.id === id ? "bg-white/20" : ""
-                      }`}
-                    >
-                      {title}
-                    </button>
-                  ))}
-                </nav>
+              {/* Search Input */}
+              <div className="relative mb-6">
+                <input
+                  type="text"
+                  placeholder="Search topic or content..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  className="w-full bg-transparent border border-sky-200 text-white placeholder-sky-200 rounded-md px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                />
+                <FaSearch
+                  onClick={handleSearch}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sky-200 cursor-pointer hover:text-white"
+                />
               </div>
-            ))}
-          </div>
-        </aside>
 
-        {/* Main Content */}
-        <main className="flex-1 custom-scroll md:py-10 md:px-20 pt-10 pb-24 px-4 overflow-y-auto bg-slate-100">
-          <div
-            className={`transition-opacity duration-500 ${
-              fade ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <h1 className="text-3xl font-bold text-slate-700 mb-4">
-              {currentTopic.title}
-            </h1>
-            <p className="mb-4 text-slate-600">
-              Here's a quick example of how <strong>{currentTopic.title}</strong> works:
-            </p>
-            <pre className="rounded-lg shadow-md overflow-x-auto bg-slate-800 text-slate-100 p-4 text-sm mb-8">
-              <code>{renderExample(currentTopic.id)}</code>
-            </pre>
+              {/* Topics List */}
+              <div className="space-y-4 md:pb-2 pb-16">
+                {topicGroups.map((group) => (
+                  <div key={group.section}>
+                    <h3 className="text-sky-300 text-lg font-semibold border-b border-white/20 pb-1 ml-3 mb-2">
+                      {group.section}
+                    </h3>
+                    <nav className="space-y-1 pl-2">
+                      {group.items.map(({ id, title }) => (
+                        <button
+                          key={id}
+                          onClick={() => {
+                            setCurrentTopic({ id, title });
+                            setIsSidebarOpen(false);
+                          }}
+                          className={`block w-full text-left text-sm px-3 py-1 rounded hover:bg-white/10 ${
+                            currentTopic.id === id ? "bg-white/20" : ""
+                          }`}
+                        >
+                          {title}
+                        </button>
+                      ))}
+                    </nav>
+                  </div>
+                ))}
+              </div>
+            </aside>
 
-            <div className="prose prose-slate max-w-full mb-10">
-              {topicContents[currentTopic.title]?.content || (
-                <p className="text-red-500">Content not available for this topic.</p>
-              )}
-            </div>
-
-            <div className="flex justify-between items-center gap-4">
-              <button
-                onClick={handlePrev}
-                disabled={!hasPrev}
-                className="px-4 py-2 rounded bg-purple-700 text-white disabled:opacity-40 hover:bg-purple-600 transition"
+            {/* Main Content */}
+            <main className="flex-1 custom-scroll md:py-10 md:px-20 pt-10 pb-24 px-4 overflow-y-auto bg-slate-100">
+              <div
+                className={`transition-opacity duration-500 ${
+                  fade ? "opacity-100" : "opacity-0"
+                }`}
               >
-                ← Previous
-              </button>
-              <button
-                onClick={handleNext}
-                disabled={!hasNext}
-                className="px-4 py-2 rounded bg-purple-700 text-white disabled:opacity-40 hover:bg-purple-600 transition"
-              >
-                Next →
-              </button>
-            </div>
+                <h1 className="text-3xl font-bold text-slate-700 mb-4">
+                  {currentTopic.title}
+                </h1>
+                <p className="mb-4 text-slate-600">
+                  Here's a quick example of how{" "}
+                  <strong>{currentTopic.title}</strong> works:
+                </p>
+                <pre className="rounded-lg shadow-md overflow-x-auto bg-slate-800 text-slate-100 p-4 text-sm mb-8">
+                  <code>{renderExample(currentTopic.id)}</code>
+                </pre>
+
+                <div className="prose prose-slate max-w-full mb-10">
+                  {topicContents[currentTopic.title]?.content || (
+                    <p className="text-red-500">
+                      Content not available for this topic.
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex justify-between items-center gap-4">
+                  <button
+                    onClick={handlePrev}
+                    disabled={!hasPrev}
+                    className="px-4 py-2 rounded bg-purple-700 text-white disabled:opacity-40 hover:bg-purple-600 transition"
+                  >
+                    ← Previous
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    disabled={!hasNext}
+                    className="px-4 py-2 rounded bg-purple-700 text-white disabled:opacity-40 hover:bg-purple-600 transition"
+                  >
+                    Next →
+                  </button>
+                </div>
+              </div>
+            </main>
           </div>
-        </main>
-      </div>
+        </div>
+      )}
     </>
   );
 };
