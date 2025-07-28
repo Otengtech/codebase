@@ -42,7 +42,7 @@ const topicContents = {
             Then, include the following basic structure to make sure your
             browser can interpret your webpage correctly:
           </p>
-          <div className="rounded-xl overflow-hidden bg-gradient-to-br from-violet-700 to-purple-900 p-4 text-green-100 text-sm shadow-lg">
+          <div className="rounded-xl overflow-hidden overflow-x-auto bg-gradient-to-br from-violet-700 to-purple-900 p-4 text-green-100 text-sm shadow-lg">
             <pre>
               <code>{`<!DOCTYPE html>
 <html>
@@ -148,7 +148,7 @@ const topicContents = {
             <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and{" "}
             <code>&lt;body&gt;</code> tags.
           </p>
-          <div className="rounded-xl overflow-hidden bg-gradient-to-br from-violet-700 to-purple-900 p-4 text-green-200 text-sm shadow-lg">
+          <div className="rounded-xl overflow-hidden overflow-x-auto bg-gradient-to-br from-violet-700 to-purple-900 p-4 text-green-200 text-sm shadow-lg">
             <pre>
               <code>{`<!DOCTYPE html>
 <html>
@@ -236,7 +236,7 @@ const topicContents = {
           <p>
             Here’s what writing HTML in an editor like VS Code might look like:
           </p>
-          <div className="rounded-xl overflow-hidden bg-gradient-to-br from-violet-700 to-purple-900 p-4 text-green-200 text-sm shadow-lg">
+          <div className="rounded-xl overflow-hidden overflow-x-auto bg-gradient-to-br from-violet-700 to-purple-900 p-4 text-green-200 text-sm shadow-lg">
             <pre>
               <code>{`<!DOCTYPE html>
 <html>
@@ -301,7 +301,7 @@ const topicContents = {
           <h3 className="text-2xl font-semibold text-purple-600">
             Basic HTML Document:
           </h3>
-          <div className="rounded-xl overflow-hidden bg-gray-900 p-4 text-green-400 text-sm shadow-lg">
+          <div className="rounded-xl overflow-hidden overflow-x-auto bg-gray-900 p-4 text-green-400 text-sm shadow-lg">
             <pre>
               <code>{`<!DOCTYPE html>
 <html>
@@ -350,7 +350,7 @@ const topicContents = {
           <h3 className="text-2xl font-semibold text-purple-600">
             Example with Headings and Paragraphs:
           </h3>
-          <div className="rounded-xl overflow-hidden bg-gray-900 p-4 text-green-400 text-sm shadow-lg">
+          <div className="rounded-xl overflow-hidden bg-gray-900 overflow-x-auto p-4 text-green-400 text-sm shadow-lg">
             <pre>
               <code>{`<h1>This is a Main Heading</h1>
 <h2>This is a Subheading</h2>
@@ -359,7 +359,7 @@ const topicContents = {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-purple-600 to-violet-900 text-white p-4 rounded-xl shadow-xl">
+        <div className="bg-gradient-to-br from-purple-600 overflow-x-auto to-violet-900 overflow-x-auto text-white p-4 rounded-xl shadow-xl">
           <p className="text-lg">
             HTML tags often come in pairs: an opening tag{" "}
             <code className="bg-white/10 px-1 rounded">&lt;p&gt;</code> and a
@@ -393,7 +393,7 @@ const topicContents = {
             Element Syntax:
           </h3>
           <p className="text-lg">Here’s the basic structure:</p>
-          <div className="bg-gradient-to-br from-violet-700 to-purple-900 p-4 rounded-xl text-green-200 text-sm shadow-lg">
+          <div className="bg-gradient-to-br from-violet-700 overflow-x-auto to-purple-900 p-4 rounded-xl text-green-200 text-sm shadow-lg">
             <pre>
               <code>{`<tagname>Content goes here...</tagname>`}</code>
             </pre>
@@ -452,7 +452,7 @@ const topicContents = {
             <code className="bg-white/10 px-1 rounded">&lt;a&gt;</code> tag uses
             attributes:
           </p>
-          <div className="bg-gradient-to-br from-violet-700 to-purple-900 p-4 rounded-xl text-green-200 text-sm shadow-lg">
+          <div className="bg-gradient-to-br from-violet-700 overflow-x-auto to-purple-900 p-4 rounded-xl text-green-200 text-sm shadow-lg">
             <pre>
               <code>{`<a href="https://www.example.com" target="_blank">Visit Example</a>`}</code>
             </pre>
@@ -517,7 +517,7 @@ const topicContents = {
           title, followed by lower level headings as sub-sections.
         </p>
 
-        <div className="bg-gradient-to-br from-violet-800 to-violet-950 text-green-300 p-4 rounded-lg">
+        <div className="bg-gradient-to-br from-violet-800 overflow-x-auto to-violet-950 text-green-300 p-4 rounded-lg">
           <pre>
             <code>{`
 <h1>This is a Heading 1</h1>
@@ -532,7 +532,7 @@ const topicContents = {
 
         <p>Example use in a full HTML document:</p>
 
-        <div className="bg-gradient-to-br from-violet-800 to-violet-950 text-green-300 p-4 rounded-lg">
+        <div className="bg-gradient-to-br from-violet-800 overflow-x-auto to-violet-950 text-green-300 p-4 rounded-lg">
           <pre>
             <code>{`
 <!DOCTYPE html>
@@ -571,7 +571,7 @@ const topicContents = {
           always starts on a new line, and browsers automatically add some space
           before and after a paragraph.
         </p>
-        <div className="bg-gray-900 text-green-400 p-4 rounded-lg">
+        <div className="bg-gray-900 text-green-400 p-4 overflow-x-auto rounded-lg">
           <pre>
             <code>{`
 <p>This is a paragraph of text in HTML.</p>
@@ -599,7 +599,7 @@ const topicContents = {
 
         <p>Example:</p>
 
-        <div className="bg-gray-900 text-green-300 p-4 rounded-lg">
+        <div className="bg-gray-900 text-green-300 p-4 overflow-x-auto rounded-lg">
           <pre>
             <code>{`
 <p style="color:blue;">This is a blue paragraph.</p>
@@ -697,7 +697,7 @@ const topicContents = {
         </ul>
 
         <p>Example:</p>
-        <div className="bg-gray-900 text-green-300 p-4 rounded-lg">
+        <div className="bg-gray-900 text-green-300 overflow-x-auto p-4 rounded-lg">
           <pre>
             <code>{`
 <p>This is <b>bold</b> text.</p>
@@ -750,7 +750,7 @@ const topicContents = {
         </ul>
 
         <p>Example:</p>
-        <div className="bg-gray-900 text-green-300 p-4 rounded-lg">
+        <div className="bg-gray-900 text-green-300 overflow-x-auto p-4 rounded-lg">
           <pre>
             <code>{`
 <blockquote>
@@ -779,7 +779,7 @@ const topicContents = {
           document your code. Use them to explain sections or leave notes.
         </p>
         <p>Syntax:</p>
-        <div className="bg-gray-900 text-green-300 p-4 rounded-lg">
+        <div className="bg-gray-900 text-green-300 overflow-x-auto p-4 rounded-lg">
           <pre>
             <code>{`
 <!-- This is a single-line comment -->
@@ -826,7 +826,7 @@ const topicContents = {
         </ul>
 
         <p>Example:</p>
-        <div className="bg-gray-900 text-green-300 p-4 rounded-lg">
+        <div className="bg-gray-900 text-green-300 p-4 overflow-x-auto rounded-lg">
           <pre>
             <code>{`
 <p style="color:blue;">This is blue text</p>
@@ -867,7 +867,7 @@ const topicContents = {
         <p>
           <strong>1. Inline CSS</strong>
         </p>
-        <div className="bg-gray-900 text-green-300 p-4 rounded-lg">
+        <div className="bg-gray-900 text-green-300 overflow-x-auto p-4 rounded-lg">
           <pre>
             <code>{`<p style="color:red;">This is styled with inline CSS</p>`}</code>
           </pre>
@@ -876,7 +876,7 @@ const topicContents = {
         <p>
           <strong>2. Internal CSS</strong>
         </p>
-        <div className="bg-gray-900 text-green-300 p-4 rounded-lg">
+        <div className="bg-gray-900 overflow-x-auto text-green-300 p-4 rounded-lg">
           <pre>
             <code>{`
 <head>
@@ -896,7 +896,7 @@ const topicContents = {
         <p>
           <strong>3. External CSS</strong>
         </p>
-        <div className="bg-gray-900 text-green-300 p-4 rounded-lg">
+        <div className="bg-gray-900 text-green-300 overflow-x-auto p-4 rounded-lg">
           <pre>
             <code>{`
 <!-- HTML file -->
@@ -923,7 +923,7 @@ p {
           URL of the page the link goes to.
         </p>
         <p>By default, links appear as underlined blue text.</p>
-        <div className="bg-gray-900 text-green-400 p-4 rounded-lg">
+        <div className="bg-gray-900 text-green-400 overflow-x-auto p-4 rounded-lg">
           <pre>
             <code>{`
 <a href="https://www.w3schools.com">Visit W3Schools</a>
@@ -949,7 +949,7 @@ p {
           <code className="text-purple-300">alt</code> attribute provides
           alternative text.
         </p>
-        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+        <div className="bg-gradient-to-r from-violet-800 overflow-x-auto to-purple-900 text-green-400 p-4 rounded-lg">
           <pre>
             <code>{`
 <img src="dog.jpg" alt="Cute dog" width="300" height="200">
@@ -969,7 +969,7 @@ p {
           <code className="text-purple-300">&lt;link&gt;</code> tag inside the{" "}
           <code className="text-purple-300">&lt;head&gt;</code> section.
         </p>
-        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+        <div className="bg-gradient-to-r from-violet-800 overflow-x-auto to-purple-900 text-green-400 p-4 rounded-lg">
           <pre>
             <code>{`
 <head>
@@ -993,7 +993,7 @@ p {
           It is shown in the browser's title bar or tab and helps with SEO and
           accessibility.
         </p>
-        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+        <div className="bg-gradient-to-r from-violet-800 overflow-x-auto to-purple-900 text-green-400 p-4 rounded-lg">
           <pre>
             <code>{`
 <!DOCTYPE html>
@@ -1032,7 +1032,7 @@ p {
             data/cell
           </li>
         </ul>
-        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+        <div className="bg-gradient-to-r from-violet-800 to-purple-900 overflow-x-auto text-green-400 p-4 rounded-lg">
           <pre>
             <code>{`
 <table border="1">
@@ -1072,7 +1072,7 @@ p {
             and &lt;dd&gt; tags.
           </li>
         </ul>
-        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+        <div className="bg-gradient-to-r from-violet-800 overflow-x-auto to-purple-900 text-green-400 p-4 rounded-lg">
           <pre>
             <code>{`
 <!-- Ordered list -->
@@ -1115,7 +1115,7 @@ p {
           <strong>Inline</strong> elements only take up as much width as
           necessary. Examples: &lt;span&gt;, &lt;a&gt;, &lt;img&gt;
         </p>
-        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+        <div className="bg-gradient-to-r from-violet-800 overflow-x-auto to-purple-900 text-green-400 p-4 rounded-lg">
           <pre>
             <code>{`
 <!-- Block element -->
@@ -1141,7 +1141,7 @@ p {
         <p>
           It is useful for grouping content and applying CSS styles or layout.
         </p>
-        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+        <div className="bg-gradient-to-r from-violet-800 overflow-x-auto to-purple-900 text-green-400 p-4 rounded-lg">
           <pre>
             <code>{`
 <div style="background-color:lightgray;">
@@ -1163,7 +1163,7 @@ p {
           one or more class names for an element. Classes are used by CSS and
           JavaScript to select and manipulate elements.
         </p>
-        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+        <div className="bg-gradient-to-r from-violet-800 overflow-x-auto to-purple-900 text-green-400 p-4 rounded-lg">
           <pre>
             <code>{`
 <!-- HTML -->
@@ -1192,7 +1192,7 @@ p {
           document.
         </p>
         <p>Useful for JavaScript targeting or CSS styling.</p>
-        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+        <div className="bg-gradient-to-r from-violet-800 to-purple-900 overflow-x-auto text-green-400 p-4 rounded-lg">
           <pre>
             <code>{`
 <!-- HTML -->
@@ -1219,7 +1219,7 @@ p {
           another HTML page within the current page.
         </p>
         <p>Useful for embedding videos, maps, or web pages.</p>
-        <div className="bg-gradient-to-r from-violet-800 to-purple-900 text-green-400 p-4 rounded-lg">
+        <div className="bg-gradient-to-r from-violet-800 overflow-x-auto to-purple-900 text-green-400 p-4 rounded-lg">
           <pre>
             <code>{`
 <iframe src="https://www.example.com" width="300" height="200"></iframe>
