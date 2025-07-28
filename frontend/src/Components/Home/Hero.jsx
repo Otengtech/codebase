@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../../App.css";
 import { Link } from "react-router-dom";
 import rightImage from "../../assets/rightImage.png";
-      import { FaReact } from "react-icons/fa";
 
 const phrases = [
   "Explore. Learn. Win.",
@@ -87,32 +86,10 @@ const Hero = () => {
         </div>
       </div>
 
-<div className="w-full md:w-1/2 mt-10 md:mt-0 flex flex-col md:ml-20 justify-center relative">
-  <img src={rightImage} alt="hero-image" className="w-full" />
-
-  {/* Cards container */}
-  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col sm:flex-row gap-4 items-center">
-    
-    {/* Card 1 */}
-    <div className="backdrop-blur-md bg-white/10 border border-white/20 p-4 rounded-xl shadow-md w-64 flex items-center gap-3 animate-swing">
-      <FaReact className="text-sky-400 text-3xl" />
-      <div className="text-white text-sm font-semibold">
-        2000+<br />
-        students trained
+      {/* Right Section - Animated Circles */}
+      <div className="w-full md:w-1/2 mt-10 md:mt-0 flex flex-col md:ml-20 justify-center space-y-6">
+        <img src={rightImage} alt="hero-image" className="w-full" />
       </div>
-    </div>
-
-    {/* Card 2 */}
-    <div className="backdrop-blur-md bg-white/10 border border-white/20 p-4 rounded-xl shadow-md w-64 flex items-center gap-3 animate-swing animation-delay-300">
-      <FaReact className="text-sky-400 text-3xl" />
-      <div className="text-white text-sm font-semibold">
-        95%<br />
-        success rate
-      </div>
-    </div>
-  </div>
-</div>
-
     </div>
   );
 };

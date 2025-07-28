@@ -7,6 +7,7 @@ import Review from "../Components/Home/Review";
 import Footer from "../Components/Home/Footer";
 import WhyChooseUs from "../Components/Home/WhyChooseUs";
 import Newsletter from "../Components/Home/Newsletter";
+import SwingCards from "../Components/Home/SwingCards";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <Hero />
       <ServiceSection />
       <Course />
+      <SwingCards />
       <WhyChooseUs />
       <Review />
       <Newsletter />
