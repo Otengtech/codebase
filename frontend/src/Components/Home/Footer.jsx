@@ -13,15 +13,15 @@ const Footer = () => {
 
   return (
     <>
-      <div
-        ref={leftRef}
-        className={`hidden-element transition-all duration-500 ${
-          isLeftVisible ? "animate-zoom" : ""
-        }`}
-      >
-        <footer className="bg-gradient-to-r from-gray-800 to-violet-900 text-white border-t border-gray-700 px-6 pt-12 pb-14">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-            {/* Brand and Vision */}
+      <footer className="bg-gradient-to-r from-gray-800 to-violet-900 text-white border-t border-gray-700 px-6 pt-12 pb-14">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+          {/* Brand and Vision */}
+          <div
+            ref={leftRef}
+            className={`hidden-element transition-all duration-500 ${
+              isLeftVisible ? "animate-zoom" : ""
+            }`}
+          >
             <div>
               <h2 className="text-2xl text-sky-300 font-bold mb-4">CodeBase</h2>
               <p className="text-sm text-gray-300 mb-4">
@@ -146,8 +146,8 @@ const Footer = () => {
           <div className=" pt-4 pb-10 md:pb-1 text-center text-sm text-gray-300">
             Designed by Ebenezer Oteng
           </div>
-        </footer>
-      </div>
+        </div>
+      </footer>
     </>
   );
 };

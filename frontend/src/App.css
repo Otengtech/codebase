@@ -119,10 +119,11 @@
   animation-delay: 0.3s;
 }
 
+/* Keyframes */
 @keyframes zoomInUp {
   0% {
     opacity: 0;
-    transform: scale(0.8) translateY(50px);
+    transform: scale(0.85) translateY(80px);
   }
   100% {
     opacity: 1;
@@ -133,7 +134,7 @@
 @keyframes slideInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(-80px);
   }
   100% {
     opacity: 1;
@@ -144,7 +145,7 @@
 @keyframes slideInRight {
   0% {
     opacity: 0;
-    transform: translateX(50px);
+    transform: translateX(80px);
   }
   100% {
     opacity: 1;
@@ -152,6 +153,7 @@
   }
 }
 
+/* Base Animations */
 .animate-zoom {
   animation: zoomInUp 0.6s ease forwards;
 }
@@ -164,6 +166,43 @@
   animation: slideInRight 0.6s ease forwards;
 }
 
+/* Make them more subtle on smaller screens */
+@media (max-width: 768px) {
+  @keyframes zoomInUp {
+    0% {
+      opacity: 0;
+      transform: scale(0.95) translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+/* Hide until in view */
 .hidden-element {
   opacity: 0;
 }
