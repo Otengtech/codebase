@@ -1,5 +1,6 @@
 // components/Newsletter.jsx
 import React, { useState } from "react";
+import { useInViewAnimation } from "../Animation/useInViewAnimation";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -36,39 +37,52 @@ const Newsletter = () => {
     }
   };
 
-  return (
-    <section className="bg-gradient-to-r from-gray-900 to-violet-900 py-16 px-6 text-center">
-      <div className="max-w-2xl mx-auto text-white space-y-6">
-        <h2 className="text-3xl font-bold text-sky-300">Join Our Community</h2>
-        <p className="text-gray-300 text-md text-left">
-          Join our ever-growing community of passionate learners, self-taught
-          developers, and tech enthusiasts who are leveling up their skills,
-          collaborating on exciting projects, and sharing knowledge in a
-          friendly and supportive space.
-        </p>
+  const [leftRef, isLeftVisible] = useInViewAnimation();
 
-        <form
-          onSubmit={handleSubscribe}
-          className="flex flex-col sm:flex-row justify-center items-center gap-3 mt-6"
-        >
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Your email address"
-            className="w-full sm:w-auto px-6 py-3 placeholder:text-gray-200 rounded-md bg-transparent border border-gray-200 text-white focus:outline-none focus:ring-2 focus:ring-sky-200"
-            required
-          />
-          <button
-            type="submit"
-            className="bg-sky-300 text-gray-900 px-6 py-3 rounded-md font-semibold hover:bg-sky-200 transition"
-          >
-            Subscribe
-          </button>
-        </form>
-        {status && <p className="text-sm mt-4 text-sky-200">{status}</p>}
+  return (
+    <>
+      <div
+        ref={leftRef}
+        className={`hidden-element transition-all duration-500 ${
+          isLeftVisible ? "animate-left" : ""
+        }`}
+      >
+        <section className="bg-gradient-to-r from-gray-900 to-violet-900 py-16 px-6 text-center">
+          <div className="max-w-2xl mx-auto text-white space-y-6">
+            <h2 className="text-3xl font-bold text-sky-300">
+              Join Our Community
+            </h2>
+            <p className="text-gray-300 text-md text-left">
+              Join our ever-growing community of passionate learners,
+              self-taught developers, and tech enthusiasts who are leveling up
+              their skills, collaborating on exciting projects, and sharing
+              knowledge in a friendly and supportive space.
+            </p>
+
+            <form
+              onSubmit={handleSubscribe}
+              className="flex flex-col sm:flex-row justify-center items-center gap-3 mt-6"
+            >
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email address"
+                className="w-full sm:w-auto px-6 py-3 placeholder:text-gray-200 rounded-md bg-transparent border border-gray-200 text-white focus:outline-none focus:ring-2 focus:ring-sky-200"
+                required
+              />
+              <button
+                type="submit"
+                className="bg-sky-300 text-gray-900 px-6 py-3 rounded-md font-semibold hover:bg-sky-200 transition"
+              >
+                Subscribe
+              </button>
+            </form>
+            {status && <p className="text-sm mt-4 text-sky-200">{status}</p>}
+          </div>
+        </section>
       </div>
-    </section>
+    </>
   );
 };
 

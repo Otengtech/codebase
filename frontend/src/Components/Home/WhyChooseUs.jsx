@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 import { MdAccessTime } from "react-icons/md";
 import { PiStudentFill } from "react-icons/pi";
+import { useInViewAnimation } from "../Animation/useInViewAnimation";
 
 const features = [
   {
@@ -33,6 +34,7 @@ const features = [
 ];
 
 const WhyChooseUs = () => {
+  const [leftRef, isLeftVisible] = useInViewAnimation();
   return (
     <section className="w-full bg-gradient-to-r from-gray-900 to-violet-900 px-4 md:px-20 py-20">
       <div className="text-center mb-12">
@@ -45,26 +47,33 @@ const WhyChooseUs = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map((feature, idx) => (
           <div
-            key={idx}
-            className={`rounded-2xl p-6 bg-white/5 border border-white/10 backdrop-blur-md cursor-pointer hover:shadow-xl transition duration-300 flex flex-col items-center text-center`}
+            ref={leftRef}
+            className={`hidden-element transition-all duration-500 ${
+              isLeftVisible ? "animate-left" : ""
+            }`}
           >
-            <div className="mb-4 text-gray-300">{feature.icon}</div>
-            <h4 className="text-xl font-semibold text-sky-300 mb-2">
-              {feature.title}
-            </h4>
-            <p className="text-gray-300">{feature.description}</p>
-            <div className="sm:flex md:flex lg:flex flex items-center justify-center space-x-2">
-              {[...Array(4)].map((_, index) => (
-                <div
-                  key={index}
-                  className={`w-4 h-4 mt-6 rounded-full text-white ${
-                    index % 2 === 0 ? "bg-sky-400" : "bg-gray-300"
-                  } animate-bounce-custom`}
-                  style={{
-                    animationDelay: `${index * 0.2}s`,
-                  }}
-                ></div>
-              ))}
+            <div
+              key={idx}
+              className={`rounded-2xl p-6 bg-white/5 border border-white/10 backdrop-blur-md cursor-pointer hover:shadow-xl transition duration-300 flex flex-col items-center text-center`}
+            >
+              <div className="mb-4 text-gray-300">{feature.icon}</div>
+              <h4 className="text-xl font-semibold text-sky-300 mb-2">
+                {feature.title}
+              </h4>
+              <p className="text-gray-300">{feature.description}</p>
+              <div className="sm:flex md:flex lg:flex flex items-center justify-center space-x-2">
+                {[...Array(4)].map((_, index) => (
+                  <div
+                    key={index}
+                    className={`w-4 h-4 mt-6 rounded-full text-white ${
+                      index % 2 === 0 ? "bg-sky-400" : "bg-gray-300"
+                    } animate-bounce-custom`}
+                    style={{
+                      animationDelay: `${index * 0.2}s`,
+                    }}
+                  ></div>
+                ))}
+              </div>
             </div>
           </div>
         ))}

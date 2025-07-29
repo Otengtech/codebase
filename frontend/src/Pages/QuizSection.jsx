@@ -161,7 +161,6 @@ export default function QuizSection() {
           </section>
         </div>
       )}
-      F
       <Footer />
     </>
   );

@@ -5,6 +5,7 @@ import cssImg from "../../assets/css.png";
 import jsImg from "../../assets/javascript.jpg";
 import tailwindImg from "../../assets/tailwind.webp";
 import { Link } from "react-router-dom";
+import { useInViewAnimation } from "../Animation/useInViewAnimation";
 
 const allCourses = [
   {
@@ -81,8 +82,8 @@ const allCourses = [
 ];
 
 const Course = () => {
+  const [leftRef, isLeftVisible] = useInViewAnimation();
   const visibleCourses = allCourses.slice(0, 3); // Show only 3
-
   return (
     <section className="py-20 px-4 bg-gradient-to-r from-gray-900 to-violet-900">
       <h2 className="text-4xl text-sky-300 font-bold text-center mb-8">
@@ -97,41 +98,50 @@ const Course = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {visibleCourses.map((course, index) => (
           <div
-            key={index}
-            className="bg-white/5 border border-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-[1.02] transition-all duration-500"
+            ref={leftRef}
+            className={`hidden-element transition-all duration-500 ${
+              isLeftVisible ? "animate-left" : ""
+            }`}
           >
-            <Link to={course.to}>
-              <img
-                src={course.img}
-                alt={course.name}
-                className="w-full h-40 object-cover rounded-xl mb-4"
-              />
-              <h3 className="text-xl font-bold text-sky-300">{course.name}</h3>
-              <p className="text-gray-300 mt-2">{course.description}</p>
-              <div className="mt-4 space-y-1 text-sm text-gray-400">
-                <p>
-                  <strong className="text-sky-300">Duration:</strong>{" "}
-                  {course.duration}
-                </p>
-                <p>
-                  <strong className="text-sky-300">Level:</strong>{" "}
-                  {course.level}
-                </p>
-                <p>
-                  <strong className="text-sky-300">Prerequisites:</strong>{" "}
-                  {course.prerequisites}
-                </p>
-                <p>
-                  <strong className="text-sky-300">Tools:</strong>{" "}
-                  {course.tools.join(", ")}
-                </p>
-              </div>
-              <ul className="mt-3 text-sm text-gray-300 list-disc list-inside">
-                {course.topics.slice(0, 3).map((topic, i) => (
-                  <li key={i}>{topic}</li>
-                ))}
-              </ul>
-            </Link>
+            <div
+              key={index}
+              className="bg-white/5 border border-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-[1.02] transition-all duration-500"
+            >
+              <Link to={course.to}>
+                <img
+                  src={course.img}
+                  alt={course.name}
+                  className="w-full h-40 object-cover rounded-xl mb-4"
+                />
+                <h3 className="text-xl font-bold text-sky-300">
+                  {course.name}
+                </h3>
+                <p className="text-gray-300 mt-2">{course.description}</p>
+                <div className="mt-4 space-y-1 text-sm text-gray-400">
+                  <p>
+                    <strong className="text-sky-300">Duration:</strong>{" "}
+                    {course.duration}
+                  </p>
+                  <p>
+                    <strong className="text-sky-300">Level:</strong>{" "}
+                    {course.level}
+                  </p>
+                  <p>
+                    <strong className="text-sky-300">Prerequisites:</strong>{" "}
+                    {course.prerequisites}
+                  </p>
+                  <p>
+                    <strong className="text-sky-300">Tools:</strong>{" "}
+                    {course.tools.join(", ")}
+                  </p>
+                </div>
+                <ul className="mt-3 text-sm text-gray-300 list-disc list-inside">
+                  {course.topics.slice(0, 3).map((topic, i) => (
+                    <li key={i}>{topic}</li>
+                  ))}
+                </ul>
+              </Link>
+            </div>
           </div>
         ))}
       </div>
