@@ -5,12 +5,14 @@ export const useInViewAnimation = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const isSmallScreen = window.innerWidth <= 768;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
       {
-        threshold: 0.1,
+        threshold: isSmallScreen ? 0 : 0.1, // 👈 dynamic threshold
       }
     );
 
