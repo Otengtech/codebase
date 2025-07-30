@@ -24,9 +24,15 @@ const HeroImageWithCards = () => {
               students trained
             </div>
           </div>
+        </div>
 
-          {/* Card 2 */}
-
+        {/* Card 2 */}
+        <div
+          ref={leftRef}
+          className={`hidden-element transition-all duration-500 ${
+            isLeftVisible ? "animate-zoom" : ""
+          }`}
+        >
           <div className="backdrop-blur-md bg-white/10 border border-white/20 px-4 py-6 md:px-5 md:py-8 rounded-xl shadow-md w-60 flex items-center gap-3 animate-swing delay-200">
             <FaReact className="text-sky-400 text-3xl" />
             <div className="text-white text-sm font-semibold">
@@ -34,8 +40,15 @@ const HeroImageWithCards = () => {
               modern tech
             </div>
           </div>
+        </div>
 
-          {/* Card 3 */}
+        {/* Card 3 */}
+        <div
+          ref={leftRef}
+          className={`hidden-element transition-all duration-500 ${
+            isLeftVisible ? "animate-right" : ""
+          }`}
+        >
           <div className="backdrop-blur-md bg-white/10 border border-white/20 px-4 py-6 md:px-5 md:py-8 rounded-xl shadow-md w-60 flex items-center gap-3 animate-swing delay-400">
             <PiGraphLight className="text-sky-400 text-3xl" />
             <div className="text-white text-sm font-semibold">

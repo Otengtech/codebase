@@ -34,7 +34,14 @@ const Footer = () => {
                 innovation.
               </p>
             </div>
+          </div>
 
+          <div
+            ref={leftRef}
+            className={`hidden-element transition-all duration-500 ${
+              isLeftVisible ? "animate-zoom" : ""
+            }`}
+          >
             {/* Quick Links */}
             <div>
               <h3 className="font-semibold text-sky-300 text-lg mb-3">
@@ -63,7 +70,14 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
+          </div>
 
+          <div
+            ref={leftRef}
+            className={`hidden-element transition-all duration-500 ${
+              isLeftVisible ? "animate-zoom" : ""
+            }`}
+          >
             {/* Resources */}
             <div>
               <h3 className="font-semibold text-sky-300 text-lg mb-3">
@@ -92,7 +106,14 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
+          </div>
 
+          <div
+            ref={leftRef}
+            className={`hidden-element transition-all duration-500 ${
+              isLeftVisible ? "animate-zoom" : ""
+            }`}
+          >
             {/* Contact & Social */}
             <div>
               <h3 className="font-semibold text-sky-300 text-lg mb-3">
@@ -138,14 +159,13 @@ const Footer = () => {
               </div>
             </div>
           </div>
-
-          {/* Bottom */}
-          <div className="mt-10 border-t border-gray-600 pt-4 text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} CodeBase. All rights reserved.
-          </div>
-          <div className=" pt-4 pb-10 md:pb-1 text-center text-sm text-gray-300">
-            Designed by Ebenezer Oteng
-          </div>
+        </div>
+        {/* Bottom */}
+        <div className="mt-10 border-t border-gray-600 pt-4 text-center text-sm text-gray-500">
+          © {new Date().getFullYear()} CodeBase. All rights reserved.
+        </div>
+        <div className=" pt-4 pb-10 md:pb-1 text-center text-sm text-gray-300">
+          Designed by Ebenezer Oteng
         </div>
       </footer>
     </>

@@ -41,14 +41,14 @@ const Newsletter = () => {
 
   return (
     <>
-      <div
-        ref={leftRef}
-        className={`hidden-element transition-all duration-500 ${
-          isLeftVisible ? "animate-left" : ""
-        }`}
-      >
-        <section className="bg-gradient-to-r from-gray-900 to-violet-900 py-16 px-6 text-center">
-          <div className="max-w-2xl mx-auto text-white space-y-6">
+      <section className="bg-gradient-to-r from-gray-900 to-violet-900 py-16 px-6 text-center">
+        <div className="max-w-2xl mx-auto text-white space-y-6">
+          <div
+            ref={leftRef}
+            className={`hidden-element transition-all duration-500 ${
+              isLeftVisible ? "animate-zoom" : ""
+            }`}
+          >
             <h2 className="text-3xl font-bold text-sky-300">
               Join Our Community
             </h2>
@@ -80,8 +80,8 @@ const Newsletter = () => {
             </form>
             {status && <p className="text-sm mt-4 text-sky-200">{status}</p>}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </>
   );
 };

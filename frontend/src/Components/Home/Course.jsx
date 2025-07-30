@@ -98,14 +98,14 @@ const Course = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {visibleCourses.map((course, index) => (
           <div
-            ref={leftRef}
-            className={`hidden-element transition-all duration-500 ${
-              isLeftVisible ? "animate-left" : ""
-            }`}
+            key={index}
+            className="bg-white/5 border border-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-[1.02] transition-all duration-500"
           >
             <div
-              key={index}
-              className="bg-white/5 border border-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-[1.02] transition-all duration-500"
+              ref={leftRef}
+              className={`hidden-element transition-all duration-500 ${
+                isLeftVisible ? "animate-left" : ""
+              }`}
             >
               <Link to={course.to}>
                 <img
