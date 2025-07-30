@@ -46,12 +46,7 @@ const WhyChooseUs = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map((feature, idx) => (
-          <div
-            ref={leftRef}
-            className={`hidden-element transition-all duration-500 ${
-              isLeftVisible ? "animate-left" : ""
-            }`}
-          >
+          
             <div
               key={idx}
               className={`rounded-2xl p-6 bg-white/5 border border-white/10 backdrop-blur-md cursor-pointer hover:shadow-xl transition duration-300 flex flex-col items-center text-center`}
@@ -75,7 +70,6 @@ const WhyChooseUs = () => {
                 ))}
               </div>
             </div>
-          </div>
         ))}
       </div>
     </section>

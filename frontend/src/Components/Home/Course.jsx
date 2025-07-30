@@ -101,12 +101,7 @@ const Course = () => {
             key={index}
             className="bg-white/5 border border-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-[1.02] transition-all duration-500"
           >
-            <div
-              ref={leftRef}
-              className={`hidden-element transition-all duration-500 ${
-                isLeftVisible ? "animate-left" : ""
-              }`}
-            >
+            
               <Link to={course.to}>
                 <img
                   src={course.img}
@@ -141,7 +136,6 @@ const Course = () => {
                   ))}
                 </ul>
               </Link>
-            </div>
           </div>
         ))}
       </div>
