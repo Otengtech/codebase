@@ -43,7 +43,7 @@ const reviews = [
 const ReviewSection = () => {
   return (
     <section className="py-12 px-6 md:px-12 bg-gradient-to-r from-gray-900 to-violet-900 text-white">
-      <h2 className="text-3xl font-bold text-center mb-10">
+      <h2 className="text-3xl font-bold text-center mb-10 block">
         What Our Students Say
       </h2>
 
@@ -51,7 +51,7 @@ const ReviewSection = () => {
         {reviews.map((review, index) => (
           <div
             key={index}
-            className="bg-white text-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300"
+            className="bg-white text-gray-800 block rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300"
           >
             <FaQuoteLeft className="text-2xl text-indigo-600 mb-3" />
             <div className="flex items-center gap-4 mb-4">
@@ -89,7 +89,7 @@ const ReviewSection = () => {
         ))}
       </div>
       <Link to="/reviews">
-        <button className="m-5 flex items-center gap-2 text-sky-300 hover:text-sky-200 transition font-semibold">
+        <button className="m-5 flex items-center block gap-2 text-sky-300 hover:text-sky-200 transition font-semibold">
           View All Reviews <FaArrowRight />
         </button>
       </Link>

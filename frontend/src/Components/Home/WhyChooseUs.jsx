@@ -38,8 +38,8 @@ const WhyChooseUs = () => {
   return (
     <section className="w-full bg-gradient-to-r from-gray-900 to-violet-900 px-4 md:px-20 py-20">
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-sky-300 mb-2">Why Choose Us?</h2>
-        <p className="text-gray-200 text-lg">
+        <h2 className="text-4xl font-bold text-sky-300 mb-2 block">Why Choose Us?</h2>
+        <p className="text-gray-200 text-lg block">
           Creative learning, expert guidance, and real-world experience.
         </p>
       </div>
@@ -49,7 +49,7 @@ const WhyChooseUs = () => {
           
             <div
               key={idx}
-              className={`rounded-2xl p-6 bg-white/5 border border-white/10 backdrop-blur-md cursor-pointer hover:shadow-xl transition duration-300 flex flex-col items-center text-center`}
+              className={`rounded-2xl p-6 bg-white/5 border block border-white/10 backdrop-blur-md cursor-pointer hover:shadow-xl transition duration-300 flex flex-col items-center text-center`}
             >
               <div className="mb-4 text-gray-300">{feature.icon}</div>
               <h4 className="text-xl font-semibold text-sky-300 mb-2">

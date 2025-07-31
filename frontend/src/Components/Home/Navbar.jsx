@@ -71,7 +71,7 @@ const Navbar = () => {
   return (
     <>
       {/* TOP NAVBAR */}
-      <nav className="bg-gradient-to-r from-gray-900 to-violet-900 fixed top-0 w-full z-50">
+      <nav className="bg-gradient-to-r from-gray-900 to-violet-900 fixed top-0 w-full z-50 animate-fade-in-up">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <Link to="/" className="flex items-center text-lg font-bold text-sky-200 gap-2">

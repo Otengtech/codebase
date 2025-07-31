@@ -86,10 +86,10 @@ const Course = () => {
   const visibleCourses = allCourses.slice(0, 3); // Show only 3
   return (
     <section className="py-20 px-4 bg-gradient-to-r from-gray-900 to-violet-900">
-      <h2 className="text-4xl text-sky-300 font-bold text-center mb-8">
+      <h2 className="text-4xl text-sky-300 font-bold text-center mb-8 block">
         Explore Our Courses
       </h2>
-      <p className="text-gray-300 text-center max-w-2xl mx-auto mb-12">
+      <p className="text-gray-300 text-center max-w-2xl mx-auto mb-12 block">
         Get hands-on with our expertly designed full-stack curriculum. Learn
         everything from HTML to backend development with MongoDB and Node.js —
         ideal for beginners and career changers!
@@ -99,7 +99,7 @@ const Course = () => {
         {visibleCourses.map((course, index) => (
           <div
             key={index}
-            className="bg-white/5 border border-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-[1.02] transition-all duration-500"
+            className="bg-white/5 border block border-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-[1.02] transition-all duration-500"
           >
             
               <Link to={course.to}>
@@ -141,7 +141,7 @@ const Course = () => {
       </div>
 
       <Link to="/course">
-        <button className="m-5 flex items-center gap-2 text-sky-300 hover:text-sky-200 transition font-semibold">
+        <button className="m-5 flex items-center block gap-2 text-sky-300 hover:text-sky-200 transition font-semibold">
           View All Courses <FaArrowRight />
         </button>
       </Link>

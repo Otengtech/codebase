@@ -44,10 +44,10 @@ const Hero = () => {
     <div className="w-full min-h-[90vh] bg-gradient-to-r from-gray-900 to-violet-900 flex flex-col md:flex-row items-center justify-between px-6 md:px-28 py-20 text-white">
       {/* Left Section */}
       <div className="w-full md:w-1/2 space-y-4">
-        <h1 className="text-lg text-violet-200">WELCOME {name}</h1>
+        <h1 className="text-lg text-violet-200 animate-fade-in-up">WELCOME {name}</h1>
         <h2
           className="text-4xl md:text-5xl text-sky-200 font-bold leading-tight
-             h-[5rem] md:h-[5.5rem] overflow-hidden"
+             h-[5rem] md:h-[5.5rem] overflow-hidden animate-fade-in-up"
         >
           <span className="inline-flex items-center flex-wrap">
             {displayText}
@@ -55,11 +55,11 @@ const Hero = () => {
           </span>
         </h2>
 
-        <p className="text-gray-300 text-base md:text-lg">
+        <p className="text-gray-300 text-base md:text-lg animate-fade-in-up">
           Get the skills and real-world experience — begin your journey with us.
           Transition from Beginner to Ultimate is no time.
         </p>
-        <div className="flex gap-4 flex-wrap">
+        <div className="flex gap-4 flex-wrap animate-fade-in-up">
           <Link to="/course">
             <button className="py-3 text-gray-900 px-6 bg-violet-600 hover:bg-violet-500 rounded-full transition">
               OUR COURSES
@@ -70,7 +70,7 @@ const Hero = () => {
               OUR BLOG
             </button>
           </Link>
-          <div className="flex items-center mt-6 space-x-3">
+          <div className="flex items-center mt-6 space-x-3 animate-fade-in-up">
             {[...Array(6)].map((_, i) => (
               <div
                 key={i}
@@ -87,7 +87,7 @@ const Hero = () => {
       </div>
 
       {/* Right Section - Animated Circles */}
-      <div className="w-full md:w-1/2 mt-10 md:mt-0 flex flex-col md:ml-20 justify-center space-y-6">
+      <div className="w-full md:w-1/2 mt-10 md:mt-0 flex flex-col md:ml-20 justify-center space-y-6 animate-fade-in-up">
         <img src={rightImage} alt="hero-image" className="w-full" />
       </div>
     </div>
