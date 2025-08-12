@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
+import Loader from "../Components/Home/Loader";
 
 const API_URL = import.meta.env.VITE_API_URL;
 

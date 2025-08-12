@@ -21,7 +21,14 @@ const JsQuiz = () => {
   );
 
   useEffect(() => {
-    setLoading(true);
+    // Load cached questions instantly if available
+    const cachedQuestions = localStorage.getItem("jsQuizQuestions");
+    if (cachedQuestions) {
+      setQuestions(JSON.parse(cachedQuestions));
+      setLoading(false);
+    }
+
+    // Always fetch fresh data in the background
     fetch(`${API_URL}/api/js-quiz`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch questions.");
@@ -29,11 +36,15 @@ const JsQuiz = () => {
       })
       .then((data) => {
         setQuestions(data);
+        localStorage.setItem("jsQuizQuestions", JSON.stringify(data));
         setLoading(false);
       })
       .catch((err) => {
-        setError(err.message);
-        setLoading(false);
+        // Only show error if no cached data available
+        if (!cachedQuestions) {
+          setError(err.message);
+          setLoading(false);
+        }
       });
   }, []);
 
@@ -100,7 +111,7 @@ const JsQuiz = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center text-white text-xl bg-black">
-        Loading Quiz...
+        Preparing your quiz...
       </div>
     );
   }

@@ -105,14 +105,14 @@ const Blog = () => {
             </motion.div>
 
             <div className="grid gap-12 md:grid-cols-2 xl:grid-cols-3 max-w-7xl mx-auto">
-              {blogPosts.map((post, i) => (
+              {blogPosts.map((post, index) => (
                 <Link to={post.to}>
                   <motion.div
-                    key={i}
+                    key={index}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
                     transition={{ type: "spring", stiffness: 120 }}
-                    className="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl cursor-pointer shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+                    className="bg-white/5 border border-white/10 block backdrop-blur-md rounded-xl cursor-pointer shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
                   >
                     <img
                       src={post.image}

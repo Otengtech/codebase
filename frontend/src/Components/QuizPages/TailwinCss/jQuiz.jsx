@@ -5,7 +5,7 @@ import Confetti from "react-confetti";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const TailwindQuiz = () => {
+const NodeQuiz = () => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -17,23 +17,34 @@ const TailwindQuiz = () => {
   const [cancelled, setCancelled] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [topScore, setTopScore] = useState(
-    parseInt(localStorage.getItem("tailwindTopScore")) || 0
+    parseInt(localStorage.getItem("nodeTopScore")) || 0
   );
 
   useEffect(() => {
-    setLoading(true);
-    fetch(`${API_URL}/api/t-quiz`)
+    // Load cached questions instantly if available
+    const cachedQuestions = localStorage.getItem("nodeQuizQuestions");
+    if (cachedQuestions) {
+      setQuestions(JSON.parse(cachedQuestions));
+      setLoading(false);
+    }
+
+    // Fetch fresh questions in the background
+    fetch(`${API_URL}/api/nodejs-quiz`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch questions.");
         return res.json();
       })
       .then((data) => {
         setQuestions(data);
+        localStorage.setItem("nodeQuizQuestions", JSON.stringify(data));
         setLoading(false);
       })
       .catch((err) => {
-        setError(err.message);
-        setLoading(false);
+        // Show error only if no cache present
+        if (!cachedQuestions) {
+          setError(err.message);
+          setLoading(false);
+        }
       });
   }, []);
 
@@ -72,7 +83,7 @@ const TailwindQuiz = () => {
     } else {
       setQuizEnd(true);
       if (!cancelled && score > topScore) {
-        localStorage.setItem("tailwindTopScore", score);
+        localStorage.setItem("nodeTopScore", score);
         setTopScore(score);
         setShowConfetti(true);
         setTimeout(() => setShowConfetti(false), 20000);
@@ -100,7 +111,7 @@ const TailwindQuiz = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center text-white text-xl bg-black">
-        Loading Quiz...
+        Preparing your quiz...
       </div>
     );
   }
@@ -112,6 +123,7 @@ const TailwindQuiz = () => {
       </div>
     );
   }
+
   return (
     <div className="relative min-h-screen bg-gradient-to-r from-gray-900 to-violet-900 text-white flex items-center justify-center px-4 py-8 overflow-hidden">
       {showConfetti && <Confetti />}
@@ -164,7 +176,7 @@ const TailwindQuiz = () => {
                 Try Again
               </button>
               <Link
-                to="/tquizstart"
+                to="/nodejsquizstart"
                 className="px-6 py-2 bg-gray-700 rounded hover:bg-gray-600 transition"
               >
                 Back to Start
@@ -230,4 +242,4 @@ const TailwindQuiz = () => {
   );
 };
 
-export default TailwindQuiz;
+export default NodeQuiz;

@@ -21,7 +21,14 @@ const CssQuiz = () => {
   );
 
   useEffect(() => {
-    setLoading(true);
+    // Load cached questions instantly if available
+    const cachedQuestions = localStorage.getItem("cssQuizQuestions");
+    if (cachedQuestions) {
+      setQuestions(JSON.parse(cachedQuestions));
+      setLoading(false);
+    }
+
+    // Always fetch fresh questions in the background
     fetch(`${API_URL}/api/css-quiz`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch questions.");
@@ -29,11 +36,15 @@ const CssQuiz = () => {
       })
       .then((data) => {
         setQuestions(data);
+        localStorage.setItem("cssQuizQuestions", JSON.stringify(data));
         setLoading(false);
       })
       .catch((err) => {
-        setError(err.message);
-        setLoading(false);
+        // Only show error if no cached data available
+        if (!cachedQuestions) {
+          setError(err.message);
+          setLoading(false);
+        }
       });
   }, []);
 
@@ -42,7 +53,7 @@ const CssQuiz = () => {
       const timer = setInterval(() => {
         setTimeLeft((prev) => {
           if (prev === 1) {
-            handleNext(); // Timeout
+            handleNext(); // Timeout: move to next question
             return 20;
           }
           return prev - 1;
@@ -103,7 +114,7 @@ const CssQuiz = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center text-white text-xl bg-black">
-        Loading Quiz...
+        Preparing your quiz...
       </div>
     );
   }

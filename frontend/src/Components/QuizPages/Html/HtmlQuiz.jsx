@@ -21,7 +21,14 @@ const HtmlQuiz = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    setLoading(true);
+    // 1️⃣ Load cached questions instantly if available
+    const cachedQuestions = localStorage.getItem("htmlQuizQuestions");
+    if (cachedQuestions) {
+      setQuestions(JSON.parse(cachedQuestions));
+      setLoading(false);
+    }
+
+    // 2️⃣ Always fetch fresh data in the background
     fetch(`${API_URL}/api/html-quiz`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch questions");
@@ -29,11 +36,15 @@ const HtmlQuiz = () => {
       })
       .then((data) => {
         setQuestions(data);
+        localStorage.setItem("htmlQuizQuestions", JSON.stringify(data));
         setLoading(false);
       })
       .catch((err) => {
-        setError(err.message);
-        setLoading(false);
+        // If we already have cached data, don't block the quiz
+        if (!cachedQuestions) {
+          setError(err.message);
+          setLoading(false);
+        }
       });
   }, []);
 
@@ -66,9 +77,8 @@ const HtmlQuiz = () => {
     }, 1000);
   };
 
-  const handleNext = (timedOut = false) => {
+  const handleNext = () => {
     const isLast = current + 1 >= questions.length;
-
     if (!isLast) {
       setCurrent((prev) => prev + 1);
       setSelected(null);
@@ -104,7 +114,7 @@ const HtmlQuiz = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center text-white text-xl bg-black">
-        Loading quiz...
+        Preparing your quiz...
       </div>
     );
   }
