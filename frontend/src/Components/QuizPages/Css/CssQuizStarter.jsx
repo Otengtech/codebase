@@ -15,18 +15,18 @@ const CssQuizStart = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gradient-to-r from-[#1f2937] via-[#0f172a] to-[#1f2937] text-white flex items-center justify-center py-20 px-4">
-        <div className="max-w-6xl w-full grid md:grid-cols-2 gap-10 bg-[#111827]/70 backdrop-blur-sm rounded-xl shadow-2xl p-8 md:p-12 border border-gray-700">
+      <div className="min-h-screen bg-gradient-to-r from-gray-900 to-violet-900 text-white flex items-center justify-center py-20 px-4">
+        <div className="max-w-6xl w-full grid md:grid-cols-2 gap-10 rounded-xl p-8 md:p-12">
 
           {/* Left Column - Information */}
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-green-300 mb-6">CSS Quiz Challenge</h1>
-            <p className="text-lg text-gray-300 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-green-300 mb-6 animate-fade-in-up">CSS Quiz Challenge</h1>
+            <p className="text-lg text-gray-300 mb-6 animate-fade-in-up">
               Welcome to the ultimate CSS showdown! Hone your styling skills and challenge yourself with 40 unique questions designed to test everything from Flexbox to animations.
             </p>
             <div className="bg-gray-800 border border-gray-600 rounded-lg p-6 space-y-3 text-sm md:text-base">
-              <h2 className="text-xl font-semibold text-sky-300">Before You Start:</h2>
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
+              <h2 className="text-xl font-semibold text-sky-300 animate-fade-in-up">Before You Start:</h2>
+              <ul className="list-disc list-inside text-gray-300 space-y-2 animate-fade-in-up">
                 <li> 40 questions to push your CSS limits</li>
                 <li> 15 seconds per question – auto-move</li>
                 <li> Only one answer allowed per question</li>
@@ -38,9 +38,9 @@ const CssQuizStart = () => {
 
           {/* Right Column - Stats & Actions */}
           <div className="flex flex-col items-center justify-center text-center gap-6">
-            <h3 className="text-2xl font-semibold text-green-300">Your Progress</h3>
+            <h3 className="text-2xl font-semibold text-green-300 animate-fade-in-up">Your Progress</h3>
             <div className="w-full">
-              <div className="flex justify-between mb-1 text-sm text-gray-400">
+              <div className="flex justify-between mb-1 text-sm text-gray-400 animate-fade-in-up">
                 <span>Top Score</span>
                 <span>{topScore} / 40</span>
               </div>
@@ -68,7 +68,7 @@ const CssQuizStart = () => {
               </Link>
             </div>
 
-            <div className="mt-8 text-sm text-gray-400">
+            <div className="mt-8 text-sm text-gray-400 animate-fade-in-up">
               <p>Challenge your friends to beat your score!</p>
               <p className="italic">#CSSChampionship #CodeAndConquer</p>
             </div>

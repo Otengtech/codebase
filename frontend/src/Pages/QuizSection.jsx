@@ -31,36 +31,6 @@ const courses = [
     topics: ["Variables", "Functions", "DOM", "ES6+"],
     to: "/jsquizstart",
   },
-
-  {
-    title: "Node.js Quiz",
-    description: "Check your backend fundamentals using Node.js.",
-    initials: "NJS",
-    color: "bg-green-600",
-    topics: ["Modules", "Express.js", "APIs", "File System"],
-    to: "/nodejsquizstart",
-  },
-  {
-    title: "MongoDB Quiz",
-    description: "Evaluate your knowledge of NoSQL databases.",
-    initials: "MDB",
-    color: "bg-green-800",
-    topics: ["CRUD", "Schemas", "Aggregation", "Indexes"],
-    to: "/mdbquizstart",
-  },
-  {
-    title: "TailwindCSS Quiz",
-    description: "Assess your Tailwind utility class skills.",
-    initials: "TW",
-    color: "bg-teal-500",
-    topics: [
-      "Utility Classes",
-      "Responsive Design",
-      "Custom Config",
-      "Dark Mode",
-    ],
-    to: "/tquizstart",
-  },
 ];
 
 export default function QuizSection() {
@@ -106,7 +76,7 @@ export default function QuizSection() {
                   className="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-3 transition-all duration-300 p-6 flex flex-col justify-between"
                 >
                   {/* Badge */}
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-4 animate-fade-in-up">
                     <div
                       className={`w-12 h-12 text-sky-200 bg-gray-900 flex items-center justify-center font-bold text-lg rounded-full`}
                     >
@@ -119,15 +89,15 @@ export default function QuizSection() {
 
                   {/* Title & Description */}
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">
+                    <h3 className="text-xl animate-fade-in-up font-semibold text-white mb-2">
                       {course.title}
                     </h3>
-                    <p className="text-gray-300 text-sm mb-4">
+                    <p className="text-gray-300 text-sm mb-4 animate-fade-in-up">
                       {course.description}
                     </p>
 
                     {/* Topics */}
-                    <ul className="list-disc pl-5 space-y-1 text-sm text-gray-400 mb-4">
+                    <ul className="list-disc pl-5 space-y-1 animate-fade-in-up text-sm text-gray-400 mb-4">
                       {course.topics.map((topic, i) => (
                         <li key={i}>{topic}</li>
                       ))}
@@ -137,7 +107,7 @@ export default function QuizSection() {
                   <div className="flex items-center justify-between">
                     {/* Button */}
                     <Link to={course.to}>
-                      <button className="mt-auto bg-gray-900 rounded-full text-sky-200 py-3 px-6 hover:bg-gray-800 flex items-center justify-center gap-2 text-sm font-medium transition">
+                      <button className="mt-auto bg-gray-900 animate-fade-in-up rounded-full text-sky-200 py-3 px-6 hover:bg-gray-800 flex items-center justify-center gap-2 text-sm font-medium transition">
                         Start Quiz <FaArrowRight />
                       </button>
                     </Link>
@@ -145,7 +115,7 @@ export default function QuizSection() {
                       {[...Array(2)].map((_, index) => (
                         <div
                           key={index}
-                          className={`w-5 h-5 mt-5 rounded-full text-white ${
+                          className={`w-5 h-5 mt-5 rounded-full animate-fade-in-up text-white ${
                             index % 2 === 0 ? "bg-sky-300" : "bg-gray-500"
                           } animate-bounce-custom1`}
                           style={{

@@ -51,19 +51,19 @@ const ReviewSection = () => {
         {reviews.map((review, index) => (
           <div
             key={index}
-            className="bg-white text-gray-800 block rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300"
+            className="bg-white text-gray-800 block block rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300"
           >
             <FaQuoteLeft className="text-2xl text-indigo-600 mb-3" />
-            <div className="flex items-center gap-4 mb-4">
+            <div className="flex items-center gap-4 mb-4 block">
               <img
                 src={review.avatar}
                 alt={review.name}
                 className="w-14 h-14 rounded-full object-cover"
               />
               <div>
-                <h4 className="font-semibold text-lg">{review.name}</h4>
-                <p className="text-sm text-gray-500">{review.email}</p>
-                <div className="flex mt-1">
+                <h4 className="font-semibold text-lg block">{review.name}</h4>
+                <p className="text-sm text-gray-500 block">{review.email}</p>
+                <div className="flex mt-1 block">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <svg
                       key={i}
@@ -79,12 +79,12 @@ const ReviewSection = () => {
                 </div>
               </div>
             </div>
-            <p className="text-sm text-gray-700 mb-4">{review.comment}</p>
+            <p className="text-sm text-gray-700 mb-4 block">{review.comment}</p>
             <div className="flex items-center gap-2 text-pink-500">
               <FaHeart />
-              <span className="text-sm">{review.likes} likes</span>
+              <span className="text-sm block">{review.likes} likes</span>
             </div>
-            <FaQuoteRight className="text-xl text-indigo-600 mt-4 float-right" />
+            <FaQuoteRight className="text-xl text-indigo-600 mt-4 float-right block" />
           </div>
         ))}
       </div>

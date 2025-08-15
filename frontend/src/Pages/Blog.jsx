@@ -117,23 +117,23 @@ const Blog = () => {
                     <img
                       src={post.image}
                       alt={post.title}
-                      className="w-full h-48 object-cover"
+                      className="w-full h-48 animate-fade-in-up object-cover"
                     />
                     <div className="p-6 flex flex-col gap-3">
-                      <span className="inline-block bg-sky-300 text-gray-900 text-xs font-bold px-3 py-1 rounded-full self-start">
+                      <span className="inline-block bg-sky-300 text-gray-900 animate-fade-in-up text-xs font-bold px-3 py-1 rounded-full self-start">
                         {post.tag}
                       </span>
-                      <h3 className="text-2xl font-semibold hover:text-sky-300 cursor-pointer">
+                      <h3 className="text-2xl font-semibold hover:text-sky-300 cursor-pointer animate-fade-in-up">
                         {post.title}
                       </h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">
+                      <p className="text-gray-400 text-sm leading-relaxed animate-fade-in-up">
                         {post.excerpt}
                       </p>
                       <div className="flex items-center justify-between mt-4 text-xs text-gray-400">
-                        <span className="flex items-center gap-1">
+                        <span className="flex items-center gap-1 animate-fade-in-up">
                           <FaUserCircle /> {post.author}
                         </span>
-                        <span className="flex items-center gap-1">
+                        <span className="flex items-center gap-1 animate-fade-in-up">
                           <FaClock /> {post.date}
                         </span>
                       </div>

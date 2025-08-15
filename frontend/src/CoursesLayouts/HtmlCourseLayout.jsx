@@ -15,6 +15,7 @@ const CourseLayout = () => {
   const [currentTopic, setCurrentTopic] = useState(
     flatTopics.find((t) => t.id === defaultTopicId) || flatTopics[0]
   );
+  const [message, setMessage] = useState("")
   const [fade, setFade] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -62,8 +63,15 @@ const CourseLayout = () => {
 
     if (!term) return;
 
+
     // Search in topic titles first
     let found = flatTopics.find((t) => t.title.toLowerCase().includes(term));
+    if (!found){
+      setMessage("No such topic")
+      setTimeout(() => {
+        setMessage("")
+      }, 2000);
+    }
 
     // If not found, search in content
     if (!found) {
@@ -117,19 +125,22 @@ const CourseLayout = () => {
               </h2>
 
               {/* Search Input */}
-              <div className="relative mb-6">
-                <input
-                  type="text"
-                  placeholder="Search topic or content..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  className="w-full bg-transparent border border-sky-200 text-white placeholder-sky-200 rounded-md px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-sky-400"
-                />
-                <FaSearch
-                  onClick={handleSearch}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sky-200 cursor-pointer hover:text-white"
-                />
+              <div className="mb-5">
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Search topic or content..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    className="w-full bg-transparent border border-sky-200 text-white placeholder-sky-200 rounded-md px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                  />
+                  <FaSearch
+                    onClick={handleSearch}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sky-200 cursor-pointer hover:text-white"
+                  />
+                </div>
+              <div className="text-red-400">{message}</div>
               </div>
 
               {/* Topics List */}
@@ -147,7 +158,7 @@ const CourseLayout = () => {
                             setCurrentTopic({ id, title });
                             setIsSidebarOpen(false);
                           }}
-                          className={`block w-full text-left text-sm px-3 py-1 rounded hover:bg-white/10 ${
+                          className={`w-full text-left text-sm px-3 py-1 rounded hover:bg-white/10 ${
                             currentTopic.id === id ? "bg-white/20" : ""
                           }`}
                         >

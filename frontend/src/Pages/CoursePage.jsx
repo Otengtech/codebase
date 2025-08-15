@@ -3,9 +3,6 @@ import { motion } from "framer-motion";
 import htmlImg from "../assets/html.png";
 import cssImg from "../assets/css.png";
 import jsImg from "../assets/javascript.jpg";
-import tailwindImg from "../assets/tailwind.webp";
-import nodejsImg from "../assets/nodejs.png";
-import mongodbImg from "../assets/mongodb.png";
 import { Link } from "react-router-dom";
 import Navbar from "../Components/Home/Navbar";
 import Footer from "../Components/Home/Footer";
@@ -61,57 +58,6 @@ const courses = [
       "Events",
       "ES6+ Features",
       "APIs & Fetch",
-    ],
-  },
-  {
-    name: "Node.js Backend Fundamentals",
-    img: nodejsImg,
-    to: "/nodejs",
-    description:
-      "Understand the basics of server-side programming with Node.js. Build and deploy fast, scalable backend services.",
-    duration: "2 Months",
-    level: "Intermediate",
-    topics: [
-      "Node.js Basics",
-      "File System & Streams",
-      "Express.js",
-      "Middleware",
-      "Routing & REST APIs",
-      "Error Handling",
-    ],
-  },
-  {
-    name: "Tailwind CSS Workshop",
-    img: tailwindImg,
-    to: "/tailwindcss",
-    description:
-      "Design elegant and responsive interfaces using Tailwind CSS utility classes. Learn how to build quickly without writing custom CSS.",
-    duration: "3 Weeks",
-    level: "Beginner to Intermediate",
-    topics: [
-      "Utility-first Approach",
-      "Layout & Spacing",
-      "Responsive Design",
-      "Dark Mode",
-      "Custom Themes",
-      "Integration with React",
-    ],
-  },
-  {
-    name: "MongoDB for Developers",
-    img: mongodbImg,
-    to: "/mongodb",
-    description:
-      "Learn how to work with MongoDB, a flexible NoSQL database. Understand schemas, CRUD operations, and data modeling.",
-    duration: "1.5 Months",
-    level: "Intermediate",
-    topics: [
-      "MongoDB Basics",
-      "CRUD Operations",
-      "Aggregation Pipeline",
-      "Schema Design",
-      "Indexes",
-      "Mongoose (for Node.js)",
     ],
   },
 ];
@@ -175,34 +121,34 @@ const Course = () => {
                   filteredCourses.map((course, index) => (
                     <div
                       key={index}
-                      className="bg-white/5 border border-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-[1.02] transition-all duration-500"
+                      className="bg-white/5 border border-white/10 animate-fade-in-up backdrop-blur-md p-6 rounded-2xl shadow-lg hover:scale-[1.02] transition-all duration-500"
                     >
                       <Link to={course.to}>
                         <img
                           src={course.img}
                           alt={course.name}
-                          className="w-full h-48 rounded-t-2xl"
+                          className="w-full h-48 animate-fade-in-up rounded-t-2xl"
                         />
                         <div className="py-6">
-                          <h3 className="text-base text-2xl font-bold text-sky-300 mb-1">
+                          <h3 className="text-base text-2xl font-bold animate-fade-in-up text-sky-300 mb-1">
                             {course.name}
                           </h3>
-                          <p className="text-sm text-gray-300">
+                          <p className="text-sm text-gray-300 animate-fade-in-up">
                             {course.description}
                           </p>
                           <div className="text-sm text-gray-400 mt-2">
                             <p>
-                              <strong className="text-sky-300">
+                              <strong className="text-sky-300 animate-fade-in-up">
                                 Duration:
                               </strong>{" "}
                               {course.duration}
                             </p>
                             <p>
-                              <strong className="text-sky-300">Level:</strong>{" "}
+                              <strong className="text-sky-300 animate-fade-in-up">Level:</strong>{" "}
                               {course.level}
                             </p>
                           </div>
-                          <ul className="list-disc list-inside text-gray-300 text-sm mt-2">
+                          <ul className="list-disc list-inside text-gray-300 animate-fade-in-up text-sm mt-2">
                             {course.topics.slice(0, 3).map((topic, i) => (
                               <li key={i}>{topic}</li>
                             ))}
@@ -212,7 +158,7 @@ const Course = () => {
                     </div>
                   ))
                 ) : (
-                  <p className="text-center text-sky-200 col-span-full">
+                  <p className="text-center text-sky-200 col-span-full animate-fade-in-up">
                     No courses match your search.
                   </p>
                 )}

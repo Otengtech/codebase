@@ -39,34 +39,34 @@ const Html = () => {
           <img
             src={htmlImg}
             alt="HTML Starter Course"
-            className="w-full h-60 object-cover md:h-full"
+            className="w-full h-60 object-cover animate-fade-in-up md:h-full"
           />
 
           {/* Course Info */}
           <div className="col-span-2 p-6 flex flex-col justify-between">
             <div>
-              <h3 className="text-2xl text-orange-500 font-semibold mb-2">
+              <h3 className="text-2xl text-orange-500 font-semibold mb-2 animate-fade-in-up">
                 HTML Fundamentals
               </h3>
-              <p className="text-gray-300 mb-4">
+              <p className="text-gray-300 mb-4 animate-fade-in-up">
                 Learn the foundations of web development with HTML. Build your
                 first web pages and understand how websites are structured.
               </p>
 
               <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-700">
-                <span className="bg-gray-300 px-3 py-1 rounded-full">
+                <span className="bg-gray-300 px-3 py-1 rounded-full animate-fade-in-up">
                   Duration: 1 Month
                 </span>
-                <span className="bg-gray-300 px-3 py-1 rounded-full">
+                <span className="bg-gray-300 px-3 py-1 rounded-full animate-fade-in-up">
                   Level: Absolute Beginner
                 </span>
               </div>
 
               <div>
-                <h4 className="font-semibold text-orange-500 mb-2">
+                <h4 className="font-semibold text-orange-500 mb-2 animate-fade-in-up">
                   What you'll learn:
                 </h4>
-                <ul className="list-disc list-inside text-gray-300 grid grid-cols-2 gap-x-4">
+                <ul className="list-disc list-inside text-gray-300 grid grid-cols-2 gap-x-4 animate-fade-in-up">
                   <li>HTML Tags & Elements</li>
                   <li>Page Structure</li>
                   <li>Headings & Paragraphs</li>

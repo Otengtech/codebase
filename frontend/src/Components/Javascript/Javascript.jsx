@@ -37,34 +37,34 @@ const JavascriptCourseLanding = () => {
           <img
             src={jsImg}
             alt="JavaScript Course"
-            className="w-full h-60 object-cover md:h-full"
+            className="w-full h-60 animate-fade-in-up object-cover md:h-full"
           />
 
           {/* Course Info */}
           <div className="col-span-2 p-6 flex flex-col justify-between">
             <div>
-              <h3 className="text-2xl text-yellow-400 font-semibold mb-2">
+              <h3 className="text-2xl text-yellow-400 font-semibold mb-2 animate-fade-in-up">
                 JavaScript Essentials
               </h3>
-              <p className="text-gray-300 mb-4">
+              <p className="text-gray-300 mb-4 animate-fade-in-up">
                 Learn JavaScript from scratch and build dynamic, interactive web
                 applications. Dive into real projects and practical use cases.
               </p>
 
               <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-700">
-                <span className="bg-gray-300 px-3 py-1 rounded-full">
+                <span className="bg-gray-300 px-3 py-1 rounded-full animate-fade-in-up">
                   Duration: 2 Months
                 </span>
-                <span className="bg-gray-300 px-3 py-1 rounded-full">
+                <span className="bg-gray-300 px-3 py-1 rounded-full animate-fade-in-up">
                   Level: Beginner to Intermediate
                 </span>
               </div>
 
               <div>
-                <h4 className="font-semibold text-yellow-400 mb-2">
+                <h4 className="font-semibold text-yellow-400 mb-2 animate-fade-in-up">
                   What you'll learn:
                 </h4>
-                <ul className="list-disc list-inside text-gray-300 grid grid-cols-2 gap-x-4">
+                <ul className="list-disc list-inside text-gray-300 grid grid-cols-2 gap-x-4 animate-fade-in-up">
                   <li>Variables & Data Types</li>
                   <li>Functions & Scope</li>
                   <li>DOM Manipulation</li>
@@ -81,7 +81,7 @@ const JavascriptCourseLanding = () => {
 
             {/* Enroll Button */}
             <div className="mt-6">
-              <button className="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-semibold px-6 py-2 rounded-md transition">
+              <button className="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-semibold animate-fade-in-up px-6 py-2 rounded-md transition">
                 Enroll Now
               </button>
             </div>

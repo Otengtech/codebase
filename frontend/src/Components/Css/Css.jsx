@@ -37,34 +37,34 @@ const Css = () => {
           <img
             src={cssImg} // replace with your image import or URL
             alt="CSS Course"
-            className="w-full h-60 md:h-full"
+            className="w-full h-60 animate-fade-in-up md:h-full"
           />
 
           {/* Course Info */}
           <div className="col-span-2 p-6 flex flex-col justify-between">
             <div>
-              <h3 className="text-2xl text-blue-600 font-semibold mb-2">
+              <h3 className="text-2xl text-blue-600 font-semibold mb-2 animate-fade-in-up">
                 CSS Essentials
               </h3>
-              <p className="text-gray-200 mb-4">
+              <p className="text-gray-200 mb-4 animate-fade-in-up">
                 Master the art of styling web pages using CSS3. Learn layout
                 techniques, animations, and responsive design.
               </p>
 
               <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-700">
-                <span className="bg-gray-300 px-3 py-1 rounded-full">
+                <span className="bg-gray-300 px-3 py-1 rounded-full animate-fade-in-up">
                   Duration: 1.5 Months
                 </span>
-                <span className="bg-gray-300 px-3 py-1 rounded-full">
+                <span className="bg-gray-300 px-3 py-1 rounded-full animate-fade-in-up">
                   Level: Beginner to Intermediate
                 </span>
               </div>
 
               <div>
-                <h4 className="font-semibold text-blue-600 mb-2">
+                <h4 className="font-semibold text-blue-600 mb-2 animate-fade-in-up">
                   What you'll learn:
                 </h4>
-                <ul className="list-disc list-inside text-gray-300 grid grid-cols-2 gap-x-4">
+                <ul className="list-disc list-inside text-gray-300 grid grid-cols-2 gap-x-4 animate-fade-in-up">
                   <li>Selectors & Specificity</li>
                   <li>Box Model</li>
                   <li>Flexbox & Grid</li>
@@ -77,7 +77,7 @@ const Css = () => {
 
             {/* Enroll Button */}
             <div className="mt-6">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-md transition">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold animate-fade-in-up px-6 py-2 rounded-md transition">
                 Enroll Now
               </button>
             </div>

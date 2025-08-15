@@ -13,9 +13,6 @@ import Blog from "../Pages/Blog";
 import Html from "./Html/Html";
 import Css from "./Css/Css";
 import JavascriptCourseLanding from "./Javascript/Javascript";
-import NodejsCourseLanding from "./NodeJs/Nodejs";
-import TailwindCourseLanding from "./TailwindCss/Tailwind";
-import MongoDBCourseLanding from "./MongoDB/MongoDB.jsx";
 
 // Blog Posts
 import ClosurePost from "./Posts/ClosurePost";
@@ -30,12 +27,6 @@ import CssQuizStart from "./QuizPages/Css/CssQuizStarter";
 import CssQuiz from "./QuizPages/Css/CssQuiz";
 import JavascriptQuizStart from "./QuizPages/Javascript/JsQuizStart";
 import JsQuiz from "./QuizPages/Javascript/JsQuiz";
-import NodejsQuizStart from "./QuizPages/NodeJs/nodejsQuizStart";
-import NodeQuiz from "./QuizPages/NodeJs/nodejsQuiz";
-import MdbQuizStart from "./QuizPages/MongoDB/MdbQuizStart";
-import MdbQuiz from "./QuizPages/MongoDB/MdbQuiz";
-import TailwindQuizStart from "./QuizPages/TailwinCss/jQuizStart";
-import TailwindQuiz from "./QuizPages/TailwinCss/jQuiz";
 
 // Home Sections
 import About from "./Home/About";
@@ -59,9 +50,6 @@ const App = () => {
         <Route path="/html" element={<Html />} />
         <Route path="/css" element={<Css />} />
         <Route path="/javascript" element={<JavascriptCourseLanding />} />
-        <Route path="/nodejs" element={<NodejsCourseLanding />} />
-        <Route path="/tailwindcss" element={<TailwindCourseLanding />} />
-        <Route path="/mongodb" element={<MongoDBCourseLanding />} />
 
         {/* General Pages */}
         <Route path="/course" element={<Course />} />
@@ -80,17 +68,11 @@ const App = () => {
         <Route path="/htmlquizstart" element={<HtmlQuizStart />} />
         <Route path="/cssquizstart" element={<CssQuizStart />} />
         <Route path="/jsquizstart" element={<JavascriptQuizStart />} />
-        <Route path="/nodejsquizstart" element={<NodejsQuizStart />} />
-        <Route path="/mdbquizstart" element={<MdbQuizStart />} />
-        <Route path="/tquizstart" element={<TailwindQuizStart />} />
 
         {/* Quizzes */}
         <Route path="/htmlquiz" element={<Quiz />} />
         <Route path="/cssquiz" element={<CssQuiz />} />
         <Route path="/jsquiz" element={<JsQuiz />} />
-        <Route path="/nodejsquiz" element={<NodeQuiz />} />
-        <Route path="/mdbquiz" element={<MdbQuiz />} />
-        <Route path="/tquiz" element={<TailwindQuiz />} />
         <Route path="/reviews" element={<ReviewSection />} />
 
         {/* Courses Layouts */}
