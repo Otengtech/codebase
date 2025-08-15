@@ -9,14 +9,10 @@ export const useInViewAnimation = () => {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect(); // trigger only once
-        }
+        setIsVisible(entry.isIntersecting);
       },
       {
-        threshold: isSmallScreen ? 0.2 : 0.1, // small screens wait for 20% visibility
-        rootMargin: "0px 0px -10% 0px", // ensures it triggers slightly before fully visible
+        threshold: isSmallScreen ? 0 : 0.1, // 👈 dynamic threshold
       }
     );
 

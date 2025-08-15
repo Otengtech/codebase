@@ -93,13 +93,13 @@ const Footer = () => {
             <p className="text-sm text-gray-300 mb-3 block">
               We’d love to hear from you.
             </p>
-            <p className="text-sm text-gray-300 block">
+            <p className="text-sm text-gray-300">
               Email:{" "}
               <a href="codebase326@gmail.com" className="hover:text-white block">
                 codebase326@gmail.com
               </a>
             </p>
-            <p className="text-sm text-gray-300 mb-4 block">Phone: +233593957373</p>
+            <p className="text-sm text-gray-300 mb-4">Phone: +233593957373</p>
 
             {/* Social Links */}
             <div className="flex gap-4 mt-2 block">
