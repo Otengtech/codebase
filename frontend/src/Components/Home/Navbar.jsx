@@ -4,8 +4,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [accountMenu, setAccountMenu] = useState(false);
-  const [showLearnDropdown, setShowLearnDropdown] = useState(false);
-  const [selectedLang, setSelectedLang] = useState("");
   const [userName, setUserName] = useState(localStorage.getItem("name") || "");
   const [userEmail, setUserEmail] = useState(localStorage.getItem("email") || "");
   const [profileImage, setProfileImage] = useState(localStorage.getItem("profileImage") || null);
@@ -13,9 +11,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const accountRef = useRef();
-  const learnRef = useRef();
 
-  const learnItems = ["HTML", "CSS", "JavaScript", "NodeJS", "TailwindCss", "MongoDB"];
   const navItems = ["Blog", "Course", "Quiz", "About", "Contact", "FAQ"];
   const mobileNavItems = ["About", "Contact", "FAQ", "Terms & Conditions"];
 
@@ -23,9 +19,6 @@ const Navbar = () => {
     const handleClickOutside = (e) => {
       if (accountRef.current && !accountRef.current.contains(e.target)) {
         setAccountMenu(false);
-      }
-      if (learnRef.current && !learnRef.current.contains(e.target)) {
-        setShowLearnDropdown(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -51,13 +44,6 @@ const Navbar = () => {
     setAccountMenu(false);
     setIsOpen(false);
     navigate("/login");
-  };
-
-  const handleSelectChange = (e) => {
-    const selected = e.target.value;
-    setSelectedLang(selected);
-    if (selected) navigate(`/${selected}`);
-    setIsOpen(false);
   };
 
   const bottomLinks = [
@@ -90,20 +76,6 @@ const Navbar = () => {
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-6 text-sm relative">
               <Link to="/" className="text-sky-200 hover:text-sky-100">Home</Link>
-
-              <div>
-                <select
-                  id="learnSelect"
-                  value={selectedLang}
-                  onChange={handleSelectChange}
-                  className="bg-violet-900 text-sky-200 px-3 py-2 rounded hover:bg-violet-800"
-                >
-                  <option value="">Learn</option>
-                  {learnItems.map((lang, i) => (
-                    <option key={i} value={lang.toLowerCase()}>{lang}</option>
-                  ))}
-                </select>
-              </div>
 
               {navItems.map((item) => (
                 <Link key={item} to={`/${item.toLowerCase()}`} className="text-sky-200 hover:text-sky-100">
@@ -172,22 +144,6 @@ const Navbar = () => {
               <p className="font-semibold">{userName || "Guest"}</p>
               <p className="text-xs text-gray-300">{userEmail || "No email"}</p>
             </div>
-          </div>
-
-          <div ref={learnRef}>
-            <button onClick={() => setShowLearnDropdown((prev) => !prev)} className="w-full text-left hover:text-sky-400 flex justify-between items-center">
-              Learn <i className={`fas fa-chevron-${showLearnDropdown ? "up" : "down"}`}></i>
-            </button>
-            {showLearnDropdown && (
-              <div className="ml-4 mt-2 space-y-2">
-                {learnItems.map((lang, index) => (
-                  <Link key={index} to={`/${lang.toLowerCase()}`} onClick={() => {
-                    setShowLearnDropdown(false);
-                    setIsOpen(false);
-                  }} className="block hover:text-sky-300">{lang}</Link>
-                ))}
-              </div>
-            )}
           </div>
 
           {mobileNavItems.map((item) => (

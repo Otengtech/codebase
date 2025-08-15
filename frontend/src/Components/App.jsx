@@ -35,6 +35,8 @@ import MoveTop from "./Home/MoveTop";
 import ScrollToTop from "./Home/ScrollToTop";
 import ReviewSection from "./Home/Reviews.jsx";
 import CourseLayout from "../CoursesLayouts/HtmlCourseLayout.jsx";
+import CssCourseLayout from "../CoursesLayouts/CssCourseLayout.jsx";
+import JsCourseLayout from "../CoursesLayouts/JsCourseLayout.jsx";
 
 const App = () => {
   return (
@@ -77,6 +79,8 @@ const App = () => {
 
         {/* Courses Layouts */}
         <Route path="/htmlcourse" element={<CourseLayout />} />
+        <Route path="/csscourse" element={<CssCourseLayout />} />
+        <Route path="/jscourse" element={<JsCourseLayout />} />
       </Routes>
     </Router>
   );

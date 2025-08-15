@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 import Footer from "../Home/Footer";
 import Navbar from "../Home/Navbar";
 import jsImg from "../../assets/javascript.jpg"; // Ensure this image exists
+import { Link } from "react-router-dom";
 
 const JavascriptCourseLanding = () => {
   return (
     <div>
       <Navbar />
-      <div className="w-full bg-gray-900 px-4 md:px-10 py-28">
+      <div className="w-full bg-gradient-to-r from-gray-900 to-violet-900 px-4 md:px-10 py-28">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -32,7 +33,7 @@ const JavascriptCourseLanding = () => {
             ))}
           </div>
         </motion.div>
-        <div className="bg-gray-900 rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-transparent gradient-to-r from-gray-900 to-violet-900 rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Course Image */}
           <img
             src={jsImg}
@@ -81,9 +82,11 @@ const JavascriptCourseLanding = () => {
 
             {/* Enroll Button */}
             <div className="mt-6">
-              <button className="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-semibold animate-fade-in-up px-6 py-2 rounded-md transition">
-                Enroll Now
-              </button>
+              <Link to="/jscourse">
+                <button className="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-semibold animate-fade-in-up px-6 py-2 rounded-md transition">
+                  Enroll Now
+                </button>
+              </Link>
             </div>
           </div>
         </div>
