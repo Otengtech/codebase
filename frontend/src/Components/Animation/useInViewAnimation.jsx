@@ -1,24 +1,33 @@
 import { useEffect, useRef, useState } from "react";
 
 export const useInViewAnimation = () => {
-  const ref = useRef();
+  const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const isSmallScreen = window.innerWidth <= 768;
+    if (!ref.current) return;
 
+    const isSmallScreen = window.innerWidth <= 768;
     const observer = new IntersectionObserver(
-      ([entry]) => {
+      (entries) => {
+        const [entry] = entries;
         setIsVisible(entry.isIntersecting);
       },
       {
-        threshold: isSmallScreen ? 0 : 0.1, // 👈 dynamic threshold
+        threshold: isSmallScreen ? 0 : 0.1, // Dynamic threshold
       }
     );
 
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    observer.observe(ref.current);
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+      observer.disconnect();
+    };
   }, []);
 
   return [ref, isVisible];
 };
+

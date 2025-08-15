@@ -201,9 +201,11 @@ const Navbar = () => {
           </Link>
 
           <div className="mt-auto">
+            <Link to="/login">
             <button onClick={handleLogout} className="w-full py-2 bg-gray-900 hover:bg-gray-700 rounded-md">
               {userEmail ? "Logout" : "Login"}
             </button>
+            </Link>
           </div>
         </div>
       </div>
